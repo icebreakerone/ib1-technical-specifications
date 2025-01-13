@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://specification.docs.ib1.org/</loc>
+         <lastmod>2025-01-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://specification.docs.ib1.org/changelog/</loc>
+         <lastmod>2025-01-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://specification.docs.ib1.org/access-control/1.0/</loc>
+         <lastmod>2025-01-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://specification.docs.ib1.org/data-catalog-records/1.0/</loc>
+         <lastmod>2025-01-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://specification.docs.ib1.org/data-catalog-records/1.0/scheme-catalog-requirements/</loc>
+         <lastmod>2025-01-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://specification.docs.ib1.org/registry/1.0/</loc>
+         <lastmod>2025-01-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+</urlset>
