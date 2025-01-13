@@ -1,0 +1,46 @@
+site_name: Icebreaker One Specifications
+site_url: https://specification.docs.ib1.org
+repo_url: https://github.com/icebreakerone/ib1-technical-specifications
+nav:
+  - 'Introduction': 'index.md'
+  - 'Specifications':
+    - 'Data Catalog Records':
+      - 'Metadata': 'data-catalog-records/1.0.md'
+      - 'Scheme Catalog Requirements': 'data-catalog-records/1.0/scheme-catalog-requirements.md'
+    - 'Access Control': 'access-control/1.0.md'
+    - 'Registry Structure': 'registry/1.0.md'
+  - 'Changelog': 'changelog.md'
+theme:
+  name: material
+  features:
+    - navigation.expand
+  logo: assets/logo.png
+  favicon: assets/logo.png
+  font:
+    text: Open Sans
+  palette:
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: ib1-light
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: ib1-dark
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+extra_css:
+  - stylesheets/extra.css
+markdown_extensions:
+  - tables
+  - attr_list
+  - def_list
+plugins:
+  - social:
+      cards_layout_options:
+        background_color: "#0D1C22" 
+        color: "#FFFFFF"
