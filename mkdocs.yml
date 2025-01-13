@@ -44,3 +44,6 @@ plugins:
       cards_layout_options:
         background_color: "#0D1C22" 
         color: "#FFFFFF"
+  - redirects:
+      redirect_maps:
+        'data-catalog-records.md': 'data-catalog-records/1.0.md'
