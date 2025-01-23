@@ -8,22 +8,24 @@
       
       
       
+        <link rel="canonical" href="https://specification.docs.ib1.org/generic-sensitivity-classes/1.0/">
       
       
       
-      <link rel="icon" href="/assets/logo.png">
+      
+      <link rel="icon" href="../../assets/logo.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.30">
     
     
       
-        <title>Icebreaker One Specifications</title>
+        <title>Generic Sensitivity Classes - Icebreaker One Specifications</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.3cba04c6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -42,13 +44,39 @@
       
     
     
-      <link rel="stylesheet" href="/stylesheets/extra.css">
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Generic Sensitivity Classes - Icebreaker One Specifications" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://specification.docs.ib1.org/assets/images/social/generic-sensitivity-classes/1.0.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://specification.docs.ib1.org/generic-sensitivity-classes/1.0/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Generic Sensitivity Classes - Icebreaker One Specifications" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://specification.docs.ib1.org/assets/images/social/generic-sensitivity-classes/1.0.png" >
+      
     
     
   </head>
@@ -69,6 +97,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#generic-sensitivity-classes" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -81,9 +114,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="Icebreaker One Specifications" class="md-header__button md-logo" aria-label="Icebreaker One Specifications" data-md-component="logo">
+    <a href="../.." title="Icebreaker One Specifications" class="md-header__button md-logo" aria-label="Icebreaker One Specifications" data-md-component="logo">
       
-  <img src="/assets/logo.png" alt="logo">
+  <img src="../../assets/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -100,7 +133,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Generic Sensitivity Classes
             
           </span>
         </div>
@@ -176,9 +209,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Icebreaker One Specifications" class="md-nav__button md-logo" aria-label="Icebreaker One Specifications" data-md-component="logo">
+    <a href="../.." title="Icebreaker One Specifications" class="md-nav__button md-logo" aria-label="Icebreaker One Specifications" data-md-component="logo">
       
-  <img src="/assets/logo.png" alt="logo">
+  <img src="../../assets/logo.png" alt="logo">
 
     </a>
     Icebreaker One Specifications
@@ -205,7 +238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -225,7 +258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/changelog/" class="md-nav__link">
+      <a href="../../changelog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -255,6 +288,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -266,8 +301,88 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+  
+  
+
+
+<h1 id="generic-sensitivity-classes">Generic Sensitivity Classes</h1>
+<p>Trust Framework members can allocate a dataset into ‘classes’ depending on its sensitivity profile. Access and security requirements differ across classes.</p>
+<p>This specification defines generic sensitivity classes, identified by URLs in the IB1 RDF Schema, where the <code>ib1:</code> prefix expands to <code>https://registry.trust.ib1.org/ns/1.0#</code>.</p>
+<p>In the table below, a <em>Yes</em> in the <em>Auth?</em> column means that the sensitivity class requires the client to authenticate with the server and follow access rules described in the Registry.</p>
+<p>A <em>Yes</em> in the <em>FAPI?</em> column means that the sensitivity class requires the use of a FAPI compliant API.</p>
+<p>A <em>Yes</em> in the <em>Permission?</em> column means the sensitivity class requires that Permission (consent) is explicitly granted for access to data relating to an end user.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>URL</th>
+<th>Description</th>
+<th>Auth?</th>
+<th>FAPI?</th>
+<th>Permission?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Closed Data</td>
+<td><code>ib1:IB1-C</code></td>
+<td>Datasets which must not be shared within the Trust Framework. This class is provided for completeness, and records which are classified with this class will not be included in any Trust Framework catalog.</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Open Data</td>
+<td><code>ib1:IB1-O</code></td>
+<td>Full open access, under an open data licence. Free to use, by anyone, for any purpose.</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Shared (A)</td>
+<td><code>ib1:IB1-SA</code></td>
+<td>Datasets which can/could be shared, but which require the user to agree to standard T&amp;Cs to access. May include some openly licensed materials (e.g. CC BY-SA or GNU AGPLv3).</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Shared (B)</td>
+<td><code>ib1:IB1-SB</code></td>
+<td>Datasets which can/could be shared, but currently require some bilateral contract negotiation. May include data currently shared on the basis of group-based access. May include aggregated, anonymised or pseudonymised data about individuals.</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Personal</td>
+<td><code>ib1:IB1-SP</code></td>
+<td>Datasets which include personal data, requiring appropriate consent to share, or other legal bases to data processing, as defined by the UK DPA 2018.</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -301,10 +416,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "/", "features": ["navigation.expand"], "search": "/assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   </body>
