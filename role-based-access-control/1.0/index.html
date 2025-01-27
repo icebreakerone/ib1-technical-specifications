@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://specification.docs.ib1.org/access-control/1.0/">
+        <link rel="canonical" href="https://specification.docs.ib1.org/role-based-access-control/1.0/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Access Control - Icebreaker One Specifications</title>
+        <title>Role-based Access Control - Icebreaker One Specifications</title>
       
     
     
@@ -55,11 +55,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Access Control - Icebreaker One Specifications" >
+        <meta  property="og:title"  content="Role-based Access Control - Icebreaker One Specifications" >
       
         <meta  property="og:description"  content="None" >
       
-        <meta  property="og:image"  content="https://specification.docs.ib1.org/assets/images/social/access-control/1.0.png" >
+        <meta  property="og:image"  content="https://specification.docs.ib1.org/assets/images/social/role-based-access-control/1.0.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -67,15 +67,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://specification.docs.ib1.org/access-control/1.0/" >
+        <meta  property="og:url"  content="https://specification.docs.ib1.org/role-based-access-control/1.0/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Access Control - Icebreaker One Specifications" >
+        <meta  name="twitter:title"  content="Role-based Access Control - Icebreaker One Specifications" >
       
         <meta  name="twitter:description"  content="None" >
       
-        <meta  name="twitter:image"  content="https://specification.docs.ib1.org/assets/images/social/access-control/1.0.png" >
+        <meta  name="twitter:image"  content="https://specification.docs.ib1.org/assets/images/social/role-based-access-control/1.0.png" >
       
     
     
@@ -98,7 +98,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#access-control" class="md-skip">
+        <a href="#role-based-access-control" class="md-skip">
           Skip to content
         </a>
       
@@ -133,7 +133,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Access Control
+              Role-based Access Control
             
           </span>
         </div>
@@ -375,20 +375,20 @@
   
 
 
-<h1 id="access-control">Access Control</h1>
-<p>Access to data sources is controlled by roles and licences.</p>
-<p>A <a href="../../data-catalog-records/1.0/">Data Catalog Entry</a> specifies one or more roles and a licence. If a participant has any of the roles, they may access the data source under the specified licence.</p>
+<h1 id="role-based-access-control">Role-based Access Control</h1>
+<p>Access to data sources is controlled by roles and licenses.</p>
+<p>A <a href="../../data-catalog-records/1.0/">Data Catalog Entry</a> specifies one or more roles and a license. If a participant has any of the roles, they may access the data source under the specified license.</p>
 <p>Scheme-conforming data sources use <a href="../../data-catalog-records/1.0/#scheme-catalog-requirements">Scheme Catalog Requirements Resources</a> which specify the Access Rules for data sources which implement APIs agreed by the Scheme.</p>
 <h2 id="changes-from-open-energy">Changes from Open Energy</h2>
 <p>This access control specification is a simplification of Open Energy's access control. Open Energy was designed for one-to-many data products, which required the flexibility for each data provider to describe the individual access requirements for each of their products. Data sharing in a Trust Framework is many-to-many, where the access requirements are set by a sector-wide governance process.</p>
-<p>This specification will be iterated as use cases emerge. The current expectation, reflected in this specification, is that the governance process will describe the minimum set of roles permitted to access data under a specific licence, and the data provider may be allowed to expand this to additional roles.</p>
+<p>This specification will be iterated as use cases emerge. The current expectation, reflected in this specification, is that the governance process will describe the minimum set of roles permitted to access data under a specific license, and the data provider may be allowed to expand this to additional roles.</p>
 <h2 id="data-catalog-entries">Data Catalog Entries</h2>
-<p>Data Catalog Entries specify the Roles and Licence with the terms:</p>
+<p>Data Catalog Entries specify the Roles and License with the terms:</p>
 <dl>
 <dt><code>ib1:roleRequiredToAccess</code></dt>
-<dd>The URL of an <code>ib1:Role</code> in the Registry which may access this data source subject to the Licence in the <code>dcterms:license</code> term. Where multiple roles are specified, a client must have at least one of the roles to access the dataset. Unless the data has a <code>ib1:sensitivityClass</code> which allows access without authentication, at least one Role must be specified.</dd>
+<dd>The URL of an <code>ib1:Role</code> in the Registry which may access this data source subject to the License in the <code>dcterms:license</code> term. Where multiple roles are specified, a client must have at least one of the roles to access the dataset. Unless the data has a <code>ib1:sensitivityClass</code> which allows access without authentication, at least one Role must be specified.</dd>
 <dt><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#license">dcterms:license</a></dt>
-<dd>The URL of an <code>ib1:Licence</code>. All use of this data source is subject to this Licence.</dd>
+<dd>The URL of an <code>ib1:License</code>. All use of this data source is subject to this License.</dd>
 </dl>
 <h2 id="scheme-catalog-requirements">Scheme Catalog Requirements</h2>
 <p>Scheme Catalog Requirements resources specify the rules for a resource with the term:</p>
@@ -404,10 +404,10 @@
     # ...
     ib1:roleRequiredToAccess &lt;https://registry.core.trust.ib1.org/scheme/electricity/role/report-provider&gt; ;
     ib1:roleRequiredToAccess &lt;https://registry.core.trust.ib1.org/scheme/electricity/role/archiver&gt; ;
-    dcterms:license &lt;https://registry.core.trust.ib1.org/scheme/electricity/licence/voltage-reporting/2024-09-12&gt; ;
+    dcterms:license &lt;https://registry.core.trust.ib1.org/scheme/electricity/license/voltage-reporting/2024-09-12&gt; ;
 .
 </code></pre>
-<p>These rules specify that members of either the "Report Provider" and "Archivers" roles may access the data with the Scheme's Voltage Reporting licence.</p>
+<p>These rules specify that members of either the "Report Provider" and "Archivers" roles may access the data with the Scheme's Voltage Reporting license.</p>
 <h3 id="scheme-catalog-requirements_1">Scheme Catalog Requirements</h3>
 <pre><code>@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
 @prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; . 
