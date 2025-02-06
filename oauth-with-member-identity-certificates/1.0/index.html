@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://specification.docs.ib1.org/generic-sensitivity-classes/1.0/">
+        <link rel="canonical" href="https://specification.docs.ib1.org/oauth-with-member-identity-certificates/1.0/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Generic Sensitivity Classes - Icebreaker One Specifications</title>
+        <title>OAuth with Member Identity Certificates - Icebreaker One Specifications</title>
       
     
     
@@ -55,11 +55,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Generic Sensitivity Classes - Icebreaker One Specifications" >
+        <meta  property="og:title"  content="OAuth with Member Identity Certificates - Icebreaker One Specifications" >
       
         <meta  property="og:description"  content="None" >
       
-        <meta  property="og:image"  content="https://specification.docs.ib1.org/assets/images/social/generic-sensitivity-classes/1.0.png" >
+        <meta  property="og:image"  content="https://specification.docs.ib1.org/assets/images/social/oauth-with-member-identity-certificates/1.0.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -67,15 +67,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://specification.docs.ib1.org/generic-sensitivity-classes/1.0/" >
+        <meta  property="og:url"  content="https://specification.docs.ib1.org/oauth-with-member-identity-certificates/1.0/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Generic Sensitivity Classes - Icebreaker One Specifications" >
+        <meta  name="twitter:title"  content="OAuth with Member Identity Certificates - Icebreaker One Specifications" >
       
         <meta  name="twitter:description"  content="None" >
       
-        <meta  name="twitter:image"  content="https://specification.docs.ib1.org/assets/images/social/generic-sensitivity-classes/1.0.png" >
+        <meta  name="twitter:image"  content="https://specification.docs.ib1.org/assets/images/social/oauth-with-member-identity-certificates/1.0.png" >
       
     
     
@@ -98,7 +98,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#generic-sensitivity-classes" class="md-skip">
+        <a href="#oauth-with-member-identity-certificates" class="md-skip">
           Skip to content
         </a>
       
@@ -133,7 +133,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Generic Sensitivity Classes
+              OAuth with Member Identity Certificates
             
           </span>
         </div>
@@ -291,83 +291,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#sensitivity-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sensitivity Classes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Sensitivity Classes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#closed-data-ib1-c" class="md-nav__link">
-    <span class="md-ellipsis">
-      Closed data (IB1-C)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#open-data-ib1-o" class="md-nav__link">
-    <span class="md-ellipsis">
-      Open Data (IB1-O)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#shared-a-ib1-sa" class="md-nav__link">
-    <span class="md-ellipsis">
-      Shared A (IB1-SA)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#shared-b-ib1-sb" class="md-nav__link">
-    <span class="md-ellipsis">
-      Shared B (IB1-SB)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#personal-ib1-sp" class="md-nav__link">
-    <span class="md-ellipsis">
-      Personal (IB1-SP)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sensitivity-class-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sensitivity Class Requirements
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -384,78 +307,9 @@
   
 
 
-<h1 id="generic-sensitivity-classes">Generic Sensitivity Classes</h1>
-<p>Trust Framework members can allocate a dataset into ‘classes’ depending on its sensitivity profile. Access and security requirements differ across classes.</p>
-<p>This specification defines generic sensitivity classes, identified by URLs in the IB1 Root Registry with the <code>https://registry.trust.ib1.org/sensitivity-class/</code> prefix.</p>
-<h2 id="sensitivity-classes">Sensitivity Classes</h2>
-<h3 id="closed-data-ib1-c">Closed data (IB1-C)</h3>
-<p><code>https://registry.trust.ib1.org/sensitivity-class/IB1-C</code></p>
-<p>Datasets which must not be shared within the Trust Framework. This class is provided for completeness, and records which are classified with this class will not be included in any Trust Framework catalog.</p>
-<h3 id="open-data-ib1-o">Open Data (IB1-O)</h3>
-<p><code>https://registry.trust.ib1.org/sensitivity-class/IB1-O</code></p>
-<p>Full open access, under an open data license. Free to use, by anyone, for any purpose.</p>
-<h3 id="shared-a-ib1-sa">Shared A (IB1-SA)</h3>
-<p><code>https://registry.trust.ib1.org/sensitivity-class/IB1-SA</code></p>
-<p>Datasets which can/could be shared, but which require the user to agree to standard T&amp;Cs to access. May include some openly licensed materials (e.g. CC BY-SA or GNU AGPLv3).</p>
-<h3 id="shared-b-ib1-sb">Shared B (IB1-SB)</h3>
-<p><code>https://registry.trust.ib1.org/sensitivity-class/IB1-SA</code></p>
-<p>Datasets which can/could be shared, but currently require some bilateral contract negotiation. May include data currently shared on the basis of group-based access. May include aggregated, anonymised or pseudonymised data about individuals.</p>
-<h3 id="personal-ib1-sp">Personal (IB1-SP)</h3>
-<p><code>https://registry.trust.ib1.org/sensitivity-class/IB1-SP</code></p>
-<p>Datasets which include personal data, requiring appropriate consent to share, or other legal bases to data processing, as defined by the UK DPA 2018.</p>
-<h2 id="sensitivity-class-requirements">Sensitivity Class Requirements</h2>
-<p>The requirements for data shared within the Trust Framework depend on the sensitivity class. These requirements are available in machine readable form in the RDF documents at the URLs above in the Registry.</p>
-<p>In the table below, a <em>Yes</em> in the <em>Auth?</em> column means that the sensitivity class requires the client to authenticate with the server and follow access rules described in the Registry.</p>
-<p>A <em>Yes</em> in the <em>FAPI?</em> column means that the sensitivity class requires the use of a FAPI compliant API.</p>
-<p>A <em>Yes</em> in the <em>Permission?</em> column means the sensitivity class requires that Permission (consent) is explicitly granted for access to data relating to an end user.</p>
-<table>
-<thead>
-<tr>
-<th>Class</th>
-<th>Code</th>
-<th>Auth?</th>
-<th>FAPI?</th>
-<th>Permission?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Closed Data</td>
-<td><code>IB1-C</code></td>
-<td>n/a</td>
-<td>n/a</td>
-<td>n/a</td>
-</tr>
-<tr>
-<td>Open Data</td>
-<td><code>IB1-O</code></td>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>Shared (A)</td>
-<td><code>IB1-SA</code></td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td>Shared (B)</td>
-<td><code>IB1-SB</code></td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td>Personal</td>
-<td><code>IB1-SP</code></td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+<h1 id="oauth-with-member-identity-certificates">OAuth with Member Identity Certificates</h1>
+<p>TEXT FROM MTLS DOC:
+The client certificate will be used to identify the client in the OAuth process with the client’s DIrectory URL as the OAuth client_id. This avoids the indirection of mapping a unguessable client_id to the Directory URL throughout the process. There is no need for the client_id to be secret where the client is identified by a client certificate within a MTLS transport.</p>
 
 
 
