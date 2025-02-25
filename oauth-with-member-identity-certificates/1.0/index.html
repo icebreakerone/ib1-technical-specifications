@@ -291,6 +291,125 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#oauth-profile" class="md-nav__link">
+    <span class="md-ellipsis">
+      OAuth Profile
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OAuth Profile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#profile-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Profile options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unused-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unused options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oauth-issuer-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      OAuth Issuer Endpoints
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oauth-issuer-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      OAuth Issuer Metadata
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oauth-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      OAuth Flow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OAuth Flow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pushed-authorization-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pushed Authorization Request
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirection-of-user-agent-to-issuer-user-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redirection of User Agent to Issuer user interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redirection-of-user-agent-to-client-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Redirection of User Agent to Client Application
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exchange-authorization-code-for-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exchange authorization code for tokens
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-of-access-and-refresh-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use of access and refresh tokens
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -308,8 +427,132 @@
 
 
 <h1 id="oauth-with-member-identity-certificates">OAuth with Member Identity Certificates</h1>
-<p>TEXT FROM MTLS DOC:
-The client certificate will be used to identify the client in the OAuth process with the client’s DIrectory URL as the OAuth client_id. This avoids the indirection of mapping a unguessable client_id to the Directory URL throughout the process. There is no need for the client_id to be secret where the client is identified by a client certificate within a MTLS transport.</p>
+<p>The Trust Framework uses OAuth to authorise access to APIs which provide access to data that requires Permission from the end-user.</p>
+<p>All server-to-server communication is secured with mTLS using client certificates, where the client is identified by a URL in the client x509 certificate as the single URI type Subject Alternative Name.</p>
+<h2 id="oauth-profile">OAuth Profile</h2>
+<p>The Trust Framework uses a FAPI 2 compliant profile within the <a href="https://openid.net/specs/fapi-security-profile-2_0-final.html">FAPI 2.0 Security Profile</a> specification.</p>
+<h3 id="profile-options">Profile options</h3>
+<p>The following options within the FAPI 2 profile are used:</p>
+<ul>
+<li>MTLS is required on all server-to-server communication endpoints.</li>
+<li>OAuth endpoints use the <code>tls_client_auth</code> method.</li>
+<li>PKCE is used with the S256 code challenge method.</li>
+<li>TLS 1.3 is required.</li>
+<li>The Registry License URL is used as the <code>scope</code>, which provides the necessary information for informed consent.</li>
+<li>The <code>client_id</code> is the Directory URL from the client x509 certificate, and must match the presented client certificate. The <code>client_secret</code> is not used.</li>
+<li>Tokens are bound to the Directory URL from the certificate (not the exact certificate) by requiring that the <code>client_id</code> matches the certificate.</li>
+</ul>
+<p>When this specification is used with another Trust Framework specification, these requirements may not be varied.</p>
+<h3 id="unused-options">Unused options</h3>
+<p>The following FAPI 2 options are <strong>not</strong> used:</p>
+<ul>
+<li>Dynamic Client Registration (the Directory issued certificate provides all client information)</li>
+<li>OpenID Connect (no end user identifier is passed to the clients)</li>
+<li>Rich Authorization Requests (the License URL requires no further authorization data)</li>
+<li>Access and refresh tokens need not be JWTs, as long as the tokens are bound to the URL of the client certificates.</li>
+<li>The additional <code>x-fapi-*</code> headers defined in the <a href="https://openid.bitbucket.io/fapi/fapi-2_0-implementation_advice.html">FAPI 2 implementation advice</a>, as better functionality is provided by other Trust Framework specifications.</li>
+</ul>
+<p>When this specification is used with another Trust Framework specification, these options may be used.</p>
+<h3 id="oauth-issuer-endpoints">OAuth Issuer Endpoints</h3>
+<p>The OAuth Issuer must implement the <code>pushed_authorization_request</code>, <code>authorization</code> and <code>token</code> endpoints.</p>
+<p>The <code>userinfo</code> and <code>registration</code> endpoints must not be implemented.</p>
+<p>Other endpoints may be implemented, for example, <code>introspection</code>, if they are restricted to use by the Member's internal systems only.</p>
+<h2 id="oauth-issuer-metadata">OAuth Issuer Metadata</h2>
+<p>This profile requires that the OAuth Issuer publishes metadata according to <a href="https://www.rfc-editor.org/rfc/rfc8414.html">RFC8414</a> at the <a href="https://www.rfc-editor.org/rfc/rfc8414.html#section-3">standard location</a> formed by inserting <code>/.well-known/oauth-authorization-server</code> between the host and path components of the authorization server's issuer identifier.</p>
+<p>For example, the issuer <code>https://auth.example.org/accounts</code> would publish metadata at <code>https://auth.example.org/.well-known/oauth-authorization-server/accounts</code>.</p>
+<p>The profile requires the metadata has the following values:</p>
+<pre><code class="language-json">{
+  &quot;mtls_endpoint_aliases&quot;: {
+    // Must be exactly the same as the *_endpoint values defined at the top level
+  },
+  &quot;use_mtls_endpoint_aliases&quot;: true,
+  &quot;require_pushed_authorization_requests&quot;: true,
+  &quot;tls_client_certificate_bound_access_tokens&quot;: true,
+  &quot;response_types_supported&quot;: [&quot;code&quot;],
+  &quot;authorization_endpoint_auth_methods_supported&quot;: [&quot;tls_client_auth&quot;],
+  &quot;token_endpoint_auth_methods_supported&quot;: [&quot;tls_client_auth&quot;]
+  // No equivalent for pushed_authorization_request_endpoint
+}
+</code></pre>
+<p>Any <code>*_endpoint</code> value must be repeated exactly within the <code>mtls_endpoint_aliases</code> property so the aliased and unaliased values are equal. For example:</p>
+<pre><code class="language-json">{
+  &quot;issuer&quot;: &quot;https://auth.example.org/accounts&quot;,
+  &quot;authorization_endpoint&quot;: &quot;https://auth.example.org/accounts/authorization&quot;,
+  &quot;token_endpoint&quot;: &quot;https://auth.example.org/accounts/token&quot;,
+  &quot;pushed_authorization_request_endpoint&quot;: &quot;https://auth.example.org/accounts/par&quot;,
+  &quot;mtls_endpoint_aliases&quot;: {
+    &quot;authorization_endpoint&quot;: &quot;https://auth.example.org/accounts/authorization&quot;,
+    &quot;token_endpoint&quot;: &quot;https://auth.example.org/accounts/token&quot;,
+    &quot;pushed_authorization_request_endpoint&quot;: &quot;https://auth.example.org/accounts/par&quot;
+  }
+}
+</code></pre>
+<h2 id="oauth-flow">OAuth Flow</h2>
+<h3 id="pushed-authorization-request">Pushed Authorization Request</h3>
+<p>The Client starts the flow by making a Pushed Authorization Request to the <code>pushed_authorization_request_endpoint</code> URL using MTLS,</p>
+<ul>
+<li>requesting a <code>code</code> response,</li>
+<li>specifying a Directory URL as the <code>client_id</code>, which must match the URL in their MTLS client certificate,</li>
+<li>including a PKCE <code>code_challenge</code>,</li>
+<li>setting the <code>scope</code> to a Registry License URL,</li>
+<li>and include a <code>redirect_uri</code>, which does not have to be pre-registered.</li>
+</ul>
+<p>Precautions must be taken to avoid creating an open redirect, in particular by not including attacker controlled values in the <code>redirect_uri</code>.</p>
+<pre><code>POST /accounts/par HTTP/1.1
+Host: auth.example.org
+Content-Type: application/x-www-form-urlencoded
+
+response_type=code
+&amp;client_id=https%3A%2F%2Fdirectory.core.trust.ib1.org%2Fapplication%2F38328a78
+&amp;code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM
+&amp;code_challenge_method=S256
+&amp;scope=https%3A%2F%2Fregistry.core.trust.ib1.org%2Fscheme%2Felectricity%2Flicense%2Fsmart-meter%2F2025-02-06
+&amp;redirect_uri=https%3A%2F%2Fapp1.consumer.example.com%2Fcb
+&amp;state=WFqUWTVvX49tM
+</code></pre>
+<p>The Issuer will respond with a <code>request_uri</code>:</p>
+<pre><code>HTTP/1.1 201 Created
+Cache-Control: no-cache, no-store
+Content-Type: application/json
+
+{
+  &quot;request_uri&quot;: &quot;urn:example:bwc4JK-ESC0w8acc191e-Y1LTC2&quot;,
+  &quot;expires_in&quot;: 90
+}
+</code></pre>
+<h3 id="redirection-of-user-agent-to-issuer-user-interface">Redirection of User Agent to Issuer user interface</h3>
+<p>The Client forms a URL using the <code>authorization_endpoint</code>, their Directory URL, and the <code>request_uri</code>, and redirect's the end user's User Agent to that URL:</p>
+<pre><code>https://auth.example.org/accounts/authorization?
+  client_id=https%3A%2F%2Fdirectory.core.trust.ib1.org%2Fapplication%2F38328a78
+  &amp;request_uri=urn%3Aexample%3Abwc4JK-ESC0w8acc191e-Y1LTC2
+</code></pre>
+<p>This Issuer URL will use a public CA to present a certificate accepted by the end user's browser (even though the endpoint URL is included in the <code>mtls_endpoint_aliases</code> section).</p>
+<h3 id="redirection-of-user-agent-to-client-application">Redirection of User Agent to Client Application</h3>
+<p>After the OAuth Issuer has authenticated the end user, it will redirect the end user's User Agent back to the Client with the authorization code and <code>state</code> parameter from the PAR.</p>
+<pre><code>https://app1.consumer.example.com/cb?code=Mo9iP1GkbP7P0Cut58JOH9SVHc
+  &amp;state=WFqUWTVvX49tM
+</code></pre>
+<h3 id="exchange-authorization-code-for-tokens">Exchange authorization code for tokens</h3>
+<p>The Client uses the <code>token_endpoint</code> URL with MTLS to exchange the authorization code for access and refresh tokens, with</p>
+<ul>
+<li>the <code>code</code> returned by the Issuer to the <code>redirect_uri</code>,</li>
+<li>the PKCE <code>code_verifier</code>,</li>
+<li>the Directory URL <code>client_id</code> matching the MTLS client certificate,</li>
+<li>the <code>redirect_uri</code> from the PAR.</li>
+</ul>
+<pre><code>POST /accounts/token HTTP/1.1
+Host: auth.example.org
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code
+&amp;code=Mo9iP1GkbP7P0Cut58JOH9SVHc
+&amp;code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
+&amp;client_id=https%3A%2F%2Fdirectory.core.trust.ib1.org%2Fapplication%2F38328a78
+&amp;redirect_uri=https%3A%2F%2Fapp1.consumer.example.com%2Fcb
+</code></pre>
+<p>The Issuer will respond with the access and refresh tokens.</p>
+<h3 id="use-of-access-and-refresh-tokens">Use of access and refresh tokens</h3>
+<p>Both the OAuth <code>token_endpoint</code> and the resource server must check that the URL in the MTLS client certificate matches the <code>client_id</code> of the token.</p>
 
 
 

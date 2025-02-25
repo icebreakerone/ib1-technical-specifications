@@ -2,34 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://specification.docs.ib1.org/</loc>
-         <lastmod>2025-02-06</lastmod>
+         <lastmod>2025-02-25</lastmod>
     </url>
     <url>
          <loc>https://specification.docs.ib1.org/changelog/</loc>
-         <lastmod>2025-02-06</lastmod>
+         <lastmod>2025-02-25</lastmod>
     </url>
     <url>
          <loc>https://specification.docs.ib1.org/data-catalog-records/1.0/</loc>
-         <lastmod>2025-02-06</lastmod>
+         <lastmod>2025-02-25</lastmod>
     </url>
     <url>
          <loc>https://specification.docs.ib1.org/generic-sensitivity-classes/1.0/</loc>
-         <lastmod>2025-02-06</lastmod>
+         <lastmod>2025-02-25</lastmod>
     </url>
     <url>
          <loc>https://specification.docs.ib1.org/member-identity-digital-certificates/1.0/</loc>
-         <lastmod>2025-02-06</lastmod>
+         <lastmod>2025-02-25</lastmod>
     </url>
     <url>
          <loc>https://specification.docs.ib1.org/oauth-with-member-identity-certificates/1.0/</loc>
-         <lastmod>2025-02-06</lastmod>
+         <lastmod>2025-02-25</lastmod>
     </url>
     <url>
          <loc>https://specification.docs.ib1.org/registry/1.0/</loc>
-         <lastmod>2025-02-06</lastmod>
+         <lastmod>2025-02-25</lastmod>
     </url>
     <url>
          <loc>https://specification.docs.ib1.org/role-based-access-control/1.0/</loc>
-         <lastmod>2025-02-06</lastmod>
+         <lastmod>2025-02-25</lastmod>
     </url>
 </urlset>

@@ -481,7 +481,7 @@
 <li>Signing, to sign data at rest, for example, Provenance records</li>
 <li>Servers, to verify a server is run by a Member of the Trust Framework</li>
 </ul>
-<p>Client and signing certificates include the Directory URL of the Member in the Subject of the certificate, along with the Roles of the Member and an Application identifier to indicate the purpose of their use of data.</p>
+<p>Client and Signing certificates include the Directory URL of an Application in the Subject of the certificate. Applications identify a use of data in the Trust Framework and the Roles the Member is using. The Member's Directory URL and the Roles in use are included as extensions in the certificates.</p>
 <p>Client and Signing certificates are long-lived, obtained by logging into the Directory, and a Certificate Revocation List must be checked by servers and when signatures are checked.</p>
 <p>Server certificates only include the DNS name of the server. The Member who operates them is implied by the Directory, as Clients discover services using Directory and Data Catalog entries which include the Member's identity.</p>
 <p>Server certificates are short-lived and automatically renewed using <a href="https://datatracker.ietf.org/doc/html/rfc8555">ACME</a>, so that clients do not have to check for revocation.</p>
@@ -489,14 +489,15 @@
 <p>Presentation of a client certificate provides:</p>
 <ul>
 <li>assurance that the client is operated by a member of the Trust Framework</li>
-<li>the Member's Directory URL, which identifies them in all metadata</li>
+<li>the Directory URL of the Application, which identifies this use of data in all metadata</li>
 <li>a subset of the Member's roles (group membership) in their Schemes</li>
+<li>the Member's Directory URL</li>
 </ul>
 <p>Client certificates are valid for 12 months.</p>
 <ul>
 <li>CN=[Trust Framework] Client CA<ul>
 <li>CN=[Trust Framework] Client Issuer<ul>
-<li>C=[Country code] O=[Client Name] CN=[Member Directory URL], subjectAlternativeName=URI:[Member Directory URL]</li>
+<li>C=[Country code] O=[Client Name] CN=[Application Directory URL], subjectAlternativeName=URI:[Application Directory URL]</li>
 </ul>
 </li>
 </ul>
@@ -504,7 +505,7 @@
 </ul>
 <p>See below for the x509 extensions that are required for the certificates.</p>
 <h3 id="obtaining-a-client-certificate">Obtaining a client certificate</h3>
-<p>A member logs into the Directory, or uses an API, provides a CSR, and requests a client certificate. The Directory generates a certificate which encodes the Member's identity and Roles, ignoring everything other than the public key in the CSR.</p>
+<p>A member logs into the Directory, or uses an API, provides a CSR, and requests a client certificate. The Directory generates a certificate which encodes the Application, Member identity and Roles, ignoring everything other than the public key in the CSR.</p>
 <p>The client must manually renew the certificate before it expires.</p>
 <h3 id="verifying-a-client-certificate">Verifying a client certificate</h3>
 <p>A server must verify that</p>
@@ -520,7 +521,7 @@
 <ul>
 <li>CN=[Trust Framework] Signing CA<ul>
 <li>CN=[Trust Framework] Signing Issuer<ul>
-<li>C=[Country code] O=[Client Name] CN=[Member Directory URL], subjectAlternativeName=URI:[Member Directory URL]</li>
+<li>C=[Country code] O=[Client Name] CN=[Application Directory URL], subjectAlternativeName=URI:[Application Directory URL]</li>
 </ul>
 </li>
 </ul>
@@ -528,7 +529,7 @@
 </ul>
 <p>See below for the x509 extensions that are required for the certificates.</p>
 <h3 id="obtaining-a-signing-certificate">Obtaining a signing certificate</h3>
-<p>A member logs into the Directory, or uses an API, provides a CSR, and requests a signing certificate. The Directory generates a certificate which encodes the Member's identity and Roles, ignoring everything other than the public key in the CSR..</p>
+<p>A member logs into the Directory, or uses an API, provides a CSR, and requests a signing certificate. The Directory generates a certificate which encodes the Application, Member identity and Roles, ignoring everything other than the public key in the CSR..</p>
 <p>The client must manually renew the certificate before it expires.</p>
 <h3 id="verifying-a-signing-certificate">Verifying a signing certificate</h3>
 <p>A member verifying signed must verify that</p>
@@ -568,8 +569,8 @@
 <dl>
 <dt><code>ib1Roles</code> (<code>1.3.6.1.4.1.62329.1.1</code>)</dt>
 <dd>One or more Directory URLs of the Member's Roles when acting with this certificate, as an ASN.1 encoded SEQUENCE of UTF8 strings. This list of Roles may be a subset of the Member's Roles.</dd>
-<dt><code>ib1Application</code> (<code>1.3.6.1.4.1.62329.1.2</code>)</dt>
-<dd>The Directory URL of the Application, as an ASN.1 encoded UTF8 string.</dd>
+<dt><code>ib1Member</code> (<code>1.3.6.1.4.1.62329.1.3</code>)</dt>
+<dd>The Directory URL of the Member, as an ASN.1 encoded UTF8 string.</dd>
 </dl>
 <h2 id="certificate-profiles">Certificate Profiles</h2>
 <h3 id="ca-certificates">CA certificates</h3>
@@ -586,7 +587,7 @@
 <ul>
 <li>Subject Alternative Name with a the Member URL as a URI type name.</li>
 <li>ib1Roles</li>
-<li>ib1Application</li>
+<li>ib1Member</li>
 </ul>
 <h3 id="summary-of-required-extensions-for-member-certificates">Summary of required extensions for Member certificates</h3>
 <table>
@@ -618,7 +619,7 @@
 <td></td>
 </tr>
 <tr>
-<td>ib1Application</td>
+<td>ib1Member</td>
 <td>Yes</td>
 <td>Yes</td>
 <td></td>
