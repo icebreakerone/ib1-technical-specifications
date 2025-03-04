@@ -298,9 +298,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#endpoint-discovery" class="md-nav__link">
+  <a href="#permission-record-properties" class="md-nav__link">
     <span class="md-ellipsis">
-      Endpoint discovery
+      Permission Record properties
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permission-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permission Endpoint
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permission-endpoint-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permission Endpoint discovery
     </span>
   </a>
   
@@ -316,9 +334,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-requestresponse" class="md-nav__link">
+  <a href="#example-request-and-response" class="md-nav__link">
     <span class="md-ellipsis">
-      Example request/response
+      Example request and response
     </span>
   </a>
   
@@ -343,36 +361,57 @@
 
 
 <h1 id="permission-records">Permission Records</h1>
-<p>Permission Records include</p>
+<p>OAuth Issuers must provide an additional endpoint to fetch information about the underlying Permission granted by the end user. Permission Records and the <a href="#evidence-urls">Evidence URL</a> within it contain:</p>
 <ul>
 <li>Who provided the permission - e.g. a logged-in user</li>
 <li>On whose behalf the permission is provided - e.g. the SME</li>
 <li>When was the permission provided</li>
-<li>How the permission was provided- e.g., the app version on such-and-such a device</li>
+<li>How the permission was provided - e.g., the app version on such-and-such a device</li>
 <li>Which data processor has the permission</li>
 <li>For what purpose the specific permission record applies to</li>
 <li>How the purpose was described to the user</li>
 <li>How long the permission is valid for</li>
 </ul>
-<p>Both the provider and the consumer of data must provide mechanisms for the end user to review and withdraw permissions.</p>
-<h2 id="endpoint-discovery">Endpoint discovery</h2>
-<p>OAuth Issuers provide an endpoint to retrieve a Permission Record, given a refresh token.</p>
-<p>A client discovers the URL of the endpoint from the <code>ib1_permission_endpoint</code> field in the OAuth Issuer's Authorization Server Metadata.</p>
-<p>Expired tokens must be able to be used for 12 months after they expire or are revoked, so that applications can retrieve information about expired permissions.</p>
-<h2 id="evidence-urls">Evidence URLs</h2>
-<p>Evidence URLs are URLs which contain an unguessable identifier.</p>
+<h2 id="permission-record-properties">Permission Record properties</h2>
+<p>All specified fields except <code>permissionRevoked</code> MUST be included.</p>
+<p>Date and time fields are ISO8601 dates with '<code>Z</code>' denoting UTC.</p>
 <ul>
-<li>uses https with a public CA</li>
+<li><code>oauthIssuer</code> - the URL of the OAuth Issuer</li>
+<li><code>client</code> - the URL of the Application in the Directory</li>
+<li><code>license</code> - the URL of the License under which data is accessed (the OAuth scope)</li>
+<li><code>subject</code> - a human readable name of the end user, for example, the name of the account holder.</li>
+<li><code>lastGranted</code> - when permission was last granted by the end user.</li>
+<li><code>expires</code> - when the permission expires, and will need to be explicitly renewed by the end user.</li>
+<li><code>evidence</code> - the <a href="#evidence-urls">Evidence URL</a> which may be used by the user to see details of how permission was granted.</li>
+<li><code>revoked</code> - when permission was revoked by the end user. This field must not be present if the permission has not been revoked. To avoid issues with variations in server time between systems, the presence of a timestamp for this field should be taken to mean that permission has been revoked</li>
+<li><code>dataAvailableFrom</code> - the earliest date for which historical data will be available through the API. The client may not infer anything from this date, for example, age of the end user's account or whether data is available. This is provider and data source dependent, and could be:<ul>
+<li>The date when permission was first provided.</li>
+<li>The date the end user's account was opened at the provider.</li>
+<li>The date the end user first occupied the premises where a meter is installed.</li>
+</ul>
+</li>
+<li><code>tokenIssuedAt</code> - when the token was issued. (Several refresh tokens will be issued during the lifetime of the permission.)</li>
+<li><code>tokenExpires</code> - when the token will expire, which is no later than permissionExpires  </li>
+</ul>
+<p>This specification may be used with additional specifications which extend this API to provide structured data about the permission log and evidence that the user has authority to give that permission. This data is highly variable and dependent on the market, the type of end user, the data source, and the data provider. When a Trust Framework only uses this base specification, this information is only available in a human readable form as a web page at the Evidence URL.</p>
+<h2 id="permission-endpoint">Permission Endpoint</h2>
+<p>OAuth Issuers provide an endpoint to retrieve a Permission Record. A client makes a <code>POST</code> request with a refresh token in the <code>token</code> parameter to this URL, which returns a JSON formatted response with the Permission Record in the <code>permission</code> property.</p>
+<p>Expired tokens can be used for at least 12 months after they expire or are revoked, so that applications can retrieve information about expired permissions.</p>
+<p>Access tokens must not be accepted.</p>
+<h2 id="permission-endpoint-discovery">Permission Endpoint discovery</h2>
+<p>A client discovers the URL of the Permission endpoint from the <code>ib1_permission_endpoint</code> field in the OAuth Issuer's Authorization Server Metadata.</p>
+<h2 id="evidence-urls">Evidence URLs</h2>
+<p>Evidence URLs are URLs which contain an unguessable identifier and may be viewed by a web browser. These URLs:</p>
+<ul>
+<li>use https with a public CA</li>
 <li>do not require any authentication (other than the unguessable identifier in the URL)</li>
 <li>will present all the evidence, formatted as an HTML document capable of displaying in mobile portrait orientation with 320px width when the user clicks “show evidence”</li>
 <li>is not expected to display the content of documents or other information provided by the user to identify themselves, just the form of evidence used</li>
-<li>for Smart Meter data providers, must include how meter ownership was established as well as what permission was given for meter data sharing</li>
-<li>will contain information about all previous grants of permission and renewals for this end user for the data consumer this URL was generated for, not just for the current token</li>
+<li>where data is provided by remote data collection from installed equipment (for example, energy Smart Meters), how the equipment ownership was established as well as what permission was given for data sharing</li>
+<li>will contain information about all previous grants of permission and renewals for this end user for the data consumer this URL was generated for, not just for the current token.</li>
 </ul>
 <p>If an Evidence URL is included in the <code>evidence</code> property of the record, the provider asserts that they have obtained permission from the end user and hold all the necessary evidence.</p>
-<p>This specification may be used with additional specifications which extend this API to provide structured data.</p>
-<h2 id="example-requestresponse">Example request/response</h2>
-<p>The URL of the permission API is discovered from the  A POST request is used to follow best practice for secrets, and the patterns in the OAuth specification. It only accepts refresh tokens.</p>
+<h2 id="example-request-and-response">Example request and response</h2>
 <pre><code>POST /issuer/permission
 token=AvbmC1RbCDryaYSG2IxaOAQWmy6UWCN7OAfYCTBko
 
@@ -392,31 +431,6 @@ token=AvbmC1RbCDryaYSG2IxaOAQWmy6UWCN7OAfYCTBko
   }
 }
 </code></pre>
-<ul>
-<li>All specified fields except <code>permissionRevoked</code> MUST be included.</li>
-<li>Date and time fields are all ISO8601 dates with '<code>Z</code>' denoting UTC</li>
-<li><code>oauthIssuer</code> - the URL of the OAuth Issuer</li>
-<li><code>client</code> - the URL of the app in the Directory</li>
-<li><code>license</code> - the URL of the Licence under which data is accessed (the OAuth scope)</li>
-<li><code>subject</code> - a human readable name of the end user, for example, the name of the account holder.</li>
-<li><code>lastGranted</code> - when permission was last granted by the end user.</li>
-<li><code>expires</code> - when the permission expires, and will need to be explicitly renewed by the end user.</li>
-<li><code>evidence</code> - the Evidence URL which used by the user to see details of how permission was granted.</li>
-<li><code>revoked</code> - when permission was revoked by the end user. This field must not be present if the permission has not been revoked. To avoid issues with variations in server time between systems, the presence of a timestamp for this field should be taken to mean that permission has been revoked</li>
-<li><code>dataAvailableFrom</code> - the earliest date for which historical data will be available through the API. The client may not infer anything from this date, for example, age of the end user's account or whether data is available. This is provider and data source dependent, and could be:<ul>
-<li>The date when permission was first provided.</li>
-<li>The date the end user's account was opened at the provider.</li>
-<li>The date the end user first occupied the premises where a meter is installed.</li>
-</ul>
-</li>
-<li><code>tokenIssuedAt</code> - when the token was issued. (Several refresh tokens will be issued during the lifetime of the permission.)</li>
-<li><code>tokenExpires</code> - when the token will expire, which is no later than permissionExpires  </li>
-</ul>
-<p>This proposal makes no attempt to define a structured format for the permission log and evidence that the user has authority to give that permission. This data is highly variable and dependent on the market, the type of end user, the data source, and the data provider.</p>
-<p>In a change from the previous proposal where this permission information was contained in the JWT token issued by the OAuth Issuer, clients must treat the OAuth tokens as opaque as:</p>
-<p>Opaque tokens provide implementation flexibility</p>
-<p>The stateless nature of JWTs does not fit well with permissions that can be revoked.</p>
-<p>The OAuth “token introspection endpoint” is not used, because it is intended as a private API for the backends which use the issuer for authorisation, and extension for external use is likely to cause security concerns.</p>
 
 
 
