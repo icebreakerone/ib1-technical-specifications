@@ -9,3 +9,4 @@ Specifications for the [Icebreaker One](https://ib1.org) (IB1) [Trust Framework]
  * [Member Identity Digital Certificates](member-identity-digital-certificates/1.0.md) (1.0)
  * [Baseline TLS Configuration](baseline-tls-configuration/1.0.md) (1.0)
  * [OAuth with Member Identity Certificates](oauth-with-member-identity-certificates/1.0.md) (1.0)
+ * [Permission Records](permission-records/1.0.md) (1.0)
