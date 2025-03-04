@@ -399,29 +399,29 @@
 <p>In addition, the <code>ib1:RequiredMetadata</code> bnode will include <code>ib1:roleRequiredToAccess</code> and <code>dcterms:license</code> terms.</p>
 <h2 id="examples">Examples</h2>
 <h3 id="data-catalog-entry">Data Catalog Entry</h3>
-<pre><code>&lt;https://data.example.com/supply-voltage/v0&gt;
-    a dcat:DataService ;
-    # ...
-    ib1:roleRequiredToAccess &lt;https://registry.core.trust.ib1.org/scheme/electricity/role/report-provider&gt; ;
-    ib1:roleRequiredToAccess &lt;https://registry.core.trust.ib1.org/scheme/electricity/role/archiver&gt; ;
-    dcterms:license &lt;https://registry.core.trust.ib1.org/scheme/electricity/license/voltage-reporting/2024-09-12&gt; ;
-.
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&lt;https://data.example.com/supply-voltage/v0&gt;
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    a dcat:DataService ;
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    # ...
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ib1:roleRequiredToAccess &lt;https://registry.core.trust.ib1.org/scheme/electricity/role/report-provider&gt; ;
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    ib1:roleRequiredToAccess &lt;https://registry.core.trust.ib1.org/scheme/electricity/role/archiver&gt; ;
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    dcterms:license &lt;https://registry.core.trust.ib1.org/scheme/electricity/license/voltage-reporting/2024-09-12&gt; ;
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>.
+</span></code></pre></div>
 <p>These rules specify that members of either the "Report Provider" and "Archivers" roles may access the data with the Scheme's Voltage Reporting license.</p>
 <h3 id="scheme-catalog-requirements_1">Scheme Catalog Requirements</h3>
-<pre><code>@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
-@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; . 
-@prefix ib1: &lt;https://registry.core.trust.ib1.org/ns/1.0#&gt; .
-
-&lt;https://registry.core.trust.ib1.org/scheme/electricity/standard/supply-voltage/2024-10-23&gt;
-        a ib1:SchemeCatalogRequirements ;
-    ib1:roleRequiredToPublish &lt;https://registry.core.trust.ib1.org/scheme/electricity/role/generator&gt; ;
-    ib1:requiredMetadata [ a ib1:RequiredMetadata ;
-        ib1:roleRequiredToAccess &lt;https://registry.core.trust.ib1.org/scheme/electricity/role/network-operator&gt; ;
-        ib1:roleRequiredToAccess &lt;https://registry.core.trust.ib1.org/scheme/electricity/role/report-provider&gt; ;
-    ];
-.
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; . 
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>@prefix ib1: &lt;https://registry.core.trust.ib1.org/ns/1.0#&gt; .
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>&lt;https://registry.core.trust.ib1.org/scheme/electricity/standard/supply-voltage/2024-10-23&gt;
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        a ib1:SchemeCatalogRequirements ;
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    ib1:roleRequiredToPublish &lt;https://registry.core.trust.ib1.org/scheme/electricity/role/generator&gt; ;
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    ib1:requiredMetadata [ a ib1:RequiredMetadata ;
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        ib1:roleRequiredToAccess &lt;https://registry.core.trust.ib1.org/scheme/electricity/role/network-operator&gt; ;
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        ib1:roleRequiredToAccess &lt;https://registry.core.trust.ib1.org/scheme/electricity/role/report-provider&gt; ;
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    ];
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>.
+</span></code></pre></div>
 <p>This API definition requires the "Generator" role to publish an implementation of the API, and one of the "Network operator" or "Report provider" roles to access the API.</p>
 
 

@@ -461,34 +461,34 @@
 <p>This profile requires that the OAuth Issuer publishes metadata according to <a href="https://www.rfc-editor.org/rfc/rfc8414.html">RFC8414</a> at the <a href="https://www.rfc-editor.org/rfc/rfc8414.html#section-3">standard location</a> formed by inserting <code>/.well-known/oauth-authorization-server</code> between the host and path components of the authorization server's issuer identifier.</p>
 <p>For example, the issuer <code>https://auth.example.org/accounts</code> would publish metadata at <code>https://auth.example.org/.well-known/oauth-authorization-server/accounts</code>.</p>
 <p>The profile requires the metadata has the following values:</p>
-<pre><code class="language-json">{
-  &quot;mtls_endpoint_aliases&quot;: {
-    // Must be exactly the same as the *_endpoint values defined at the top level
-  },
-  &quot;use_mtls_endpoint_aliases&quot;: true,
-  &quot;require_pushed_authorization_requests&quot;: true,
-  &quot;tls_client_certificate_bound_access_tokens&quot;: true,
-  &quot;response_types_supported&quot;: [&quot;code&quot;],
-  &quot;code_challenge_methods_supported&quot;: [&quot;S256&quot;],
-  &quot;grant_types_supported&quot;: [&quot;authorization_code&quot;, &quot;refresh_token&quot;],
-  &quot;authorization_endpoint_auth_methods_supported&quot;: [&quot;tls_client_auth&quot;],
-  &quot;token_endpoint_auth_methods_supported&quot;: [&quot;tls_client_auth&quot;]
-  // No equivalent for pushed_authorization_request_endpoint
-}
-</code></pre>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;mtls_endpoint_aliases&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="c1">// Must be exactly the same as the *_endpoint values defined at the top level</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="p">},</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">&quot;use_mtls_endpoint_aliases&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">&quot;require_pushed_authorization_requests&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nt">&quot;tls_client_certificate_bound_access_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">&quot;response_types_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;code&quot;</span><span class="p">],</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">&quot;code_challenge_methods_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;S256&quot;</span><span class="p">],</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="nt">&quot;grant_types_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;authorization_code&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;refresh_token&quot;</span><span class="p">],</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="nt">&quot;authorization_endpoint_auth_methods_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;tls_client_auth&quot;</span><span class="p">],</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="nt">&quot;token_endpoint_auth_methods_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;tls_client_auth&quot;</span><span class="p">]</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="c1">// No equivalent for pushed_authorization_request_endpoint</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">}</span>
+</span></code></pre></div>
 <p>Any <code>*_endpoint</code> value must be repeated exactly within the <code>mtls_endpoint_aliases</code> property so the aliased and unaliased values are equal. For example:</p>
-<pre><code class="language-json">{
-  &quot;issuer&quot;: &quot;https://auth.example.org/accounts&quot;,
-  &quot;authorization_endpoint&quot;: &quot;https://auth.example.org/accounts/authorization&quot;,
-  &quot;token_endpoint&quot;: &quot;https://auth.example.org/accounts/token&quot;,
-  &quot;pushed_authorization_request_endpoint&quot;: &quot;https://auth.example.org/accounts/par&quot;,
-  &quot;mtls_endpoint_aliases&quot;: {
-    &quot;authorization_endpoint&quot;: &quot;https://auth.example.org/accounts/authorization&quot;,
-    &quot;token_endpoint&quot;: &quot;https://auth.example.org/accounts/token&quot;,
-    &quot;pushed_authorization_request_endpoint&quot;: &quot;https://auth.example.org/accounts/par&quot;
-  }
-}
-</code></pre>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;issuer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://auth.example.org/accounts&quot;</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&quot;authorization_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://auth.example.org/accounts/authorization&quot;</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">&quot;token_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://auth.example.org/accounts/token&quot;</span><span class="p">,</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">&quot;pushed_authorization_request_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://auth.example.org/accounts/par&quot;</span><span class="p">,</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nt">&quot;mtls_endpoint_aliases&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="nt">&quot;authorization_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://auth.example.org/accounts/authorization&quot;</span><span class="p">,</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="nt">&quot;token_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://auth.example.org/accounts/token&quot;</span><span class="p">,</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nt">&quot;pushed_authorization_request_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://auth.example.org/accounts/par&quot;</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">}</span>
+</span></code></pre></div>
 <h2 id="oauth-flow">OAuth Flow</h2>
 <h3 id="pushed-authorization-request">Pushed Authorization Request</h3>
 <p>The Client starts the flow by making a Pushed Authorization Request to the <code>pushed_authorization_request_endpoint</code> URL using MTLS,</p>
@@ -500,40 +500,40 @@
 <li>and include a <code>redirect_uri</code>, which does not have to be pre-registered.</li>
 </ul>
 <p>Precautions must be taken to avoid creating an open redirect, in particular by not including attacker controlled values in the <code>redirect_uri</code>.</p>
-<pre><code>POST /accounts/par HTTP/1.1
-Host: auth.example.org
-Content-Type: application/x-www-form-urlencoded
-
-response_type=code
-&amp;client_id=https%3A%2F%2Fdirectory.core.trust.ib1.org%2Fapplication%2F38328a78
-&amp;code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM
-&amp;code_challenge_method=S256
-&amp;scope=https%3A%2F%2Fregistry.core.trust.ib1.org%2Fscheme%2Felectricity%2Flicense%2Fsmart-meter%2F2025-02-06
-&amp;redirect_uri=https%3A%2F%2Fapp1.consumer.example.com%2Fcb
-&amp;state=WFqUWTVvX49tM
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>POST /accounts/par HTTP/1.1
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Host: auth.example.org
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Content-Type: application/x-www-form-urlencoded
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>response_type=code
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>&amp;client_id=https%3A%2F%2Fdirectory.core.trust.ib1.org%2Fapplication%2F38328a78
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>&amp;code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>&amp;code_challenge_method=S256
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>&amp;scope=https%3A%2F%2Fregistry.core.trust.ib1.org%2Fscheme%2Felectricity%2Flicense%2Fsmart-meter%2F2025-02-06
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>&amp;redirect_uri=https%3A%2F%2Fapp1.consumer.example.com%2Fcb
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>&amp;state=WFqUWTVvX49tM
+</span></code></pre></div>
 <p>The Issuer will respond with a <code>request_uri</code>:</p>
-<pre><code>HTTP/1.1 201 Created
-Cache-Control: no-cache, no-store
-Content-Type: application/json
-
-{
-  &quot;request_uri&quot;: &quot;urn:example:bwc4JK-ESC0w8acc191e-Y1LTC2&quot;,
-  &quot;expires_in&quot;: 90
-}
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>HTTP/1.1 201 Created
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Cache-Control: no-cache, no-store
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Content-Type: application/json
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>{
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>  &quot;request_uri&quot;: &quot;urn:example:bwc4JK-ESC0w8acc191e-Y1LTC2&quot;,
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>  &quot;expires_in&quot;: 90
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>}
+</span></code></pre></div>
 <h3 id="redirection-of-user-agent-to-issuer-user-interface">Redirection of User Agent to Issuer user interface</h3>
 <p>The Client forms a URL using the <code>authorization_endpoint</code>, their Directory URL, and the <code>request_uri</code>, and redirect's the end user's User Agent to that URL:</p>
-<pre><code>https://auth.example.org/accounts/authorization?
-  client_id=https%3A%2F%2Fdirectory.core.trust.ib1.org%2Fapplication%2F38328a78
-  &amp;request_uri=urn%3Aexample%3Abwc4JK-ESC0w8acc191e-Y1LTC2
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>https://auth.example.org/accounts/authorization?
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  client_id=https%3A%2F%2Fdirectory.core.trust.ib1.org%2Fapplication%2F38328a78
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  &amp;request_uri=urn%3Aexample%3Abwc4JK-ESC0w8acc191e-Y1LTC2
+</span></code></pre></div>
 <p>This Issuer URL will use a public CA to present a certificate accepted by the end user's browser (even though the endpoint URL is included in the <code>mtls_endpoint_aliases</code> section).</p>
 <h3 id="redirection-of-user-agent-to-client-application">Redirection of User Agent to Client Application</h3>
 <p>After the OAuth Issuer has authenticated the end user, it will redirect the end user's User Agent back to the Client with the authorization code and <code>state</code> parameter from the PAR.</p>
-<pre><code>https://app1.consumer.example.com/cb?code=Mo9iP1GkbP7P0Cut58JOH9SVHc
-  &amp;state=WFqUWTVvX49tM
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>https://app1.consumer.example.com/cb?code=Mo9iP1GkbP7P0Cut58JOH9SVHc
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  &amp;state=WFqUWTVvX49tM
+</span></code></pre></div>
 <h3 id="exchange-authorization-code-for-tokens">Exchange authorization code for tokens</h3>
 <p>The Client uses the <code>token_endpoint</code> URL with MTLS to exchange the authorization code for access and refresh tokens, with</p>
 <ul>
@@ -542,16 +542,16 @@ Content-Type: application/json
 <li>the Directory URL <code>client_id</code> matching the MTLS client certificate,</li>
 <li>the <code>redirect_uri</code> from the PAR.</li>
 </ul>
-<pre><code>POST /accounts/token HTTP/1.1
-Host: auth.example.org
-Content-Type: application/x-www-form-urlencoded
-
-grant_type=authorization_code
-&amp;code=Mo9iP1GkbP7P0Cut58JOH9SVHc
-&amp;code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
-&amp;client_id=https%3A%2F%2Fdirectory.core.trust.ib1.org%2Fapplication%2F38328a78
-&amp;redirect_uri=https%3A%2F%2Fapp1.consumer.example.com%2Fcb
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>POST /accounts/token HTTP/1.1
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Host: auth.example.org
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>Content-Type: application/x-www-form-urlencoded
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>grant_type=authorization_code
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>&amp;code=Mo9iP1GkbP7P0Cut58JOH9SVHc
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>&amp;code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>&amp;client_id=https%3A%2F%2Fdirectory.core.trust.ib1.org%2Fapplication%2F38328a78
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>&amp;redirect_uri=https%3A%2F%2Fapp1.consumer.example.com%2Fcb
+</span></code></pre></div>
 <p>The Issuer will respond with the access and refresh tokens.</p>
 <h3 id="use-of-access-and-refresh-tokens">Use of access and refresh tokens</h3>
 <p>Both the OAuth <code>token_endpoint</code> and the resource server must check that the URL in the MTLS client certificate matches the <code>client_id</code> of the token.</p>
