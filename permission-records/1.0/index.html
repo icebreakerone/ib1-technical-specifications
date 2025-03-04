@@ -372,6 +372,7 @@
 <li>How the purpose was described to the user</li>
 <li>How long the permission is valid for</li>
 </ul>
+<p><em>Note: This document uses US English. To align with W3C and other prevalent standards, IB1 uses US English in its technical specifications and technical documentation.</em></p>
 <h2 id="permission-record-properties">Permission Record properties</h2>
 <p>All specified fields except <code>permissionRevoked</code> MUST be included.</p>
 <p>Date and time fields are ISO8601 dates with '<code>Z</code>' denoting UTC.</p>
@@ -379,7 +380,7 @@
 <li><code>oauthIssuer</code> - the URL of the OAuth Issuer</li>
 <li><code>client</code> - the URL of the Application in the Directory</li>
 <li><code>license</code> - the URL of the License under which data is accessed (the OAuth scope)</li>
-<li><code>subject</code> - a human readable name of the end user, for example, the name of the account holder.</li>
+<li><code>account</code> - an opaque identifier for the end user or account holder. The value is NOT required to be the same in every Permission Record relating to an end user.</li>
 <li><code>lastGranted</code> - when permission was last granted by the end user.</li>
 <li><code>expires</code> - when the permission expires, and will need to be explicitly renewed by the end user.</li>
 <li><code>evidence</code> - the <a href="#evidence-urls">Evidence URL</a> which may be used by the user to see details of how permission was granted.</li>
@@ -420,7 +421,7 @@
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    &quot;oauthIssuer&quot;: &quot;https://api.example.com/issuer&quot;,
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    &quot;client&quot;: &quot;https://directory.core.pilot.trust.ib1.org/member/28364528&quot;,
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    &quot;license&quot;: &quot;https://registry.core.pilot.trust.ib1.org/scheme/electricity/license/energy-consumption-data/2024-12-05&quot;,
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    &quot;subject&quot;: &quot;Joe Bloggs Manufacturing&quot;,
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    &quot;account&quot;: &quot;6qIO3KZx0Q&quot;,
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    &quot;lastGranted&quot;: &quot;2024-03-31T23:30Z&quot;,
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    &quot;expires&quot;: &quot;2025-03-31T23:30Z&quot;,
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    &quot;evidence&quot;: &quot;https://api.example.com/evidence/tkDMf6lkNl&quot;,

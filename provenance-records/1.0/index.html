@@ -423,6 +423,7 @@
 <h1 id="provenance-records">Provenance Records</h1>
 <p>Provenance Records record how data inside the Trust Framework is originated, processed, and transferred between participants, alongside records of the licenses covering the data transfer, and any permission granted by end users.</p>
 <p>Provenance is recorded in a decentralised manner, with signed records being passed between participants whenever data is transferred. The format is extensible by Schemes.</p>
+<p><em>Note: This document uses US English. To align with W3C and other prevalent standards, IB1 uses US English in its technical specifications and technical documentation.</em></p>
 <h2 id="encoded-and-signed-container-format">Encoded and signed container format</h2>
 <p>Records are composed of steps which describe a discrete component of provenance. Participants create a series of steps, then sign them with signing certificates issued by the Directory. </p>
 <p>Steps are serialised as JSON, then Base64 encoded for inclusion in a JSON encoded container. The structure and cryptographic choices borrow from <a href="https://www.rfc-editor.org/rfc/rfc7515">JWS</a>, with adaptations for nested signatures and use of x509 certificates to provide keys and identify participants.</p>
