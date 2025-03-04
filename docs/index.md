@@ -2,6 +2,8 @@
 
 Specifications for the [Icebreaker One](https://ib1.org) (IB1) [Trust Framework](https://ib1.org/trust-frameworks/).
 
+_Note: These documents use US English. To align with W3C and other prevalent standards, IB1 uses US English in its technical specifications and technical documentation._
+
  * [Data Catalog Records](data-catalog-records/1.0.md) (1.0)
  * [Registry](registry/1.0.md) (1.0)
  * [Role-based Access Control](role-based-access-control/1.0.md) (1.0)
