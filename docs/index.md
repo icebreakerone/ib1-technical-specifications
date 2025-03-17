@@ -14,3 +14,4 @@ _Note: These documents use US English. To align with W3C and other prevalent sta
  * [OAuth with Member Identity Certificates](oauth-with-member-identity-certificates/1.0.md) (1.0)
  * [Permission Records](permission-records/1.0.md) (1.0)
  * [Provenance Records](provenance-records/1.0.md) (1.0)
+ * [Message Delivery to Applications](message-delivery-to-applications/1.0.md) (1.0)
