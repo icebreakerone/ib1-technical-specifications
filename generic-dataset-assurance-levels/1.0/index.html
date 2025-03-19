@@ -354,15 +354,90 @@
 <h1 id="generic-dataset-assurance-levels">Generic Dataset Assurance Levels</h1>
 <p>Trust Framework members can indicate the level of assurance in a dataset by describing it with an Assurance Level.</p>
 <p>This specification defines generic Assurance Levels, identified by URLs in the IB1 Root Registry with the <code>https://registry.trust.ib1.org/dataset-assurance-level/</code> prefix.</p>
-<p>The meaning of the Dataset Assurance Levels is described at <a href="https://ib1.org/assurance/#da">https://ib1.org/assurance/</a>.</p>
 <h2 id="dataset-assurance-level-1">Dataset Assurance Level 1</h2>
 <p><code>https://registry.trust.ib1.org/dataset-assurance-level/Level1</code></p>
+<p>Assurance that:</p>
+<ul>
+<li>The metadata is available publicly on the web in a location recorded in the organisation’s IB1 Registry entry</li>
+<li>Both metadata and underlying data use a machine-readable format</li>
+<li>The dataset contains no personal data and is not subject to GDPR</li>
+<li>For Open Data<ul>
+<li>The dataset is published on the web with a licence that is compatible with Open Data</li>
+<li>The metadata specifies IB1-O for the Data Sensitivity Class</li>
+</ul>
+</li>
+<li>For Shared Data<ul>
+<li>The metadata specifies the access conditions for the data</li>
+<li>The metadata specifies IB1-SA or IB1-SB for the Data Sensitivity Class</li>
+</ul>
+</li>
+</ul>
 <h2 id="dataset-assurance-level-2">Dataset Assurance Level 2</h2>
 <p><code>https://registry.trust.ib1.org/dataset-assurance-level/Level2</code></p>
+<p>The dataset meets all the requirements of Level 1, plus assurance that:</p>
+<ul>
+<li>Legal<ul>
+<li>Metadata includes definitions of usage rights for derived data (e.g. a URL to the conditions for derived data)</li>
+<li>Metadata includes commercially reasonable citations and/or provenance</li>
+<li>Metadata includes definitions of potential risks (e.g. a URL to such a definition) </li>
+<li>Where relevant or required, ensure privacy issues addressed within the published data and the data publication mechanism(s)</li>
+</ul>
+</li>
+<li>Practical<ul>
+<li>Metadata includes dates of creation and publication </li>
+<li>Where a dataset covers a temporal range, this is defined in the metadata</li>
+<li>That the dataset will be maintained and available for a minimum of one calendar year</li>
+</ul>
+</li>
+<li>Technical<ul>
+<li>Data is published in content-appropriate formats that enable data to be used in an interoperable manner by machine-based systems</li>
+<li>For Shared Data, the dataset is immediately available via a FAPI endpoint to any IB1 Trust Framework-registered application that meets the terms of that Trust Framework implementation.</li>
+</ul>
+</li>
+<li>Social<ul>
+<li>Data is documented on publicly available URLs</li>
+<li>A mechanism is available for people to provide feedback and ask questions (e.g. human technical support)</li>
+</ul>
+</li>
+</ul>
 <h2 id="dataset-assurance-level-3">Dataset Assurance Level 3</h2>
 <p><code>https://registry.trust.ib1.org/dataset-assurance-level/Level3</code></p>
+<p>The dataset meets all the requirements of Level 2, plus assurance that:</p>
+<ul>
+<li>Practical<ul>
+<li>A schedule is published at a public URL documenting the process of maintaining the data’s availability</li>
+<li>Commercially reasonable backups are in place</li>
+<li>A document is published at a public URL detailing the process or data collection, curation, quality assurance and publishing</li>
+</ul>
+</li>
+<li>Technical<ul>
+<li>Inclusion in the metadata of citation(s) to, the underlying <a href="https://standards.theodi.org/introduction/what-are-open-standards-for-data/">open standard(s)</a> used in publishing content-appropriate data is published in machine-readable format(s)</li>
+<li>Publication of a single consistent URL, or clear rules for how URLs are constructed, are made to access the dataset
+machine-readable metadata describing the contents of the dataset is provided (e.g. <a href="https://json-ld.org/">JSON-LD</a>, <a href="https://csvw.org/">CSVW</a>)
+where data is provided by an API, the API has a machine-readable definition (e.g. <a href="https://spec.openapis.org/oas/latest.html">OpenAPI</a>)</li>
+<li>Assurance that the dataset has availability of at least 99.5%.</li>
+</ul>
+</li>
+</ul>
 <h2 id="dataset-assurance-level-4">Dataset Assurance Level 4</h2>
 <p><code>https://registry.trust.ib1.org/dataset-assurance-level/Level4</code></p>
+<p>The dataset meets all the requirements of Level 3, plus assurance that:</p>
+<ul>
+<li>Legal<ul>
+<li>The licence terms themselves are machine-readable and available at a persistent URL in a consistent manner  </li>
+</ul>
+</li>
+<li>Practical<ul>
+<li>Quality parameters and processes shall be published in a machine-readable format at a persistent URL in a consistent manner </li>
+</ul>
+</li>
+<li>Technical<ul>
+<li>Provenance shall be published in a machine-readable format at a persistent URL in a consistent manner </li>
+<li>URIs shall be used as identifiers within data</li>
+<li>The dataset has availability of at least 99.9%</li>
+</ul>
+</li>
+</ul>
 
 
 
