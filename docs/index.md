@@ -16,3 +16,4 @@ _Note: These documents use US English. To align with W3C and other prevalent sta
  * [Provenance Records](provenance-records/1.0.md) (1.0)
  * [Message Delivery to Applications](message-delivery-to-applications/1.0.md) (1.0)
  * [Withdrawal of Permission](withdrawal-of-permission/1.0.md) (1.0)
+ * [Machine-Readable Data Licenses](machine-readable-data-licenses/1.0.md) (1.0)
