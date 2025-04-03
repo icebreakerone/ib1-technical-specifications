@@ -291,6 +291,167 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rdf-prefixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      RDF Prefixes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trust-framework-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trust Framework Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trust Framework Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ib1trustframework" class="md-nav__link">
+    <span class="md-ellipsis">
+      ib1:TrustFramework
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ib1scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      ib1:Scheme
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ib1technicalprofile" class="md-nav__link">
+    <span class="md-ellipsis">
+      ib1:TechnicalProfile
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common terms
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scheme-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scheme Description
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scheme Description">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ib1role" class="md-nav__link">
+    <span class="md-ellipsis">
+      ib1:Role
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ib1agreement" class="md-nav__link">
+    <span class="md-ellipsis">
+      ib1:Agreement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ib1policy" class="md-nav__link">
+    <span class="md-ellipsis">
+      ib1:Policy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scheme-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scheme Identifiers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Scheme Identifiers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ib1sourcetype" class="md-nav__link">
+    <span class="md-ellipsis">
+      ib1:SourceType
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ib1datasetassurancelevel" class="md-nav__link">
+    <span class="md-ellipsis">
+      ib1:DatasetAssuranceLevel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ib1sensitivityclassrequirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      ib1:SensitivityClassRequirement
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ib1sensitivityclass" class="md-nav__link">
+    <span class="md-ellipsis">
+      ib1:SensitivityClass
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -310,7 +471,93 @@
 <h1 id="registry-structure">Registry Structure</h1>
 <p>The Registry is the machine-readable description of the Trust Framework and the Schemes within it as a linked set of RDF Resources describing the component parts. It describes the rules and the technical standards that are used to exchange data between participants.</p>
 <p>These RDF resources are made available using three formats, RDF/XML, Turtle, and JSON-LD, along with a human readable interpretation. Each resource has a URL that is the unique identifier, and if visited in a web browser, will show the human readable interpretation of what the resource represents.</p>
-<p>The resource URLs are embedded in the data, metadata, and audit records. To preserve the meaning of these records, once created, every resource is never changed. If a revised version is necessary, a separate resource is created, along with Registry metadata to describe the relationship between the versions and the reason why the change was made.</p>
+<p>The resource URLs are embedded in the data, metadata, and audit records. To preserve the meaning of these records, once created, a Scheme should adopt a method of versioning resources.</p>
+<h2 id="rdf-prefixes">RDF Prefixes</h2>
+<p>This specification uses the following prefixes:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>  rdf:     http://www.w3.org/1999/02/22-rdf-syntax-ns#
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  rdfs:    http://www.w3.org/2000/01/rdf-schema#
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  ib1:     https://registry.trust.ib1.org/ns/1.0#
+</span></code></pre></div>
+<h2 id="trust-framework-description">Trust Framework Description</h2>
+<h3 id="ib1trustframework">ib1:TrustFramework</h3>
+<p>An <code>ib1:TrustFramework</code> resource describes an IB1 Trust Framework.</p>
+<dl>
+<dt><code>rdfs:label</code></dt>
+<dd>The abbreviated name or acronym of the Trust Framework, used as a symbol to identify the Trust Framework in URL paths and hostnames.</dd>
+<dt><code>rdfs:comment</code></dt>
+<dd>The full human readable name of the Trust Framework.</dd>
+</dl>
+<h3 id="ib1scheme">ib1:Scheme</h3>
+<p>An <code>ib1:Scheme</code> resource describes a Scheme within a Trust Framework.</p>
+<dl>
+<dt><code>rdfs:label</code></dt>
+<dd>The abbreviated name or acronym of the Scheme, used as a symbol to identify the Scheme in URL paths.</dd>
+<dt><code>rdfs:comment</code></dt>
+<dd>The full human readable name of the Scheme.</dd>
+<dt><code>ib1:trustFramework</code></dt>
+<dd>The URL of the Trust Framework to which this Scheme belongs.</dd>
+</dl>
+<h3 id="ib1technicalprofile">ib1:TechnicalProfile</h3>
+<p>An <code>ib1:TechnicalProfile</code> lists the technical specifications that are used by a Trust Framework or Scheme.</p>
+<p>As Schemes are generally interoperable, the Trust Framework will specify a Technical Profile, and each Scheme's Technical Profile will generally be a superset of the Trust Framework's Technical Profile.</p>
+<dl>
+<dt><code>rdfs:label</code></dt>
+<dd>An abbreviated name for the Technical Profile.</dd>
+<dt><code>rdfs:comment</code></dt>
+<dd>The full human readable name of the Technical Profile.</dd>
+<dt><code>ib1:trustFramework</code></dt>
+<dd>The URL of the Trust Framework.</dd>
+<dt><code>ib1:Scheme</code></dt>
+<dd>If this is a Scheme Technical Profile, the URL of the Scheme. <code>ib1:trustFramework</code> must be present and match the <code>ib1:trustFramework</code> of the <code>ib1:Scheme</code> resource.</dd>
+<dt><code>ib1:uses</code></dt>
+<dd>One or more URLs of a technical specification that is used by a Trust Framework or Scheme.</dd>
+</dl>
+<h2 id="common-terms">Common terms</h2>
+<p>Registry resources all use common terms to identify the resource within a Scheme.</p>
+<dl>
+<dt><code>rdfs:label</code></dt>
+<dd>A short identifier for the resource, typically used in the path of the resource URL.</dd>
+<dt><code>rdfs:comment</code></dt>
+<dd>A human readable description of the resource.</dd>
+<dt><code>ib1:trustFramework</code></dt>
+<dd>The URL of the Trust Framework which governs this resource.</dd>
+<dt><code>ib1:scheme</code></dt>
+<dd>The URL of the Scheme which governs this resource.</dd>
+</dl>
+<h2 id="scheme-description">Scheme Description</h2>
+<p>Scheme description resources describe the elements within that Scheme.</p>
+<p>All scheme description resources use the common terms.</p>
+<h3 id="ib1role">ib1:Role</h3>
+<p>An <code>ib1:Role</code> identifies a member's Role within the Scheme.</p>
+<p>As the URL is used to identify this Role in long lived data structures, any versioning scheme must not change the URL.</p>
+<h3 id="ib1agreement">ib1:Agreement</h3>
+<p>An <code>ib1:Agreement</code> represents a legal agreement which may be executed by Scheme members. Execution is recorded in the Directory.</p>
+<dl>
+<dt><code>ib1:agreementText</code></dt>
+<dd>The URL of a human readable document with the text of the agreement. The document should be managed by the Registry publication process.</dd>
+</dl>
+<h3 id="ib1policy">ib1:Policy</h3>
+<p>An <code>ib1:Policy</code> represents a policy which the Scheme members must follow. All Policies in the Registry apply to all members of the Scheme.</p>
+<dl>
+<dt><code>ib1:policyText</code></dt>
+<dd>The URL of a human readable document with the text of the policy. The document should be managed by the Registry publication process.</dd>
+</dl>
+<h2 id="scheme-identifiers">Scheme Identifiers</h2>
+<p>Identifiers are used within Scheme specific technical specifications and APIs. Their identifiers should be URLs within the Registry wherever possible, and use classes defined in the <code>ib1:</code> namespace where these apply.</p>
+<p>As identifier URLs are used in long lived data structures, any versioning scheme must not change the URLs.</p>
+<p>All identifiers use the common terms.</p>
+<h3 id="ib1sourcetype">ib1:SourceType</h3>
+<p>An identifier to describe the type of source of data.</p>
+<h3 id="ib1datasetassurancelevel">ib1:DatasetAssuranceLevel</h3>
+<p>An identifier for an Assurance Level.</p>
+<h3 id="ib1sensitivityclassrequirement">ib1:SensitivityClassRequirement</h3>
+<p>An identifier for a technical requirement for data within a given sensitivity class. Where possible, Schemes should use the identifiers defined in the <code>ib1:</code> namespace.</p>
+<h3 id="ib1sensitivityclass">ib1:SensitivityClass</h3>
+<p>An identifier for a Sensitivity Class, with a description of the technical requirements when processing data in this class.</p>
+<dl>
+<dt><code>ib1:sensitivityClassRequirement</code></dt>
+<dd>Zero or more <code>ib1:SensitivityClassRequirement</code> URLs.</dd>
+</dl>
 
 
 
