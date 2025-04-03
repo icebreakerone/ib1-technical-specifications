@@ -18,4 +18,5 @@ _Note: These documents use US English. To align with W3C and other prevalent sta
  * [Withdrawal of Permission](withdrawal-of-permission/1.0.md) (1.0)
  * [Machine-Readable Data Licenses](machine-readable-data-licenses/1.0.md) (1.0)
  * [Registry Versioning](registry-versioning/1.0.md) (1.0)
+ * [Registry Process Resources](registry-process-resources/1.0.md) (1.0)
  
