@@ -2,6 +2,24 @@
    See https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_colors.scss
 */
 
+/* Format hierarchical lists with numbers specified in the text. */
+/* Not the nicest way of doing it, but works within the limitations of Markdown */
+div.list-with-identifiers-following + ul,
+div.list-with-identifiers-following + ul ul,
+div.list-with-identifiers-following + ul ul ul,
+div.list-with-identifiers-following + ul ul ul ul {
+    position: relative;
+    list-style-type: none;  /* Remove default bullet points */
+    padding-left: 3em;
+}
+div.list-with-identifiers-following + ul em {
+  position: absolute;
+  left: 0em;
+}
+
+
+
+
 [data-md-color-scheme="ib1-light"] {
   --md-primary-fg-color:               #5A7084;
   --md-primary-fg-color--light:        #91A9BD;
