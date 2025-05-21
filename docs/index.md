@@ -17,6 +17,7 @@ _Note: These documents use US English. To align with W3C and other prevalent sta
  * [Permission Records](permission-records/1.0.md) (1.0)
  * [Provenance Records](provenance-records/1.0.md) (1.0)
  * [Data Catalog Records](data-catalog-records/1.0.md) (1.0)
+ * [Data Catalog Publishing](data-catalog-publishing/1.0.md) (1.0)
  * [Generic Dataset Assurance Levels](generic-dataset-assurance-levels/1.0.md) (1.0)
  * [Generic Organizational Assurance Levels](generic-organizational-assurance-levels/1.0.md) (1.0)
  * [Generic Sensitivity Classes](generic-sensitivity-classes/1.0.md) (1.0)
