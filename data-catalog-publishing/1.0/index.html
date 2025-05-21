@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://specification.docs.ib1.org/open-data/1.0/">
+        <link rel="canonical" href="https://specification.docs.ib1.org/data-catalog-publishing/1.0/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Open Data Publication - Icebreaker One Specifications</title>
+        <title>Data Catalog Publishing - Icebreaker One Specifications</title>
       
     
     
@@ -55,11 +55,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Open Data Publication - Icebreaker One Specifications" >
+        <meta  property="og:title"  content="Data Catalog Publishing - Icebreaker One Specifications" >
       
         <meta  property="og:description"  content="None" >
       
-        <meta  property="og:image"  content="https://specification.docs.ib1.org/assets/images/social/open-data/1.0.png" >
+        <meta  property="og:image"  content="https://specification.docs.ib1.org/assets/images/social/data-catalog-publishing/1.0.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -67,15 +67,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://specification.docs.ib1.org/open-data/1.0/" >
+        <meta  property="og:url"  content="https://specification.docs.ib1.org/data-catalog-publishing/1.0/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Open Data Publication - Icebreaker One Specifications" >
+        <meta  name="twitter:title"  content="Data Catalog Publishing - Icebreaker One Specifications" >
       
         <meta  name="twitter:description"  content="None" >
       
-        <meta  name="twitter:image"  content="https://specification.docs.ib1.org/assets/images/social/open-data/1.0.png" >
+        <meta  name="twitter:image"  content="https://specification.docs.ib1.org/assets/images/social/data-catalog-publishing/1.0.png" >
       
     
     
@@ -98,7 +98,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#open-data-publication" class="md-skip">
+        <a href="#data-catalog-publishing" class="md-skip">
           Skip to content
         </a>
       
@@ -133,7 +133,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Open Data Publication
+              Data Catalog Publishing
             
           </span>
         </div>
@@ -316,36 +316,87 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#licensing" class="md-nav__link">
+  <a href="#publishing-metadata" class="md-nav__link">
     <span class="md-ellipsis">
-      Licensing
+      Publishing Metadata
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Publishing Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-hosted-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Hosted URL
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-web-form-submission" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Web Form Submission
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#catalog-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Catalog Updates
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mandatory-metadata-fields" class="md-nav__link">
+  <a href="#permitted-changes" class="md-nav__link">
     <span class="md-ellipsis">
-      Mandatory Metadata Fields
+      Permitted Changes
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#enforcement-policy" class="md-nav__link">
+  <a href="#validation" class="md-nav__link">
     <span class="md-ellipsis">
-      Enforcement Policy
+      Validation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#quality-checks" class="md-nav__link">
     <span class="md-ellipsis">
-      Example
+      Quality Checks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#record-removal-and-archiving" class="md-nav__link">
+    <span class="md-ellipsis">
+      Record Removal and Archiving
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#catalog-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Catalog Access
     </span>
   </a>
   
@@ -369,8 +420,9 @@
   
 
 
-<h1 id="open-data-publication">Open Data Publication</h1>
-<p>This specification defines how Data Providers publish Open Data within a Scheme using the standard metadata format described in the <a href="../../data-catalog-records/1.0/">Data Catalog Records</a> specification, and the requirement for an enforcement policy. It ensures that published datasets are openly licensed, publicly accessible, and appropriately described for discovery in the catalog.</p>
+<h1 id="data-catalog-publishing">Data Catalog Publishing</h1>
+<p>This specification describes how metadata files representing Datasets and Data Services are published into a Trust Framework's Data Catalog.</p>
+<p>Data Providers submit metadata to the Directory by publishing at a public URL or pasting the content directly into a Directory web form. The Directory ingests these Data Catalog Entries and makes them available to other participants in the Trust Framework through searchable catalogs, downloadable feeds, and SPARQL endpoints.</p>
 <p><em>Note: This document uses US English. To align with W3C and other prevalent standards, IB1 uses US English in its technical specifications and technical documentation.</em></p>
 <h2 id="rdf-prefixes">RDF Prefixes</h2>
 <p>This specification uses the following prefixes:</p>
@@ -382,66 +434,77 @@
 <p>A Scheme using this specification must also adopt the following specifications:</p>
 <ul>
 <li><a href="../../data-catalog-records/1.0/">Data Catalog Records</a> (1.0 or later)</li>
-<li><a href="../../generic-sensitivity-classes/1.0/">Generic Sensitivity Classes</a> (1.0 or later)</li>
 </ul>
-<h2 id="licensing">Licensing</h2>
-<p>All datasets published under this specification must be licensed using an open license which meets the <a href="https://opendefinition.org/od/2.1/en/">Open Definition 2.1</a>.</p>
-<p>The license must be declared in the <code>dcterms:license</code> field, using the generally agreed URL for the license.</p>
-<h2 id="mandatory-metadata-fields">Mandatory Metadata Fields</h2>
-<p>The following fields must be included in each DCAT resource representing a dataset:</p>
-<dl>
-<dt><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#license">dcterms:license</a></dt>
-<dd>A URL pointing to a license that meets the Open Definition 2.1.</dd>
-<dt><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#publisher">dcterms:publisher</a></dt>
-<dd>A URL of the Data Provider’s Member record in the Directory. This may be included in addition to any other publishers.</dd>
-<dt><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#conformsTo">dcterms:conformsTo</a></dt>
-<dd>If the dataset conforms to a Scheme standard, the URL of the Scheme Catalog Requirements Document. Inclusion of this field may impose additional metadata requirements.</dd>
-<dt><a href="https://registry.trust.ib1.org/ns/1.0#dataSchema">ib1:dataSchema</a></dt>
-<dd>A URL pointing to a schema that describes the structure of the dataset (e.g., JSON Schema, XSD, or CSVW), unless it is commerically impractical to provide a schema. If the entry has a <code>dcterms:confirmsTo</code> value and this refers to a Scheme Catalog Requirements Document which specifies a schema, the value of this term must be the schema required by the Scheme standard.</dd>
-<dt><a href="https://registry.trust.ib1.org/ns/1.0#sensitivityClass">ib1:sensitivityClass</a></dt>
-<dd>Must be set to exactly <code>https://registry.trust.ib1.org/sensitivity-class/IB1-O</code>, indicating Open Data according to the <a href="../../generic-sensitivity-classes/1.0/">Generic Sensitivity Classes</a> specification.</dd>
-<dt><a href="https://registry.trust.ib1.org/ns/1.0#trustFramework">ib1:trustFramework</a></dt>
-<dd>The URL of the Trust Framework under which this data is published.</dd>
-<dt><a href="https://registry.trust.ib1.org/ns/1.0#scheme">ib1:scheme</a></dt>
-<dd>The URL of the Scheme governing the publication and use of this dataset.</dd>
-</dl>
-<p>Any other metadata fields defined as mandatory in the <a href="../../data-catalog-records/1.0/">Data Catalog Records</a> specification must also be included.</p>
-<h2 id="enforcement-policy">Enforcement Policy</h2>
-<p>A Scheme which permits Open Data publication must define an enforcement policy for its rules, including:</p>
+<h2 id="publishing-metadata">Publishing Metadata</h2>
+<p>Members publish Data Catalog Entries describing the Datasets and Data Services they offer by submitting metadata files using one of the following methods:</p>
+<h3 id="1-hosted-url">1. Hosted URL</h3>
+<p>A metadata file may be published by making it available at a publicly accessible HTTPS URL. These files must meet the following requirements:</p>
 <ul>
-<li>How violations (e.g., incorrect licensing, misleading metadata) are reported and handled.</li>
-<li>The process for removing non-compliant data from the catalog.</li>
-<li>Criteria for auditing data quality and adherence to the Scheme Catalog Requirements.</li>
-<li>A method to handle disputes or clarifications about licensing or conformance.</li>
+<li>Use HTTPS with a certificate issued by a widely trusted public Certificate Authority</li>
+<li>Return HTTP 200 on success, with no redirects</li>
+<li>Contain valid RDF according to <a href="https://www.w3.org/TR/vocab-dcat-3/">DCAT</a>, using one of the supported serialization formats (Turtle, RDF/XML, or JSON-LD), served with the correct <code>Content-Type</code> header</li>
+<li>Be accessible without authentication or access control</li>
 </ul>
-<p>This Policy must be published in the Registry, with a <code>ib1:policyPurpose</code> of <code>https://registry.trust.ib1.org/open-data/policy-purpose/open-data-enforcement</code></p>
-<h2 id="example">Example</h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>@prefix ib1: &lt;https://registry.trust.ib1.org/ns/1.0#&gt; .
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>&lt;https://data.example.org/emissions-report/2024-01&gt;
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    a dcat:Dataset ;
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    dcterms:title &quot;Monthly Emissions Report January 2024&quot; ;
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    dcterms:description &quot;CO2 emissions data for January 2024 reported by local authorities.&quot; ;
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    dcterms:publisher &lt;https://directory.core.trust.ib1.org/member/456789&gt; ;
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    dcterms:license &lt;https://creativecommons.org/licenses/by/4.0/&gt; ;
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    dcterms:conformsTo &lt;https://registry.core.trust.ib1.org/scheme/open-data/standard/emissions-report&gt; ;
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    ib1:dataSchema &lt;https://registry.core.trust.ib1.org/scheme/open-data/format/generic-emissions/1.0&gt; ;
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    ib1:sensitivityClass &lt;https://registry.trust.ib1.org/sensitivity-class/IB1-O&gt; ;
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    ib1:trustFramework &lt;https://registry.core.trust.ib1.org/trust-framework&gt; ;
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    ib1:scheme &lt;https://registry.core.trust.ib1.org/scheme/open-data&gt; ;
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    dcat:distribution &lt;https://data.example.org/emissions-report/2024-01/csv&gt; ;
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>.
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>&lt;https://data.example.org/emissions-report/2024-01/csv&gt;
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    a dcat:Distribution ;
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    dcterms:description &quot;CSV download of the monthly emissions report&quot; ;
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    dcat:downloadURL &lt;https://data.example.org/emissions-report/2024-01.csv&gt; ;
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>    dcat:mediaType &quot;text/csv&quot; ;
-</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>    ib1:dataSchema &lt;https://registry.core.trust.ib1.org/scheme/open-data/format/emissions/1.0&gt; ;
-</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>.
-</span></code></pre></div>
+<p>Providers are encouraged to group related Data Catalog Entries into a small number of metadata files. The Directory may impose a limit on the number of registered URLs per Member, but this must be no fewer than 16.</p>
+<h3 id="2-web-form-submission">2. Web Form Submission</h3>
+<p>The Directory also provides a web form that allows Members to paste metadata content for inclusion in the catalog. This is intended for the convenient publication of a small number of Data Services.</p>
+<p>A size limit may apply, which may be no less than 64k characters.</p>
+<h2 id="catalog-updates">Catalog Updates</h2>
+<p>The Directory updates its catalog on a regular schedule, typically daily. Each update involves the following steps:</p>
+<ol>
+<li>Registered metadata files are fetched.</li>
+<li>If a file cannot be fetched or contains no valid entries, its previously accepted entries remain unchanged in the Data Catalog.</li>
+<li>For each Data Catalog Entry:<ul>
+<li>Validation checks are applied (see <a href="#validation">Validation</a>).</li>
+<li>Permitted change rules are enforced (see <a href="#permitted-changes">Permitted Changes</a>).</li>
+<li>The previous version of an Entry remains in the catalog if it does not pass validation or change rules.</li>
+<li>Data quality checks may be applied (see <a href="#quality-checks">Quality Checks</a>).</li>
+</ul>
+</li>
+<li>After processing all entries, the catalog is atomically updated.</li>
+</ol>
+<p>If a metadata file contains no valid entries, the Directory retains the entries from the most recent successful version. This safeguards against accidental deletion caused by an empty or invalid file. To remove all entries from a metadata file, the file must be explicitly deleted using the Directory interface.</p>
+<p>Members are notified of errors or warnings via the Directory dashboard and email.</p>
+<h2 id="permitted-changes">Permitted Changes</h2>
+<p>To maintain the stability and integrity of metadata in the catalog, the following constraints apply:</p>
+<ul>
+<li>The RDF subject URL (identifier) of a Data Catalog Entry must not change.</li>
+<li>The value of the <code>dcterms:conformsTo</code> and <code>ib1:dataSchema</code> terms (or their absence) must not change.</li>
+<li>Data Catalog Entries must not be moved between metadata files or between submission methods.</li>
+</ul>
+<h2 id="validation">Validation</h2>
+<p>Each metadata file is validated to ensure it:</p>
+<ul>
+<li>Is well-formed RDF in a supported serialization format</li>
+<li>Contains all required metadata fields</li>
+<li>Includes a <code>dcterms:publisher</code> value that matches the Member’s registered URL in the Directory</li>
+<li>References only Schemes that the Member has joined and for which all relevant Agreements are in place</li>
+<li>Maintains conformance with the same Scheme Catalog Requirements Document if updating an existing entry</li>
+</ul>
+<p>Additional validation rules may be introduced by other Specifications adopted by a Scheme.</p>
+<h2 id="quality-checks">Quality Checks</h2>
+<p>The Directory may apply non-blocking data quality checks to support discoverability and standardization. These may include:</p>
+<ul>
+<li>Use of <code>dcat:keyword</code> is consistent within the Scheme</li>
+<li>Use of appropriate schema definitions (<code>ib1:dataSchema</code>)</li>
+</ul>
+<p>Quality issues do not prevent inclusion but are recorded and notified to the submitting Member.</p>
+<p>Additional Specifications may define further quality or consistency checks.</p>
+<h2 id="record-removal-and-archiving">Record Removal and Archiving</h2>
+<p>A metadata record is removed from the catalog when:</p>
+<ul>
+<li>The URL of the corresponding metadata file is deleted from the Directory</li>
+<li>The entry is explicitly removed from the metadata file</li>
+<li>A web form submission is withdrawn</li>
+</ul>
+<p>Removals are processed during the next catalog update.</p>
+<p>The Directory may retain archived copies of removed or rejected entries for audit and operational purposes. These are not visible in public views but may be accessed by the Trust Framework Operator.</p>
+<h2 id="catalog-access">Catalog Access</h2>
+<p>The Directory may expose Data Catalog metadata through multiple mechanisms:</p>
+<ul>
+<li>SPARQL endpoint for querying the Catalog</li>
+<li>Downloadable DCAT feeds, grouped by Scheme, purpose, or access policy</li>
+</ul>
 
 
 
