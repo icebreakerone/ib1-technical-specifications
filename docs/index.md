@@ -1,6 +1,6 @@
 # Icebreaker One Specifications
 
-Specifications for the [Icebreaker One](https://ib1.org) (IB1) [Trust Framework](https://ib1.org/trust-frameworks/).
+Specifications for [Icebreaker One](https://ib1.org) (IB1) [Trust Frameworks](https://ib1.org/trust-frameworks/).
 
 _Note: These documents use US English. To align with W3C and other prevalent standards, IB1 uses US English in its technical specifications and technical documentation._
 
