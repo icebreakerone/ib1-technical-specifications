@@ -335,6 +335,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#ib1specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      ib1:Specification
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ib1technicalprofile" class="md-nav__link">
     <span class="md-ellipsis">
       ib1:TechnicalProfile
@@ -521,6 +530,21 @@
 <dt><code>ib1:trustFramework</code></dt>
 <dd>The URL of the Trust Framework to which this Scheme belongs.</dd>
 </dl>
+<h3 id="ib1specification">ib1:Specification</h3>
+<p>An <code>ib1:Specification</code> represents a formal document that defines technical standards, interfaces, or detailed requirements relevant to a Scheme.</p>
+<p>Specifications record the authoritative text of the standard and are linked to by the Scheme's <code>ib1:TechnicalProfile</code> to indicate that the Scheme adopts and relies on that standard.</p>
+<dl>
+<dt><code>rdfs:label</code></dt>
+<dd>A short identifier for the specification, typically used in the path of the resource URL.</dd>
+<dt><code>rdfs:comment</code></dt>
+<dd>A human readable description of the specification and its purpose.</dd>
+<dt><code>ib1:trustFramework</code></dt>
+<dd>The URL of the Trust Framework which governs this specification.</dd>
+<dt><code>ib1:scheme</code></dt>
+<dd>The URL of the Scheme that has defined this Specification.</dd>
+<dt><code>ib1:specificationText</code></dt>
+<dd>The URL of a human-readable document that contains the text of the specification. The document should be managed by the Registry publication process, and may be in Markdown or PDF format.</dd>
+</dl>
 <h3 id="ib1technicalprofile">ib1:TechnicalProfile</h3>
 <p>An <code>ib1:TechnicalProfile</code> lists the technical specifications that are used by a Trust Framework or Scheme.</p>
 <p>As Schemes are generally interoperable, the Trust Framework will specify a Technical Profile, and each Scheme's Technical Profile will generally be a superset of the Trust Framework's Technical Profile.</p>
@@ -534,7 +558,7 @@
 <dt><code>ib1:Scheme</code></dt>
 <dd>If this is a Scheme Technical Profile, the URL of the Scheme. <code>ib1:trustFramework</code> must be present and match the <code>ib1:trustFramework</code> of the <code>ib1:Scheme</code> resource.</dd>
 <dt><code>ib1:uses</code></dt>
-<dd>One or more URLs of a technical specification that is used by a Trust Framework or Scheme.</dd>
+<dd>One or more URLs referencing technical specifications used by a Trust Framework or Scheme. These may point to externally defined standards or to an <code>ib1:Specification</code> published within this <code>ib1:scheme</code>.</dd>
 </dl>
 <h3 id="ib1policypurpose">ib1:PolicyPurpose</h3>
 <p>An <code>ib1:PolicyPurpose</code> resource defines a formal purpose or role that a policy may fulfill within a Scheme or Trust Framework. These resources are used as controlled identifiers in the <code>ib1:policyPurpose</code> field of <code>ib1:Policy</code> instances.</p>
