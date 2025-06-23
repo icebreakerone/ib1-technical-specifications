@@ -421,7 +421,7 @@
 
 
 <h1 id="data-catalog-publishing">Data Catalog Publishing</h1>
-<p>This specification describes how metadata files representing Datasets and Data Services are published into a Trust Framework's Data Catalog.</p>
+<p>This specification describes how metadata files representing Datasets and Data Services are published to a Trust Framework's Data Catalog.</p>
 <p>Data Providers submit metadata to the Directory by publishing at a public URL or pasting the content directly into a Directory web form. The Directory ingests these Data Catalog Entries and makes them available to other participants in the Trust Framework through searchable catalogs, downloadable feeds, and SPARQL endpoints.</p>
 <p><em>Note: This document uses US English. To align with W3C and other prevalent standards, IB1 uses US English in its technical specifications and technical documentation.</em></p>
 <h2 id="rdf-prefixes">RDF Prefixes</h2>
@@ -431,24 +431,24 @@
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  ib1:     https://registry.trust.ib1.org/ns/1.0#
 </span></code></pre></div>
 <h2 id="dependencies">Dependencies</h2>
-<p>A Scheme using this specification must also adopt the following specifications:</p>
+<p>A Scheme using this specification must also adopt the following specification:</p>
 <ul>
 <li><a href="../../data-catalog-records/1.0/">Data Catalog Records</a> (1.0 or later)</li>
 </ul>
 <h2 id="publishing-metadata">Publishing Metadata</h2>
-<p>Members publish Data Catalog Entries describing the Datasets and Data Services they offer by submitting metadata files using one of the following methods:</p>
+<p>Members publish Data Catalog Entries describing the Datasets and Data Services they offer by submitting metadata files to the Directory using one of the following methods:</p>
 <h3 id="1-hosted-url">1. Hosted URL</h3>
 <p>A metadata file may be published by making it available at a publicly accessible HTTPS URL. These files must meet the following requirements:</p>
 <ul>
 <li>Use HTTPS with a certificate issued by a widely trusted public Certificate Authority</li>
-<li>Return HTTP 200 on success, with no redirects</li>
+<li>Return HTTP 200 on success (redirects are not permitted)</li>
 <li>Contain valid RDF according to <a href="https://www.w3.org/TR/vocab-dcat-3/">DCAT</a>, using one of the supported serialization formats (Turtle, RDF/XML, or JSON-LD), served with the correct <code>Content-Type</code> header</li>
 <li>Be accessible without authentication or access control</li>
 </ul>
 <p>Providers are encouraged to group related Data Catalog Entries into a small number of metadata files. The Directory may impose a limit on the number of registered URLs per Member, but this must be no fewer than 16.</p>
 <h3 id="2-web-form-submission">2. Web Form Submission</h3>
 <p>The Directory also provides a web form that allows Members to paste metadata content for inclusion in the catalog. This is intended for the convenient publication of a small number of Data Services.</p>
-<p>A size limit may apply, which may be no less than 64k characters.</p>
+<p>A size limit may apply, which may be no less than 64,000 Unicode characters.</p>
 <h2 id="catalog-updates">Catalog Updates</h2>
 <p>The Directory updates its catalog on a regular schedule, typically daily. Each update involves the following steps:</p>
 <ol>
@@ -477,7 +477,7 @@
 <ul>
 <li>Is well-formed RDF in a supported serialization format</li>
 <li>Contains all required metadata fields</li>
-<li>Includes a <code>dcterms:publisher</code> value that matches the Member’s registered URL in the Directory</li>
+<li>Includes a <code>dcterms:publisher</code> value that exactly matches the Member’s registered URL in the Directory</li>
 <li>References only Schemes that the Member has joined and for which all relevant Agreements are in place</li>
 <li>Maintains conformance with the same Scheme Catalog Requirements Document if updating an existing entry</li>
 </ul>
@@ -498,11 +498,11 @@
 <li>A web form submission is withdrawn</li>
 </ul>
 <p>Removals are processed during the next catalog update.</p>
-<p>The Directory may retain archived copies of removed or rejected entries for audit and operational purposes. These are not visible in public views but may be accessed by the Trust Framework Operator.</p>
+<p>The Directory may retain archived copies of removed or rejected entries for audit and operational purposes. These archived copies are not visible in public views but may be accessed by the Trust Framework Operator as needed for those purposes.</p>
 <h2 id="catalog-access">Catalog Access</h2>
 <p>The Directory may expose Data Catalog metadata through multiple mechanisms:</p>
 <ul>
-<li>SPARQL endpoint for querying the Catalog</li>
+<li>A SPARQL endpoint for querying the Catalog</li>
 <li>Downloadable DCAT feeds, grouped by Scheme, purpose, or access policy</li>
 </ul>
 

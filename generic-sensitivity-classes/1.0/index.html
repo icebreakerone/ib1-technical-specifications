@@ -385,7 +385,7 @@
 
 
 <h1 id="generic-sensitivity-classes">Generic Sensitivity Classes</h1>
-<p>Trust Framework members can allocate a dataset into ‘classes’ depending on its sensitivity profile. Access and security requirements differ across classes.</p>
+<p>Trust Framework Members can assign datasets to sensitivity classes based on their sensitivity profile. Access and security requirements vary depending on the assigned sensitivity class.</p>
 <p>This specification defines generic sensitivity classes, identified by URLs in the IB1 Root Registry with the <code>https://registry.trust.ib1.org/sensitivity-class/</code> prefix.</p>
 <p><em>Note: This document uses US English. To align with W3C and other prevalent standards, IB1 uses US English in its technical specifications and technical documentation.</em></p>
 <h2 id="sensitivity-classes">Sensitivity Classes</h2>
@@ -399,16 +399,16 @@
 <p><code>https://registry.trust.ib1.org/sensitivity-class/IB1-SA</code></p>
 <p>Datasets which can/could be shared, but which require the user to agree to standard T&amp;Cs to access. May include some openly licensed materials (e.g. CC BY-SA or GNU AGPLv3).</p>
 <h3 id="shared-b-ib1-sb">Shared B (IB1-SB)</h3>
-<p><code>https://registry.trust.ib1.org/sensitivity-class/IB1-SA</code></p>
-<p>Datasets which can/could be shared, but currently require some bilateral contract negotiation. May include data currently shared on the basis of group-based access. May include aggregated, anonymised or pseudonymised data about individuals.</p>
+<p><code>https://registry.trust.ib1.org/sensitivity-class/IB1-SB</code></p>
+<p>Datasets which can/could be shared, but currently require some bilateral contract negotiation. May include data currently shared on the basis of group-based access. May include aggregated, anonymized or pseudonymized data about individuals.</p>
 <h3 id="personal-ib1-sp">Personal (IB1-SP)</h3>
 <p><code>https://registry.trust.ib1.org/sensitivity-class/IB1-SP</code></p>
 <p>Datasets which include personal data, requiring appropriate consent to share, or other legal bases to data processing, as defined by the UK DPA 2018.</p>
 <h2 id="sensitivity-class-requirements">Sensitivity Class Requirements</h2>
-<p>The requirements for data shared within the Trust Framework depend on the sensitivity class. These requirements are available in machine readable form in the RDF documents at the URLs above in the Registry.</p>
+<p>The requirements for data shared within the Trust Framework depend on the sensitivity class. These requirements are available in machine-readable form in the RDF documents at the URLs above in the Registry.</p>
 <p>In the table below, a <em>Yes</em> in the <em>Auth?</em> column means that the sensitivity class requires the client to authenticate with the server and follow access rules described in the Registry.</p>
 <p>A <em>Yes</em> in the <em>FAPI?</em> column means that the sensitivity class requires the use of a FAPI compliant API.</p>
-<p>A <em>Yes</em> in the <em>Permission?</em> column means the sensitivity class requires that Permission (consent) is explicitly granted for access to data relating to an end user.</p>
+<p>A <em>Yes</em> in the <em>permission?</em> column means the sensitivity class requires that permission (consent) is explicitly granted for access to data relating to an end user.</p>
 <table>
 <thead>
 <tr>

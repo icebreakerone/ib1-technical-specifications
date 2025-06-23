@@ -336,7 +336,7 @@
         <li class="md-nav__item">
   <a href="#data-consumer" class="md-nav__link">
     <span class="md-ellipsis">
-      Data consumer
+      Data Consumer
     </span>
   </a>
   
@@ -345,11 +345,11 @@
         <li class="md-nav__item">
   <a href="#data-provider" class="md-nav__link">
     <span class="md-ellipsis">
-      Data provider
+      Data Provider
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Data provider">
+    <nav class="md-nav" aria-label="Data Provider">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -406,21 +406,22 @@
 <p>An end user may withdraw permission for their data to be processed at any time. This document specifies how an Application must respond, and how withdrawal is communicated between members.</p>
 <p><em>Note: This document uses US English. To align with W3C and other prevalent standards, IB1 uses US English in its technical specifications and technical documentation.</em></p>
 <h2 id="data-processing-requirements">Data processing requirements</h2>
-<p>Permission is granted for a data transfer between two members, a "sending" member and a "receiving" member. It may rely on other permissions ("linked permissions"), where the user grants permission which relies on data transfer or data use permitted by a previously granted permission.</p>
+<p>Permission is granted for a data transfer between two members, a "sending" member and a "receiving" member. In some cases, permissions depend on other permissions, where the user grants permission that relies on a previously granted permission for data transfer or use. The permissions which depend on a given permission are <strong>linked permissions</strong>.</p>
+<p>When permission is withdrawn, any linked permissions that depend on the withdrawn permission must also be revoked. This cascading withdrawal ensures that no permission remains active that relies on a permission the user has chosen to withdraw.</p>
 <p>Permission may be withdrawn by the user at either of the two members. Linked permissions may be implicitly withdrawn when one of the permissions that it relies on is withdrawn.</p>
 <p>When permission is withdrawn at either member:</p>
 <ul>
-<li>The member where permission is withdrawn will notify the other member, with a reasonable number of retries if an error occurs in that notification.</li>
+<li>The member where permission is withdrawn must notify the other member, with a reasonable number of retries if an error occurs in that notification.</li>
 <li>The member which knows about linked permissions to the withdrawn permission must follow this withdrawal process, as if those linked permissions were explicitly withdrawn.</li>
 <li>The sending member<ul>
-<li>will return a "not authorised" error response to any further use of the API.</li>
+<li>must return a "not authorized" error response to any further use of the API.</li>
 </ul>
 </li>
 <li>The receiving member<ul>
 <li>must stop processing immediately,</li>
 <li>must delete any stored unprocessed data,</li>
 <li>must delete any derived data where it has a one to one correspondence to the user,</li>
-<li>may keep and use derived data where aggregated or statistical or if has own basis (such as own permission) separately,</li>
+<li>may keep and use derived data where it is aggregated, statistical, or has its own basis (such as a separate permission),</li>
 <li>may cycle data normally out of backups, as permitted by the license.</li>
 </ul>
 </li>
@@ -429,7 +430,7 @@
 <h2 id="message-delivery">Message delivery</h2>
 <p>The Scheme must use a method of delivery of messages to Applications.</p>
 <h2 id="oauth-issuer">OAuth Issuer</h2>
-<p>The OAuth issuer must support <a href="https://www.rfc-editor.org/rfc/rfc7009">RFC7009</a> revocation. The endpoint must require a MTLS client certificate, and check the Application URL in the certificate matches the OAuth client ID.</p>
+<p>The OAuth issuer must support <a href="https://www.rfc-editor.org/rfc/rfc7009">RFC7009</a> revocation. The endpoint must require an MTLS client certificate, and check the Application URL in the certificate matches the OAuth client ID.</p>
 <p>The Issuer must declare the endpoint in the OAuth Issuer Metadata, specifying that MTLS is required.</p>
 <p>For example,</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
@@ -437,18 +438,18 @@
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;revocation_endpoint_auth_methods_supported&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;tls_client_auth&quot;</span><span class="p">],</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">&quot;mtls_endpoint_aliases&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="c1">// Must be exactly the same as the *_endpoint values defined at the top level</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">&quot;revocation_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://auth.example.org/accounts/revocation&quot;</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">&quot;revocation_endpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://auth.example.org/accounts/revocation&quot;</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="p">}</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="api-server">API server</h2>
 <p>The API server must return an error when an invalid or revoked token is used.</p>
-<p>It must start returning errors within 60 minutes of a user or data consumer withdrawing permission.</p>
-<h2 id="data-consumer">Data consumer</h2>
-<p>The data consumer must provide a user interface for the end user to withdraw permission. When the user withdraws permission, the data consumer must send an RFC7009 revocation request to the endpoint declared in the OAuth Issuer Metadata.</p>
-<p>If an error is returned, the data consumer must retry with exponential back-off.</p>
-<h2 id="data-provider">Data provider</h2>
-<p>The data provider must provide a user interface for the end user to withdraw permission. When the user withdraws permission, the data provider must:</p>
+<p>It must start returning errors no later than 60 minutes after a user or Data Consumer withdraws permission.</p>
+<h2 id="data-consumer">Data Consumer</h2>
+<p>The Data Consumer must provide a user interface for the end user to withdraw permission. When the user withdraws permission, the Data Consumer must send an RFC7009 revocation request to the endpoint declared in the OAuth Issuer Metadata.</p>
+<p>If an error is returned, the Data Consumer must retry with exponential back-off.</p>
+<h2 id="data-provider">Data Provider</h2>
+<p>The Data Provider must provide a user interface for the end user to withdraw permission. When the user withdraws permission, the Data Provider must:</p>
 <ul>
 <li>Invalidate the OAuth refresh token immediately, so no new access tokens can be issued.</li>
 <li>If access tokens have a validity of longer than 60 minutes, invalidate the access tokens.</li>
@@ -456,7 +457,7 @@
 </ul>
 <h3 id="message-format">Message format</h3>
 <p>The withdrawal of permission message has a <code>subject</code> of <code>https://registry.trust.ib1.org/message/withdrawal-of-permission/2025-03-16</code>, and within the body, the <code>token</code> is the newly revoked refresh token.</p>
-<p>The message must only be sent when the refresh token has been invalidated.</p>
+<p>The message must not be sent until after the refresh token has been invalidated.</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;ib1:message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://registry.core.trust.ib1.org/trust-framework&quot;</span><span class="p">,</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://registry.trust.ib1.org/message/withdrawal-of-permission/2025-03-16&quot;</span><span class="p">,</span>
@@ -466,15 +467,18 @@
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="linked-permissions">Linked permissions</h2>
-<p>When a data consumer or data provider knows about a linked permission, on </p>
+<p>When a permission is withdrawn, all linked permissions that rely on it must also be withdrawn to comply with legal, regulatory, and data licensing requirements.</p>
+<p>When a Data Consumer or Data Provider receives a permission grant from an end user that depends on another permission — creating a linked permission — the link must be recorded. This ensures that if the original permission is withdrawn, the linked permissions can also be withdrawn.</p>
+<p>Withdrawal of linked permissions must occur under any of the following circumstances:</p>
 <ul>
-<li>the user withdrawing permission, </li>
-<li>receipt of RFC7009 revocation request, or</li>
-<li>receipt of a withdrawal message,</li>
+<li>the user withdraws permission,</li>
+<li>an RFC7009 revocation request is received, or</li>
+<li>a withdrawal message is received.</li>
 </ul>
-<p>that member must make further RFC7009 revocation requests or send further withdrawal messages to withdraw the linked permissions.</p>
+<p>In these cases, the member must make additional RFC7009 revocation requests or send further withdrawal messages to revoke the linked permissions.</p>
+<p>This process ensures that withdrawal is cascaded recursively. However, the member is not required to take any other steps beyond sending the necessary revocation requests or withdrawal messages to enforce recursive withdrawal.</p>
 <h2 id="advice-for-implementation">Advice for implementation</h2>
-<p>Access tokens should have a validity of less 60 minutes or less, so that it is not necessary to invalidate access tokens.</p>
+<p>Access tokens should have a validity of 60 minutes or less, so that it is not necessary to invalidate access tokens.</p>
 
 
 

@@ -505,8 +505,7 @@
 <p>Each Data Provider maintains a set of one or more metadata files, each of which can describe one or more 
 distinct sources of data. These descriptions serve several purposes:</p>
 <ol>
-<li>They drive discovery descriptions are ingested into our search system and made available to a Data Consumer 
-searching for particular kinds of data.</li>
+<li>They enable discovery by Data Consumers when indexed for search.</li>
 <li>They inform consumption of that data, providing information on:<ol>
 <li>The API required to access the data source</li>
 <li>Any access constraints which may need to be satisfied</li>
@@ -525,20 +524,20 @@ searching for particular kinds of data.</li>
 <h2 id="dataset-or-data-service">Dataset or Data Service?</h2>
 <p>A Dataset:</p>
 <ul>
-<li>is provided as one or more downloadable files,</li>
-<li>may be published as part of series of Datasets covering the same source of data over different time periods, and</li>
+<li>is "a collection of data, published or curated by a single agent, and available for access or download in one or more representations" <a href="https://www.w3.org/TR/vocab-dcat-3/#Class:Dataset">Data Catalog Vocabulary (DCAT) - Version 3: Dataset Definition</a>,</li>
+<li>may be published as part of a series of Datasets covering the same source of data over different time periods, and</li>
 <li>should maintain historical access to previous periods.</li>
 </ul>
 <p>A Data Service:</p>
 <ul>
-<li>is an API to query some data which uses parameters to specify a subset of data, including time period,</li>
-<li>is specified formally by a machine readable API description, and</li>
+<li>is an API that queries one or more datasets and uses parameters to specify a subset of data, including time period,</li>
+<li>is specified formally by a machine-readable API description, and</li>
 <li>may require consent from a data subject external to the Trust Framework.</li>
 </ul>
 <p>They are described by slightly different information in metadata files.</p>
 <h2 id="scheme-conforming">Scheme-conforming</h2>
-<p>A Scheme-conforming Dataset or Data Service meets the data format and meaning requirements of the Scheme, along with any required access and license conditions.</p>
-<p>These requirements are published by the Scheme Registry as machine readable <a href="#scheme-catalog-requirements">Scheme Catalog Requirements Documents</a>, and metadata files link to them to show their conformance.</p>
+<p>A Scheme-conforming Dataset or Data Service meets the structural, semantic, access, and license requirements defined by the Scheme.</p>
+<p>These requirements are published by the Scheme Registry as machine-readable <a href="#scheme-catalog-requirements">Scheme Catalog Requirements Documents</a>, and metadata files link to them to show their conformance.</p>
 <p>Most Datasets and Data Services are Scheme-conforming. A Data Provider may publish data which is not Scheme-conforming to:</p>
 <ul>
 <li>use Scheme licenses and roles to share ad-hoc Shared Data with Scheme participants (where the Scheme doesn't expressly disallow this), or</li>
@@ -547,7 +546,7 @@ searching for particular kinds of data.</li>
 <h2 id="metadata-file-structure">Metadata File Structure</h2>
 <p>The metadata is a standard <a href="https://www.w3.org/TR/vocab-dcat-3/">DCAT</a> RDF file representing one or more sources of data. </p>
 <p><strong>NOTE</strong>: The examples below use the <a href="https://www.w3.org/TR/turtle/">Turtle</a> format for compactness and increased readability. Data providers may present this information in Turtle, RDF/XML, JSON-LD or N3 formats.</p>
-<p>Datasets are represented as Dataset DCAT objects with one or more Distributions. If the data measures the same thing over periods of time, then these must be linked together with a Data Series object. The format of the data is described by JSON Schema, XSD 1.1 or CSVW schemas.</p>
+<p>Datasets are represented as <code>dcat:Dataset</code> objects with one or more <code>dcat:Distribution</code> entries. If the data measures the same thing over periods of time, then these must be linked together with a Data Series object. The format of the data is described by JSON Schema, XSD 1.1 or CSVW schemas.</p>
 <p>Data Services are represented as Data Service DCAT objects, with <a href="https://swagger.io/specification/">OpenAPI</a> specifications of the API and the format of the data in the responses.</p>
 <p>The URL of the DCAT object inside the RDF representation is the stable identifier of the Dataset or Data Service. This must remain constant each time the metadata file is fetched and over updates to the metadata.</p>
 <h2 id="mandatory-metadata-fields">Mandatory metadata fields</h2>
@@ -566,9 +565,9 @@ searching for particular kinds of data.</li>
 <dt><code>ib1:datasetAssurance</code></dt>
 <dd>The assurance level for this dataset.</dd>
 <dt><code>ib1:sensitivityClass</code></dt>
-<dd>The URL describing the sensitivity of the data, which may be a generic sensitivity class defined by the IB1 RDF Schema, if the <a href="../../generic-sensitivity-classes/1.0/">Generic Sensitivity Classes</a> specification is used by the Scheme, or a Registry URL otherwise. (Previous versions of this standard used literal strings to identify the classes.)
-If the sensitivity class definition requires the use of FAPI, a FAPI compliant API must be used to serve the dataset.
-If the sensitivity class definition is marked as requiring the end user's Permission (consent), the <code>ib1:oauthIssuer</code> term must be present.</dd>
+<dd>The sensitivity of the data. This must be a URL, referencing either a generic sensitivity class defined by the IB1 RDF Schema (if the <a href="../../generic-sensitivity-classes/1.0/">Generic Sensitivity Classes</a> specification is adopted by the Scheme) or a URL registered in the Scheme's Registry.
+If the sensitivity class requires the use of FAPI, a FAPI-compliant API must be used to serve the dataset.
+If the sensitivity class requires end-user permission (consent), the <code>ib1:oauthIssuer</code> term must be present.</dd>
 </dl>
 <p>More information about publishing assured data within a Trust Framework is available on the <a href="https://icebreakerone.org/sops/assured-data-publishing/">How to become an assured data publisher</a> section of the Icebreaker One website.</p>
 <p>Additional fields may be made mandatory for Scheme-conforming data sources by the Scheme Catalog Requirements Document.</p>
@@ -599,7 +598,7 @@ If the sensitivity class definition is marked as requiring the end user's Permis
 <dt><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/terms/description/">dcterms:description</a></dt>
 <dd>Longer form description of this dataset. This is used in combination with the title and tags when people search for datasets, so aim to include probable search words in the description.</dd>
 <dt><a href="https://www.w3.org/TR/vocab-dcat-3/#Property:dataset_distribution">dcat:distribution</a></dt>
-<dd>URL of a <code>dcat:Distribution</code> for a downloadable file, see below for mandatory fields. Multiple Distributions may be defined for the same data in different formats, taking into account any requirements and restrictions for Scheme-conforming datasets.</dd>
+<dd>URL of a <code>dcat:Distribution</code> for a downloadable file, see below for mandatory fields. Multiple <code>dcat:Distribution</code> entries may be defined for the same data in different formats, taking into account any requirements and restrictions for Scheme-conforming datasets.</dd>
 </dl>
 <p>The following fields are mandatory when the dataset is part of a series of periodic datasets:</p>
 <dl>
@@ -609,7 +608,7 @@ If the sensitivity class definition is marked as requiring the end user's Permis
 <p>The following fields are optional:</p>
 <dl>
 <dt><a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_version">dcat:version</a></dt>
-<dd>Version number of the dataset, this should preferably follow <a href="https://semver.org/">semantic versioning</a> if possible. Versioning of the dataset should be used to indicate changes in delivery mechanism, or in representation, rather than for changes in the underlying data. For example, this should not be used to differentiate between datasets from different years, rather it should be used to indicate whether a potential data consumer might need to alter how it processes any returned data. </dd>
+<dd>Version number of the dataset, this should preferably follow <a href="https://semver.org/">semantic versioning</a>. Versioning of the dataset should be used to indicate changes in delivery mechanism, or in representation, rather than to reflect changes in the underlying dataset content. For example, this should not be used to differentiate between datasets from different years, rather it should be used to indicate whether a potential data consumer might need to alter how it processes any returned data. </dd>
 <dt><a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_version_notes">dcat:versionNotes</a></dt>
 <dd>Notes used to explain any changes to this version.</dd>
 </dl>
@@ -619,7 +618,7 @@ If the sensitivity class definition is marked as requiring the end user's Permis
 <dl>
 <dt><a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_download_url">dcat:downloadURL</a></dt>
 <dd>A stable URL for download of the dataset, subject to access controls specified in the Dataset object. Liveness of the server will be tested by making a HEAD request to this URL.</dd>
-<dt><a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_media_type">dcat:media_type</a></dt>
+<dt><a href="https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_media_type">dcat:mediaType</a></dt>
 <dd>The MIME type of the download file.</dd>
 </dl>
 <p>The following fields are optional, but encouraged. They are mandatory for higher assurance and Scheme-conforming data sources.</p>
@@ -631,17 +630,12 @@ If the sensitivity class definition is marked as requiring the end user's Permis
 <code>text/csv</code> by <a href="https://www.w3.org/ns/csvw">CSVW</a> files.</dd>
 </dl>
 <h3 id="additional-metadata-for-datasets-and-data-services">Additional metadata for Datasets and Data Services</h3>
-<p>The fields marked as mandatory are the minimum needed to ensure that a data source can be used by the Trust Framework participants, and is visible in <a href="https://opennetzero.org">the Open Net Zero</a> search system. There 
-are, however, other properties of a dataset which may be useful to potential data consumers. Where such information can 
-be provided, it should be provided in as standard a form as possible - in practice this translates to making use of 
-existing ontologies such as DCAT and Dublin Core by preference, then shared, industry-specific, ontologies, and only 
-using internal or custom representation when absolutely necessary.</p>
-<p>Of particular note, and something we would like to ultimately expose in the Open Net Zero search interface, is information about the geospatial and temporal ranges of entries within a dataset. This is a complex subject, but one that has already been handled by DCAT. If you need to express this kind of information, please do so according to the standards laid out 
-<a href="https://www.w3.org/TR/vocab-dcat-2/#time-and-space">here</a>.</p>
+<p>The fields marked as mandatory are the minimum needed to ensure that a data source can be used by the Trust Framework participants, and is visible in <a href="https://opennetzero.org">the Open Net Zero</a> search system. There are, however, other properties of a dataset which may be useful to potential data consumers. Where such information can be provided, it should be provided in as standard a form as possible -- in practice this translates to making use of existing ontologies such as DCAT and Dublin Core by preference, then shared, industry-specific, ontologies, and only using internal or custom representation when absolutely necessary.</p>
+<p>Of particular note, and something we would like to ultimately expose in the Open Net Zero search interface, is information about the geospatial and temporal ranges of entries within a dataset. This is a complex subject, but one that has already been handled by DCAT. If you need to express this kind of information, please do so according to the standards laid out <a href="https://www.w3.org/TR/vocab-dcat-2/#time-and-space">here</a>.</p>
 <p>We encourage use of the <code>dcat:keyword</code> list for datasets. These translate to “tags” in Open Net Zero's web interface and are useful to group datasets around specific topics.</p>
 <h2 id="scheme-catalog-requirements">Scheme Catalog Requirements</h2>
-<p>A Scheme-conforming data source meets a common standard across a Scheme. These standards are followed by the Data Providers so that the same kind of data is published across the Scheme using the same APIs, formats and meaning of data. A Scheme Catalog Requirements Document specifies the metadata that a DCAT Catalog entry must contain for it to be Scheme-conforming, and which roles may publish a conforming data source. </p>
-<p>It is an RDF document published in the Registry, and the metadata links to machine readable License, API and format specifications which are also published in the Registry.</p>
+<p>A Scheme-conforming data source meets a common standard across a Scheme. These standards are followed by the Data Providers so that the same kind of data is published across the Scheme using the same APIs, formats and meaning of data. A Scheme Catalog Requirements Document specifies the metadata that a DCAT Catalog entry must contain for it to be Scheme-conforming, and specifies which roles may publish a conforming data source. </p>
+<p>It is an RDF document published in the Registry, and the metadata links to machine-readable License, API and format specifications which are also published in the Registry.</p>
 <h3 id="example">Example</h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; . 
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
@@ -673,14 +667,14 @@ using internal or custom representation when absolutely necessary.</p>
 <dt><code>ib1:requiredType</code></dt>
 <dd>The type of the DCAT Catalog entry which describes this data source.</dd>
 <dt><code>ib1:requiredMetadata</code></dt>
-<dd>A bnode which contains the metadata required to be Scheme-conforming. This bnode may contain any fields and metadata, and a conforming catalogue entry must contain it all, subject to the term modifiers.</dd>
+<dd>A bnode which contains the metadata required to be Scheme-conforming. This bnode may contain any fields and metadata, and a conforming catalog entry must contain it all, subject to the term modifiers.</dd>
 </dl>
 <p>Access control rules must be defined for publishing conforming datasets and for accessing those datasets, for example, with the standard <a href="../../role-based-access-control/1.0/">Role-based Access Control</a> specification.</p>
 <h4 id="term-modifiers">Term modifiers</h4>
 <p>The requirements for terms in the <code>ib1:requiredMetadata</code> are modified by terms in the top level object.</p>
 <dl>
 <dt>(no modifier)</dt>
-<dd>All the values in the requirements must be included for a term which does not have a modifier. No additional values for that term are allowed.</dd>
+<dd>If a term does not have a modifier, all required values for that term must be present, and no additional values are permitted.</dd>
 <dt><code>ib1:requireAllAndAllowAdditional &lt;term&gt;</code></dt>
 <dd>All the values in the requirements must be included for this term, but additional values are allowed.</dd>
 <dt><code>ib1:requireAnyOneOf &lt;term&gt;</code></dt>
@@ -706,7 +700,7 @@ using internal or custom representation when absolutely necessary.</p>
 </span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    ib1:heartbeatDescription &lt;https://registry.core.trust.ib1.org/api/heartbeat-simple/1.0&gt; ;
 </span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    dcat:endpointURL &lt;https://grid03.api.example.com/generation-voltage/v0&gt; ;
 </span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    ib1:trustFramework &lt;https://registry.core.trust.ib1.org/trust-framework&gt; ;
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    ib1:scheme &lt;https://registry.core.trust.ib1.org/scheme/electricty&gt; ;
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    ib1:scheme &lt;https://registry.core.trust.ib1.org/scheme/electricity&gt; ;
 </span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    ib1:datasetAssurance ib1:AssuranceLevel1 ;
 </span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    ib1:sensitivityClass ib1:IB1-SA ;
 </span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    ib1:roleRequiredToAccess &lt;https://registry.core.trust.ib1.org/scheme/electricity/role/network-operator&gt; ;
@@ -732,7 +726,7 @@ using internal or custom representation when absolutely necessary.</p>
 </span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>        &quot;electricity&quot;@en,
 </span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>        &quot;retrofit&quot;@en ;
 </span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>    ib1:trustFramework &lt;https://registry.core.trust.ib1.org/trust-framework&gt; ;
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>    ib1:scheme &lt;https://registry.core.trust.ib1.org/scheme/electricty&gt; ;
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>    ib1:scheme &lt;https://registry.core.trust.ib1.org/scheme/electricity&gt; ;
 </span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>    ib1:datasetAssurance ib1:AssuranceLevel1 ;
 </span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>    ib1:sensitivityClass ib1:IB1-SA ;
 </span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>    ib1:roleRequiredToAccess &lt;https://registry.core.trust.ib1.org/scheme/electricity/role/network-operator&gt; ;

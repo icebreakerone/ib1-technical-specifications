@@ -377,18 +377,19 @@
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>  rdf:     http://www.w3.org/1999/02/22-rdf-syntax-ns#
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  rdfs:    http://www.w3.org/2000/01/rdf-schema#
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  ib1:     https://registry.trust.ib1.org/ns/1.0#
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  xsd:     http://www.w3.org/2001/XMLSchema#
 </span></code></pre></div>
 <h2 id="versioned-and-unversioned-resources">Versioned and unversioned resources</h2>
 <p>Not all resources in the Registry will be versioned. Resources which act as enumerations should not be versioned, as their URLs will be embedded into systems across the ecosystem, and cannot be easily changed. The Scheme must manage these <em>unversioned resources</em> in a backwards compatible manner.</p>
 <p>All other RDF resources are <em>versioned resources</em> and include extra terms to manage change over time.</p>
 <h2 id="structure">Structure</h2>
-<p>While the terms in Registry resources which describe the resource are immutable, Registry versioning adds additional terms which change over through the lifecycle of a resource.</p>
+<p>While the terms in Registry resources which describe the resource are immutable, Registry versioning adds additional terms which change over the lifecycle of a resource.</p>
 <p>A <em>Registry Change</em> resource describes an atomic change to one or more resources in the Registry. It provides links to documents and other resources which describe the changes and the governance process. All Versioned resources link to the Registry Changes which affect them.</p>
 <p>A versioned resource links to the previous and current versions to form a chain of versions.</p>
-<p>To describe when a version of a versioned resources may be used, dates for availability for use, deprecation, and prohibition of use are added. When these dates are added or changed, an additional link to a Registry Change resource is added.</p>
+<p>To describe when a version of a versioned resource may be used, dates for availability for use, deprecation, and prohibition of use are added. When these dates are added or changed, an additional link to a Registry Change resource is added.</p>
 <h2 id="version-identifiers">Version identifiers</h2>
 <p>Versioned resources include a version number in the URL and a version number term. This should be treated as an opaque identifier, but it is recommended that this identifier should be based on ISO8601 dates.</p>
-<p>This also applies to text documents and OpenAPI definitions. When a file changes, the resources which refer to it also have a new version. However, so that downloaded files have a meaningful filename, the filename is of the format <code>&lt;filename&gt;</code>@<code>&lt;version&gt;</code>.<code>&lt;extension&gt;</code>#<code>&lt;digest&gt;</code>. The digest is an SHA-256 digest, to include a reference to the contents of the file in the RDF resources.</p>
+<p>This also applies to text documents and OpenAPI definitions. When a file changes, the resources which refer to it also have a new version. However, to ensure downloaded files have a meaningful filename, the filename is of the format <code>&lt;filename&gt;</code>@<code>&lt;version&gt;</code>.<code>&lt;extension&gt;</code>#<code>&lt;digest&gt;</code>. The digest is an SHA-256 digest, to include a reference to the contents of the file in the RDF resources.</p>
 <h2 id="versioning-rdf-terms">Versioning RDF terms</h2>
 <dl>
 <dt><code>ib1:version</code> (string)</dt>
@@ -408,7 +409,7 @@
 </dl>
 <h2 id="ib1registrychange-resource">ib1:RegistryChange resource</h2>
 <p>To document the changes to the Registry and identify all resources which were changed in an update, all resources link to one or more <code>ib1:RegistryChange</code> objects.</p>
-<p>Each change may only include changes from one scheme (or be schemeless, making changes at the Trust Framework level).</p>
+<p>Each change may only include changes from one scheme (or be scheme-less, making changes at the Trust Framework level).</p>
 <p><code>ib1:RegistryChange</code> resources have terms:</p>
 <dl>
 <dt><code>rdfs:label</code></dt>
@@ -420,11 +421,11 @@
 <dt><code>ib1:scheme</code></dt>
 <dd>URL of the Scheme, if applicable.</dd>
 <dt><code>dcterms:references</code></dt>
-<dd>URLs of documents which show evidence of the governance process. Where possible, these document should be stored in the Registry.</dd>
+<dd>URLs of documents which show evidence of the governance process. Where possible, these documents should be stored in the Registry.</dd>
 <dt><code>ib1:registrySnapshot</code></dt>
 <dd>URL of file which represents the state of the Registry at the point this change was made.</dd>
 <dt><code>ib1:registrySnapshotSignature</code></dt>
-<dd>Detached signature of the snapshot file, using a Directory issued certificate. Format as PEM encoded signature with PEM encoded certificates appended. The snapshot file won’t contain this signature, but the next one will. Snapshots are chained and entries can’t be added or removed.</dd>
+<dd>Detached signature of the snapshot file, using a Directory issued certificate, as a PEM encoded signature with PEM encoded certificates appended. The snapshot file itself won’t contain this signature, but the following snapshot will. Snapshots are chained and entries can’t be added or removed.</dd>
 </dl>
 
 

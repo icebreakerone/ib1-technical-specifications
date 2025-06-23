@@ -370,7 +370,7 @@
 
 
 <h1 id="open-data-publication">Open Data Publication</h1>
-<p>This specification defines how Data Providers publish Open Data within a Scheme using the standard metadata format described in the <a href="../../data-catalog-records/1.0/">Data Catalog Records</a> specification, and the requirement for an enforcement policy. It ensures that published datasets are openly licensed, publicly accessible, and appropriately described for discovery in the catalog.</p>
+<p>This specification defines how Data Providers publish Open Data within a Scheme using the standard metadata format described in the <a href="../../data-catalog-records/1.0/">Data Catalog Records</a> specification, and the requirement for an Scheme level enforcement policy. It ensures that published datasets are openly licensed, publicly accessible, and described with sufficient metadata for inclusion and discovery within the catalog.</p>
 <p><em>Note: This document uses US English. To align with W3C and other prevalent standards, IB1 uses US English in its technical specifications and technical documentation.</em></p>
 <h2 id="rdf-prefixes">RDF Prefixes</h2>
 <p>This specification uses the following prefixes:</p>
@@ -386,7 +386,7 @@
 </ul>
 <h2 id="licensing">Licensing</h2>
 <p>All datasets published under this specification must be licensed using an open license which meets the <a href="https://opendefinition.org/od/2.1/en/">Open Definition 2.1</a>.</p>
-<p>The license must be declared in the <code>dcterms:license</code> field, using the generally agreed URL for the license.</p>
+<p>The license must be declared in the <code>dcterms:license</code> field, using the standard, widely recognized URL associated with that license.</p>
 <h2 id="mandatory-metadata-fields">Mandatory Metadata Fields</h2>
 <p>The following fields must be included in each DCAT resource representing a dataset:</p>
 <dl>
@@ -397,7 +397,7 @@
 <dt><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#conformsTo">dcterms:conformsTo</a></dt>
 <dd>If the dataset conforms to a Scheme standard, the URL of the Scheme Catalog Requirements Document. Inclusion of this field may impose additional metadata requirements.</dd>
 <dt><a href="https://registry.trust.ib1.org/ns/1.0#dataSchema">ib1:dataSchema</a></dt>
-<dd>A URL pointing to a schema that describes the structure of the dataset (e.g., JSON Schema, XSD, or CSVW), unless it is commerically impractical to provide a schema. If the entry has a <code>dcterms:confirmsTo</code> value and this refers to a Scheme Catalog Requirements Document which specifies a schema, the value of this term must be the schema required by the Scheme standard.</dd>
+<dd>A URL pointing to a schema that describes the structure of the dataset (e.g., JSON Schema, XSD, or CSVW), unless it is commercially impractical to provide a schema. If the entry has a <code>dcterms:confirmsTo</code> value and this refers to a Scheme Catalog Requirements Document which specifies a schema, the value of this term must match the schema required by the Scheme standard.</dd>
 <dt><a href="https://registry.trust.ib1.org/ns/1.0#sensitivityClass">ib1:sensitivityClass</a></dt>
 <dd>Must be set to exactly <code>https://registry.trust.ib1.org/sensitivity-class/IB1-O</code>, indicating Open Data according to the <a href="../../generic-sensitivity-classes/1.0/">Generic Sensitivity Classes</a> specification.</dd>
 <dt><a href="https://registry.trust.ib1.org/ns/1.0#trustFramework">ib1:trustFramework</a></dt>

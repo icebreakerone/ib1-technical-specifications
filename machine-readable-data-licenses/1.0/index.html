@@ -343,10 +343,11 @@
 
 
 <h1 id="machine-readable-data-licenses">Machine-Readable Data Licenses</h1>
-<p>The Registry contains the text of data licenses as machine-readable RDF documents. This approach differs from referring to a license with a unique identifier, or a machine-readable interpretations of a license, as the RDF document is the actual license used in a legal agreement.</p>
+<p>The Registry contains the text of data licenses as machine-readable RDF documents. This approach differs from referring to a license using a unique identifier or providing a machine-readable summary or interpretation of a license. In this specification, the RDF document itself constitutes the legal license used in agreements.</p>
 <p>To execute a license, the Registry URL is included in a digitally signed data structure passed between Members.</p>
-<p>This specification is an intermediate step towards fully machine executable licenses. It provides a useful step towards the final goal, while being acceptable to corporate legal departments.</p>
-<p>Once published in the Registry, the license and linked files are immutable, apart from metadata needed for versioning which does not change the meaning of the license.</p>
+<p>This specification is an intermediate step towards fully machine executable licenses. It provides meaningful progress toward the final goal while remaining acceptable to corporate legal departments.</p>
+<p>Once published in the Registry, the license and any linked files are immutable. However, the availability and lifecycle status of a license (such as when it becomes available, deprecated, or prohibited) are managed through metadata defined by the Scheme's versioning approach. This allows a license to be deprecated or marked as prohibited without altering its content, ensuring that references to previously issued licenses remain valid and auditable.</p>
+<p>The specific versioning approach, including the use of availability or deprecation dates, is described in related specifications but is not a formal dependency of this document.</p>
 <p><em>Note: This document uses US English. To align with W3C and other prevalent standards, IB1 uses US English in its technical specifications and technical documentation.</em></p>
 <h2 id="rdf-prefixes">RDF Prefixes</h2>
 <p>This specification uses the following prefixes:</p>
@@ -355,18 +356,18 @@
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  ib1:     https://registry.trust.ib1.org/ns/1.0#
 </span></code></pre></div>
 <h2 id="license-rdf-class">License RDF class</h2>
-<p>The License RDF document must have an <code>rdf:type</code> of <code>ib1:License</code>.</p>
+<p>The RDF document representing the license must include an <code>rdf:type</code> of <code>ib1:License</code>.</p>
 <h2 id="license-rdf-terms">License RDF terms</h2>
 <p>In addition to terms which describe metadata for the Registry, Trust Framework and Scheme, the license contains terms which form the terms of the legal agreement.</p>
 <dl>
 <dt><code>rdfs:label</code></dt>
 <dd>The name of the license as a short symbol, typically included in the URL of the license.</dd>
 <dt><code>rdfs:comment</code></dt>
-<dd>The full human readable name of the license.</dd>
+<dd>The full human-readable name of the license.</dd>
 <dt><code>ib1:licenseTerms</code></dt>
-<dd>The URL of a text document in the Registry which contains the legal text of the license. This text is the "glue" which turns the terms in the RDF document into a legally valid license. It refers to the terms in this RDF document to form the license. The document must be immutable once added to the Registry.</dd>
+<dd>The URL of a text document in the Registry which contains the legal text of the license. This text document serves as the legal foundation, referencing the terms defined in the RDF document to create a legally valid license agreement. It refers to the terms in this RDF document to form the complete license. The document must be immutable once added to the Registry.</dd>
 <dt><code>ib1:licenseDuration</code></dt>
-<dd>If referred to in the <code>ib1:licenseTerms</code>, the duration that the license is in force, as a structured string with the format <code>"&lt;count&gt; &lt;unit&gt;"</code>. <code>&lt;count&gt;</code> is an integer expressed as a string, and <code>&lt;unit&gt;</code> is one of <code>day</code>, <code>days</code>, <code>month</code>, <code>months</code>, <code>year</code>, <code>years</code>.</dd>
+<dd>If referred to in the <code>ib1:licenseTerms</code>, the duration that the license is in force, as a literal string with the structured format <code>"&lt;count&gt; &lt;unit&gt;"</code>. <code>&lt;count&gt;</code> is an integer expressed as a string, and <code>&lt;unit&gt;</code> is one of <code>day</code>, <code>days</code>, <code>month</code>, <code>months</code>, <code>year</code>, <code>years</code>.</dd>
 <dt><code>ib1:permittedUse</code></dt>
 <dd>If referred to in the <code>ib1:licenseTerms</code>, zero or more terms which describe the permitted use of the licensed data. Each standalone permitted use must be in a separate term.</dd>
 <dt><code>ib1:additionalCondition</code></dt>

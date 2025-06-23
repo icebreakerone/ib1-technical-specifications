@@ -382,16 +382,15 @@
 </ul>
 <h2 id="metadata">Metadata</h2>
 <p>Each dataset must include an <code>ib1:datasetAssurance</code> term.</p>
-<p>The value of this term must be a URL identifying a dataset assurance level defined in a specification adopted by the Scheme. Where the Scheme adopts <a href="../../generic-dataset-assurance-levels/1.0/">Generic Dataset Assurance Levels</a>, the value must be one of the defined URLs in that specification.</p>
-<p>The requirements associated with the selected assurance level must be met.</p>
+<p>The value of this term must be a URL identifying a dataset assurance level defined in a specification adopted by the Scheme. Where the Scheme adopts <a href="../../generic-dataset-assurance-levels/1.0/">Generic Dataset Assurance Levels</a>, the value must be one of the URLs defined in that specification.</p>
+<p>The dataset must comply with all requirements defined by the selected assurance level.</p>
 <p>If this field is not present, the dataset is not considered assured. The handling of unassured open datasets is outside the scope of this specification.</p>
 <h2 id="license-validation">License Validation</h2>
-<p>Each Scheme using this specification must publish a machine readable Open Data Allowed Licenses policy using an <code>ib1:Policy</code> resource in the Registry.</p>
+<p>Each Scheme using this specification must publish a machine-readable Open Data Allowed Licenses policy using an <code>ib1:Policy</code> resource in the Registry.</p>
 <p>This policy must have:</p>
 <ul>
 <li>
-<p><code>ib1:policyPurpose</code><br />
-<code>https://registry.trust.ib1.org/assured-open-data/policy-purpose/AllowedLicenses</code></p>
+<p>A <code>ib1:policyPurpose</code> of <code>https://registry.trust.ib1.org/assured-open-data/policy-purpose/AllowedLicenses</code></p>
 </li>
 <li>
 <p>One or more <code>ib1:allowedLicense</code> fields, each containing the URL of an approved license.</p>

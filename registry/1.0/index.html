@@ -502,8 +502,8 @@
 
 
 <h1 id="registry-structure">Registry Structure</h1>
-<p>The Registry is the machine-readable description of the Trust Framework and the Schemes within it as a linked set of RDF Resources describing the component parts. It describes the rules and the technical standards that are used to exchange data between participants.</p>
-<p>These RDF resources are made available using three formats, RDF/XML, Turtle, and JSON-LD, along with a human readable interpretation. Each resource has a URL that is the unique identifier, and if visited in a web browser, will show the human readable interpretation of what the resource represents.</p>
+<p>The Registry provides a machine-readable, linked RDF description of the Trust Framework and its Schemes. It defines the technical standards, roles, rules, and specifications required to exchange data between participants.</p>
+<p>The Registry RDF resources are made available using four formats: RDF/XML; Turtle; JSON-LD; and a human-readable version of the resources. Each resource within the Registry has a URL that is the unique identifier for that resource, and if the URL is viewed in a web browser, it will show the human-readable interpretation of what the resource represents.</p>
 <p>The resource URLs are embedded in the data, metadata, and audit records. To preserve the meaning of these records, once created, a Scheme should adopt a method of versioning resources.</p>
 <h2 id="rdf-prefixes">RDF Prefixes</h2>
 <p>This specification uses the following prefixes:</p>
@@ -518,7 +518,7 @@
 <dt><code>rdfs:label</code></dt>
 <dd>The abbreviated name or acronym of the Trust Framework, used as a symbol to identify the Trust Framework in URL paths and hostnames.</dd>
 <dt><code>rdfs:comment</code></dt>
-<dd>The full human readable name of the Trust Framework.</dd>
+<dd>The full human-readable name of the Trust Framework.</dd>
 </dl>
 <h3 id="ib1scheme">ib1:Scheme</h3>
 <p>An <code>ib1:Scheme</code> resource describes a Scheme within a Trust Framework.</p>
@@ -526,7 +526,7 @@
 <dt><code>rdfs:label</code></dt>
 <dd>The abbreviated name or acronym of the Scheme, used as a symbol to identify the Scheme in URL paths.</dd>
 <dt><code>rdfs:comment</code></dt>
-<dd>The full human readable name of the Scheme.</dd>
+<dd>The full human-readable name of the Scheme.</dd>
 <dt><code>ib1:trustFramework</code></dt>
 <dd>The URL of the Trust Framework to which this Scheme belongs.</dd>
 </dl>
@@ -537,7 +537,7 @@
 <dt><code>rdfs:label</code></dt>
 <dd>A short identifier for the specification, typically used in the path of the resource URL.</dd>
 <dt><code>rdfs:comment</code></dt>
-<dd>A human readable description of the specification and its purpose.</dd>
+<dd>A human-readable description of the specification and its purpose.</dd>
 <dt><code>ib1:trustFramework</code></dt>
 <dd>The URL of the Trust Framework which governs this specification.</dd>
 <dt><code>ib1:scheme</code></dt>
@@ -547,12 +547,12 @@
 </dl>
 <h3 id="ib1technicalprofile">ib1:TechnicalProfile</h3>
 <p>An <code>ib1:TechnicalProfile</code> lists the technical specifications that are used by a Trust Framework or Scheme.</p>
-<p>As Schemes are generally interoperable, the Trust Framework will specify a Technical Profile, and each Scheme's Technical Profile will generally be a superset of the Trust Framework's Technical Profile.</p>
+<p>As Schemes are intended to be generally interoperable, the Trust Framework will specify a Technical Profile, and each Scheme's Technical Profile will generally be a superset of the Trust Framework's Technical Profile.</p>
 <dl>
 <dt><code>rdfs:label</code></dt>
 <dd>An abbreviated name for the Technical Profile.</dd>
 <dt><code>rdfs:comment</code></dt>
-<dd>The full human readable name of the Technical Profile.</dd>
+<dd>The full human-readable name of the Technical Profile.</dd>
 <dt><code>ib1:trustFramework</code></dt>
 <dd>The URL of the Trust Framework.</dd>
 <dt><code>ib1:Scheme</code></dt>
@@ -583,7 +583,7 @@
 <dt><code>rdfs:label</code></dt>
 <dd>A short identifier for the resource, typically used in the path of the resource URL.</dd>
 <dt><code>rdfs:comment</code></dt>
-<dd>A human readable description of the resource.</dd>
+<dd>A human-readable description of the resource.</dd>
 <dt><code>ib1:trustFramework</code></dt>
 <dd>The URL of the Trust Framework which governs this resource.</dd>
 <dt><code>ib1:scheme</code></dt>
@@ -593,13 +593,13 @@
 <p>Scheme description resources describe the elements within that Scheme.</p>
 <p>All scheme description resources use the common terms.</p>
 <h3 id="ib1role">ib1:Role</h3>
-<p>An <code>ib1:Role</code> identifies a member's Role within the Scheme.</p>
+<p>An <code>ib1:Role</code> identifies a Role within the Scheme that can be assigned to Scheme members.</p>
 <p>As the URL is used to identify this Role in long lived data structures, any versioning scheme must not change the URL.</p>
 <h3 id="ib1agreement">ib1:Agreement</h3>
 <p>An <code>ib1:Agreement</code> represents a legal agreement which may be executed by Scheme members. Execution is recorded in the Directory.</p>
 <dl>
 <dt><code>ib1:agreementText</code></dt>
-<dd>The URL of a human readable document with the text of the agreement. The document should be managed by the Registry publication process.</dd>
+<dd>The URL of a human-readable document with the text of the agreement. The document should be managed by the Registry publication process.</dd>
 </dl>
 <h3 id="ib1policy">ib1:Policy</h3>
 <p>An <code>ib1:Policy</code> represents a policy which the Scheme members must follow. All Policies in the Registry apply to all members of the Scheme.</p>
@@ -613,7 +613,7 @@
 <dt><code>ib1:policyPurpose</code></dt>
 <dd>A Registry URL that identifies the intended purpose or required role of the policy within the Scheme or Trust Framework. This value is used to enable unambiguous identification of a specific policy when referenced by external specifications, rules, or technical profiles. The URL MUST refer to an <code>ib1:PolicyPurpose</code> resource published in a Registry that defines the policy purpose.</dd>
 <dt><code>ib1:policyText</code></dt>
-<dd>For human-readable policies, the URL of a human readable document with the text of the policy. The document should be managed by the Registry publication process.</dd>
+<dd>For human-readable policies, the URL of a human-readable document with the text of the policy. The document should be managed by the Registry publication process.</dd>
 </dl>
 <p>Additional terms may be defined by Specifications to express machine-readable rules or constraints for specific policy types.</p>
 <h2 id="scheme-identifiers">Scheme Identifiers</h2>
@@ -623,7 +623,7 @@
 <h3 id="ib1sourcetype">ib1:SourceType</h3>
 <p>An identifier to describe the type of source of data.</p>
 <h3 id="ib1datasetassurancelevel">ib1:DatasetAssuranceLevel</h3>
-<p>An identifier for an Assurance Level.</p>
+<p>A URL identifier representing a defined Dataset Assurance Level.</p>
 <h3 id="ib1sensitivityclassrequirement">ib1:SensitivityClassRequirement</h3>
 <p>An identifier for a technical requirement for data within a given sensitivity class. Where possible, Schemes should use the identifiers defined in the <code>ib1:</code> namespace.</p>
 <h3 id="ib1sensitivityclass">ib1:SensitivityClass</h3>

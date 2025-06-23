@@ -374,7 +374,7 @@
 </ul>
 <p><em>Note: This document uses US English. To align with W3C and other prevalent standards, IB1 uses US English in its technical specifications and technical documentation.</em></p>
 <h2 id="permission-record-properties">Permission Record properties</h2>
-<p>All specified fields except <code>permissionRevoked</code> MUST be included.</p>
+<p>All specified fields except <code>revoked</code> MUST be included.</p>
 <p>Date and time fields are ISO8601 dates with '<code>Z</code>' denoting UTC.</p>
 <ul>
 <li><code>oauthIssuer</code> - the URL of the OAuth Issuer</li>
@@ -385,19 +385,19 @@
 <li><code>expires</code> - when the permission expires, and will need to be explicitly renewed by the end user.</li>
 <li><code>evidence</code> - the <a href="#evidence-urls">Evidence URL</a> which may be used by the user to see details of how permission was granted.</li>
 <li><code>revoked</code> - when permission was revoked by the end user. This field must not be present if the permission has not been revoked. To avoid issues with variations in server time between systems, the presence of a timestamp for this field should be taken to mean that permission has been revoked</li>
-<li><code>dataAvailableFrom</code> - the earliest date for which historical data will be available through the API. The client may not infer anything from this date, for example, age of the end user's account or whether data is available. This is provider and data source dependent, and could be:<ul>
+<li><code>dataAvailableFrom</code> - the earliest date for which historical data will be available through the API. The client must not infer additional information from this date, such as the age of the end user's account or whether data exists for that period. This is provider and data source dependent, and could be:<ul>
 <li>The date when permission was first provided.</li>
 <li>The date the end user's account was opened at the provider.</li>
 <li>The date the end user first occupied the premises where a meter is installed.</li>
 </ul>
 </li>
 <li><code>tokenIssuedAt</code> - when the token was issued. (Several refresh tokens will be issued during the lifetime of the permission.)</li>
-<li><code>tokenExpires</code> - when the token will expire, which is no later than permissionExpires  </li>
+<li><code>tokenExpires</code> - the token expiration date, which must not be later than the <code>expires</code> value of the permission  </li>
 </ul>
-<p>This specification may be used with additional specifications which extend this API to provide structured data about the permission log and evidence that the user has authority to give that permission. This data is highly variable and dependent on the market, the type of end user, the data source, and the data provider. When a Trust Framework only uses this base specification, this information is only available in a human readable form as a web page at the Evidence URL.</p>
+<p>This specification may be used with additional specifications which extend this API to provide structured data about the permission log and evidence that the user has authority to give that permission. This data is highly variable and dependent on the market, the type of end user, the data source, and the data provider. When a Trust Framework only uses this base specification, this information is only available in a human-readable form as a web page at the Evidence URL.</p>
 <h2 id="permission-endpoint">Permission Endpoint</h2>
 <p>OAuth Issuers provide an endpoint to retrieve a Permission Record. A client makes a <code>POST</code> request with a refresh token in the <code>token</code> parameter to this URL, which returns a JSON formatted response with the Permission Record in the <code>permission</code> property.</p>
-<p>Expired tokens can be used for at least 12 months after they expire or are revoked, so that applications can retrieve information about expired permissions.</p>
+<p>Refresh tokens may be used to retrieve Permission Records for at least 12 months after token expiration or revocation, allowing applications to access details of expired permissions.</p>
 <p>Access tokens must not be accepted.</p>
 <h2 id="permission-endpoint-discovery">Permission Endpoint discovery</h2>
 <p>A client discovers the URL of the Permission endpoint from the <code>ib1_permission_endpoint</code> field in the OAuth Issuer's Authorization Server Metadata.</p>
@@ -407,9 +407,9 @@
 <li>use https with a public CA</li>
 <li>do not require any authentication (other than the unguessable identifier in the URL)</li>
 <li>will present all the evidence, formatted as an HTML document capable of displaying in mobile portrait orientation with 320px width when the user clicks “show evidence”</li>
-<li>is not expected to display the content of documents or other information provided by the user to identify themselves, just the form of evidence used</li>
-<li>where data is provided by remote data collection from installed equipment (for example, energy Smart Meters), how the equipment ownership was established as well as what permission was given for data sharing</li>
-<li>will contain information about all previous grants of permission and renewals for this end user for the data consumer this URL was generated for, not just for the current token.</li>
+<li>is not required to display the contents of identity documents or similar materials provided by the user, only the type or form of evidence obtained</li>
+<li>where data is provided by remote data collection from installed equipment (for example, energy Smart Meters), how the equipment ownership was established, and what permission was granted for data sharing</li>
+<li>will contain information about all previous grants of permission and renewals for the specific data consumer associated with the URL, not just for the current token.</li>
 </ul>
 <p>If an Evidence URL is included in the <code>evidence</code> property of the record, the provider asserts that they have obtained permission from the end user and hold all the necessary evidence.</p>
 <h2 id="example-request-and-response">Example request and response</h2>

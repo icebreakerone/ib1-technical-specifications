@@ -395,10 +395,10 @@
 
 <h1 id="message-delivery-to-applications">Message Delivery to Applications</h1>
 <p>Applications registered in the Trust Framework's Directory may deliver messages to other Applications outside of data transfers.</p>
-<p>Messages are JSON data structures with a schema defined in the Registry. Each Application registers a Delivery URL in the Directory. Other Applications send messages with a <code>POST</code> request to this Delivery URL. Access control uses a x509 client certificate to identify the sender.</p>
+<p>Messages are JSON data structures with a schema defined in the Registry. Each Application registers a Delivery URL in the Directory. Other Applications send messages with a <code>POST</code> request to this Delivery URL. Access control uses a X.509 client certificate to identify the sender.</p>
 <h2 id="reliability">Reliability</h2>
-<p>Message delivery is intended to be on a reasonable best efforts basis, with no expectation to be 100% reliable.</p>
-<p>While failed message delivery must be retried a reasonable number of times, there is no requirement to persist messages in a database. If the server process is long-lived, in memory queuing for retry using a simple library is sufficient.</p>
+<p>Message delivery operates on a reasonable best-efforts basis, with no expectation of guaranteed delivery.</p>
+<p>While failed message delivery must be retried a reasonable number of times, there is no requirement to persist messages in a database or other durable storage. If the server process is long-lived, in memory queuing for retry using a simple library is sufficient.</p>
 <p>As a result:</p>
 <ul>
 <li>Schemes must agree an SLA for availability and message delivery reliability.</li>
@@ -413,7 +413,7 @@
 </li>
 </ul>
 <h2 id="message-format">Message format</h2>
-<p>Messages are a JSON data structure with properties:</p>
+<p>Messages are JSON objects with the following properties:</p>
 <dl>
 <dt><code>ib1:message</code></dt>
 <dd>A property, with the value of the URL of the Trust Framework, which identifies this structure as a message.</dd>
@@ -435,7 +435,7 @@
 <p>RDF documents describing the message format are fetched from the Registry by requesting the <code>subject</code> URL. The RDF document contains:</p>
 <dl>
 <dt><code>rdfs:comment</code></dt>
-<dd>The human readable name of this type of message.</dd>
+<dd>The human-readable name of this type of message.</dd>
 <dt><code>ib1:messageSchema</code></dt>
 <dd>The URL of a <a href="https://json-schema.org/">JSON Schema</a> which describes the format of the <code>body</code> property in the message.</dd>
 </dl>
@@ -462,10 +462,10 @@
 </li>
 </ul>
 <h2 id="identity-of-sender-and-recipient">Identity of sender and recipient</h2>
-<p>The identity of the sender is sent in the client x509 certificate used in the MTLS connection for the delivery HTTP request.</p>
+<p>The identity of the sender is sent in the client X.509 certificate used in the MTLS connection for the delivery HTTP request.</p>
 <p>The identity of the recipient is verified by confirming that the delivery URL has a server certificate, issued by the Directory, where the hostname matches the hostname of the URL in the Directory.</p>
 <p>Either the Application URL of the sender or the Roles of the sender may be used for access control.</p>
-<p>Some messages senders will not be naturally part of an Application, for example, OAuth Issuers. Another Application may be registered in the Directory for these components to avoid sharing certificates. This Application must have all the roles of the Applications which rely on this component.</p>
+<p>Some messages senders will not be naturally part of an Application, for example, OAuth Issuers. A separate Application may be registered in the Directory for these components to avoid sharing certificates between unrelated functions. This Application must have all the roles of the Applications which rely on this component.</p>
 <h2 id="advice-for-implementation">Advice for implementation</h2>
 <p>Sending implementations should:</p>
 <ul>
@@ -473,7 +473,7 @@
 <li>Verify the server certificate using a public CA for Directory URLs, and the Trust Framework private CA for the delivery URLs.</li>
 <li>When making HTTP requests, use a library which extends the HTTP client to implement retries with exponential backoff.</li>
 <li>To avoid repeatedly fetching information from the Directory, when fetching the Application RDF document from the Directory, use a library which extends the HTTP client to implement caching of responses according to the <code>Cache-Control</code> headers in the response.</li>
-<li>If the process which is sending messages is long-lived, the cache and the retry queues may be in memory, otherwise they must be serialised to persistent storage.</li>
+<li>If the process which is sending messages is long-lived, the cache and the retry queues may be in memory, otherwise they must be serialized to persistent storage.</li>
 <li>Log all actions and monitor SLAs.</li>
 </ul>
 <p>Receiving implementations should:</p>

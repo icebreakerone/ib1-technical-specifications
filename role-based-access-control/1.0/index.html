@@ -298,15 +298,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#changes-from-open-energy" class="md-nav__link">
-    <span class="md-ellipsis">
-      Changes from Open Energy
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#data-catalog-entries" class="md-nav__link">
     <span class="md-ellipsis">
       Data Catalog Entries
@@ -380,16 +371,13 @@
 <p>A <a href="../../data-catalog-records/1.0/">Data Catalog Entry</a> specifies one or more roles and a license. If a participant has any of the roles, they may access the data source under the specified license.</p>
 <p>Scheme-conforming data sources use <a href="../../data-catalog-records/1.0/#scheme-catalog-requirements">Scheme Catalog Requirements Resources</a> which specify the Access Rules for data sources which implement APIs agreed by the Scheme.</p>
 <p><em>Note: This document uses US English. To align with W3C and other prevalent standards, IB1 uses US English in its technical specifications and technical documentation.</em></p>
-<h2 id="changes-from-open-energy">Changes from Open Energy</h2>
-<p>This access control specification is a simplification of Open Energy's access control. Open Energy was designed for one-to-many data products, which required the flexibility for each data provider to describe the individual access requirements for each of their products. Data sharing in a Trust Framework is many-to-many, where the access requirements are set by a sector-wide governance process.</p>
-<p>This specification will be iterated as use cases emerge. The current expectation, reflected in this specification, is that the governance process will describe the minimum set of roles permitted to access data under a specific license, and the data provider may be allowed to expand this to additional roles.</p>
 <h2 id="data-catalog-entries">Data Catalog Entries</h2>
 <p>Data Catalog Entries specify the Roles and License with the terms:</p>
 <dl>
 <dt><code>ib1:roleRequiredToAccess</code></dt>
-<dd>The URL of an <code>ib1:Role</code> in the Registry which may access this data source subject to the License in the <code>dcterms:license</code> term. Where multiple roles are specified, a client must have at least one of the roles to access the dataset. Unless the data has a <code>ib1:sensitivityClass</code> which allows access without authentication, at least one Role must be specified.</dd>
+<dd>The URL of an <code>ib1:Role</code> in the Registry whose members may access this data source, subject to the License specified in the <code>dcterms:license</code> term. Where multiple roles are specified, a client must have at least one of the roles to access the dataset. Unless the data has an <code>ib1:sensitivityClass</code> which allows access without authentication, at least one Role must be specified.</dd>
 <dt><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#license">dcterms:license</a></dt>
-<dd>The URL of an <code>ib1:License</code>. All use of this data source is subject to this License.</dd>
+<dd>The URL of an <code>ib1:License</code>. All use of this data source is subject to the terms specified by this License.</dd>
 </dl>
 <h2 id="scheme-catalog-requirements">Scheme Catalog Requirements</h2>
 <p>Scheme Catalog Requirements resources specify the rules for a resource with the term:</p>
@@ -397,7 +385,7 @@
 <dt><code>ib1:roleRequiredToPublish</code></dt>
 <dd>The URL of the <code>ib1:Role</code> which is permitted to publish a Catalog entry conforming to this standard. If multiple Roles are specified, any of those Roles may publish a catalog entry.</dd>
 </dl>
-<p>In addition, the <code>ib1:RequiredMetadata</code> bnode will include <code>ib1:roleRequiredToAccess</code> and <code>dcterms:license</code> terms.</p>
+<p>In addition, the <code>ib1:RequiredMetadata</code> bnode will include <code>ib1:roleRequiredToAccess</code> and <code>dcterms:license</code> terms, specifying required access roles and license for conforming catalog entries.</p>
 <h2 id="examples">Examples</h2>
 <h3 id="data-catalog-entry">Data Catalog Entry</h3>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>&lt;https://data.example.com/supply-voltage/v0&gt;

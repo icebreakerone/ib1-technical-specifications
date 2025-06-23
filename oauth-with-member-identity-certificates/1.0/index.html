@@ -359,9 +359,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pushed-authorization-request" class="md-nav__link">
+  <a href="#pushed-authorization-request-par" class="md-nav__link">
     <span class="md-ellipsis">
-      Pushed Authorization Request
+      Pushed Authorization Request (PAR)
     </span>
   </a>
   
@@ -427,8 +427,8 @@
 
 
 <h1 id="oauth-with-member-identity-certificates">OAuth with Member Identity Certificates</h1>
-<p>The Trust Framework uses OAuth to authorise access to APIs which provide access to data that requires Permission from the end-user.</p>
-<p>All server-to-server communication is secured with mTLS using client certificates, where the client is identified by a URL in the client x509 certificate as the single URI type Subject Alternative Name.</p>
+<p>The Trust Framework uses OAuth to authorise APIs which provide access to data that requires Permission from the end-user.</p>
+<p>All server-to-server communication is secured with mTLS using client certificates. In the certificate, the client is identified by a URL in the client X.509 certificate as the single Subject Alternative Name of type URI.</p>
 <p><em>Note: This document uses US English. To align with W3C and other prevalent standards, IB1 uses US English in its technical specifications and technical documentation.</em></p>
 <h2 id="oauth-profile">OAuth Profile</h2>
 <p>The Trust Framework uses a FAPI 2 compliant profile within the <a href="https://openid.net/specs/fapi-security-profile-2_0-final.html">FAPI 2.0 Security Profile</a> specification.</p>
@@ -439,9 +439,9 @@
 <li>OAuth endpoints use the <code>tls_client_auth</code> method.</li>
 <li>PKCE is used with the S256 code challenge method.</li>
 <li>TLS 1.3 is required.</li>
-<li>The Registry License URL is used as the <code>scope</code>, which provides the necessary information for informed consent.</li>
-<li>The <code>client_id</code> is the Directory URL from the client x509 certificate, and must match the presented client certificate. The <code>client_secret</code> is not used.</li>
-<li>Tokens are bound to the Directory URL from the certificate (not the exact certificate) by requiring that the <code>client_id</code> matches the certificate.</li>
+<li>The Registry License URL is used as the <code>scope</code>, and provides the text which must be displayed to the end-user to give informed consent.</li>
+<li>The <code>client_id</code> is the Directory URL from the client X.509 certificate, and must match the presented client certificate. The <code>client_secret</code> is not used.</li>
+<li>Tokens are bound to the Directory URL from the certificate (rather than to the specific certificate instance) by requiring that the <code>client_id</code> matches the certificate.</li>
 </ul>
 <p>When this specification is used with another Trust Framework specification, these requirements may not be varied.</p>
 <h3 id="unused-options">Unused options</h3>
@@ -450,7 +450,7 @@
 <li>Dynamic Client Registration (the Directory issued certificate provides all client information)</li>
 <li>OpenID Connect (no end user identifier is passed to the clients)</li>
 <li>Rich Authorization Requests (the License URL requires no further authorization data)</li>
-<li>Access and refresh tokens need not be JWTs, as long as the tokens are bound to the URL of the client certificates.</li>
+<li>Access and refresh tokens are not required to be JWTs, as long as the tokens are bound to the URL in the client certificate.</li>
 <li>The additional <code>x-fapi-*</code> headers defined in the <a href="https://openid.bitbucket.io/fapi/fapi-2_0-implementation_advice.html">FAPI 2 implementation advice</a>, as better functionality is provided by other Trust Framework specifications.</li>
 </ul>
 <p>When this specification is used with another Trust Framework specification, these options may be used.</p>
@@ -491,7 +491,7 @@
 </span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="oauth-flow">OAuth Flow</h2>
-<h3 id="pushed-authorization-request">Pushed Authorization Request</h3>
+<h3 id="pushed-authorization-request-par">Pushed Authorization Request (PAR)</h3>
 <p>The Client starts the flow by making a Pushed Authorization Request to the <code>pushed_authorization_request_endpoint</code> URL using MTLS,</p>
 <ul>
 <li>requesting a <code>code</code> response,</li>
@@ -524,14 +524,14 @@
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>}
 </span></code></pre></div>
 <h3 id="redirection-of-user-agent-to-issuer-user-interface">Redirection of User Agent to Issuer user interface</h3>
-<p>The Client forms a URL using the <code>authorization_endpoint</code>, their Directory URL, and the <code>request_uri</code>, and redirect's the end user's User Agent to that URL:</p>
+<p>The Client forms a URL using the <code>authorization_endpoint</code>, their Directory URL, and the <code>request_uri</code>, and redirects the end user's User Agent to that URL:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>https://auth.example.org/accounts/authorization?
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  client_id=https%3A%2F%2Fdirectory.core.trust.ib1.org%2Fapplication%2F38328a78
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  &amp;request_uri=urn%3Aexample%3Abwc4JK-ESC0w8acc191e-Y1LTC2
 </span></code></pre></div>
-<p>This Issuer URL will use a public CA to present a certificate accepted by the end user's browser (even though the endpoint URL is included in the <code>mtls_endpoint_aliases</code> section).</p>
+<p>The Issuer URL uses a public CA to present a certificate trusted by the end user's browser, even though the same URL appears within the <code>mtls_endpoint_aliases</code> section.</p>
 <h3 id="redirection-of-user-agent-to-client-application">Redirection of User Agent to Client Application</h3>
-<p>After the OAuth Issuer has authenticated the end user, it will redirect the end user's User Agent back to the Client with the authorization code and <code>state</code> parameter from the PAR.</p>
+<p>After the OAuth Issuer has authenticated the end user, it will redirect the end user's User Agent back to the Client with the authorization code and <code>state</code> parameter from the Pushed Authorization Request.</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>https://app1.consumer.example.com/cb?code=Mo9iP1GkbP7P0Cut58JOH9SVHc
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  &amp;state=WFqUWTVvX49tM
 </span></code></pre></div>
@@ -555,7 +555,7 @@
 </span></code></pre></div>
 <p>The Issuer will respond with the access and refresh tokens.</p>
 <h3 id="use-of-access-and-refresh-tokens">Use of access and refresh tokens</h3>
-<p>Both the OAuth <code>token_endpoint</code> and the resource server must check that the URL in the MTLS client certificate matches the <code>client_id</code> of the token.</p>
+<p>Both the OAuth <code>token_endpoint</code> and the resource server must verify that the URL in the MTLS client certificate matches the <code>client_id</code> associated with the token.</p>
 
 
 
