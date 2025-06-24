@@ -74,7 +74,13 @@ div.list-with-identifiers-following + ul em {
   --md-typeset-color:                  #ffffff;
   --md-typeset-a-color:                #C8D4DE;
 
-  /* Code snippets */
-  --md-code-fg-color:                  #ffffff;
-  --md-code-bg-color:                  #5A7084;
+}
+
+body[data-md-color-scheme="ib1-dark"] code:not(.md-code__content) {
+  color: #C8D4DE;
+  background-color: #1A3844;
+}
+body[data-md-color-scheme="ib1-dark"] code.md-code__content {
+  filter: invert(100%);
+  background-color: #fff;
 }
