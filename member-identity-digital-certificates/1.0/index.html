@@ -298,6 +298,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#client-certificates" class="md-nav__link">
     <span class="md-ellipsis">
       Client certificates
@@ -364,39 +373,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#server-certificates" class="md-nav__link">
-    <span class="md-ellipsis">
-      Server certificates
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Server certificates">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#obtaining-a-server-certificate" class="md-nav__link">
-    <span class="md-ellipsis">
-      Obtaining a server certificate
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verifying-a-server-certificate" class="md-nav__link">
-    <span class="md-ellipsis">
-      Verifying a server certificate
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#ib1-x509-extensions" class="md-nav__link">
     <span class="md-ellipsis">
       IB1 X.509 extensions
@@ -443,9 +419,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#summary-of-required-extensions-for-member-certificates" class="md-nav__link">
+  <a href="#summary-of-required-extensions-for-client-and-signing-certificates" class="md-nav__link">
     <span class="md-ellipsis">
-      Summary of required extensions for Member certificates
+      Summary of required extensions for Client and Signing certificates
     </span>
   </a>
   
@@ -475,16 +451,16 @@
 
 
 <h1 id="member-identity-digital-certificates">Member Identity Digital Certificates</h1>
-<p>The Directory issues X.509 digital certificates to Members for:</p>
+<p>The Directory issues X.509 digital certificates to Members that assert Member identity for:</p>
 <ul>
 <li>Clients: to prove identity when connecting to a server</li>
 <li>Signing: to sign data at rest, for example, Provenance records</li>
-<li>Servers: to verify a server is run by a Member of the Trust Framework</li>
 </ul>
-<p>Client and Signing certificates include the Directory URL of an Application in the Subject of the certificate. Applications identify a use of data in the Trust Framework and the Roles the Member is using. The Member's Directory URL and the Roles in use are included as extensions in the certificates.</p>
-<p>Client and Signing certificates are long-lived, obtained by logging into the Directory, and a Certificate Revocation List must be checked by servers and when signatures are checked.</p>
-<p>Server certificates only include the DNS name of the server. The Member who operates them is implied by the Directory, as Clients discover services using Directory and Data Catalog entries which include the Member's identity.</p>
-<p>Server certificates are short-lived and automatically renewed.</p>
+<p>These are collectively referred to as Member certificates. Certificates for server authentication are specified separately.</p>
+<p>Member certificates include the Directory URL of an Application in the Subject of the certificate. Applications identify a use of data in the Trust Framework and the Roles the Member is using. The Member's Directory URL and the Roles in use are included as extensions in the certificates.</p>
+<p>Member certificates are long-lived, obtained by logging into the Directory, and a Certificate Revocation List must be checked by servers and when signatures are checked.</p>
+<h2 id="dependencies">Dependencies</h2>
+<p>A Scheme using this specification must also adopt a specification for server certificates that defines how services operated by Members are authenticated within the Trust Framework.</p>
 <h2 id="client-certificates">Client certificates</h2>
 <p>Presentation of a client certificate provides:</p>
 <ul>
@@ -505,13 +481,13 @@
 </ul>
 <p>See below for the X.509 extensions that are required for the certificates.</p>
 <h3 id="obtaining-a-client-certificate">Obtaining a client certificate</h3>
-<p>A Member logs into the Directory, or uses an API, provides a CSR, and requests a client certificate. The Directory generates a certificate which encodes the Application, Member identity and Roles, ignoring everything other than the public key in the CSR.</p>
+<p>A Member logs into the Directory, or uses an API, provides a CSR, and requests a client certificate. The Directory generates a certificate which encodes the Application, Member identity and Roles. Only the public key from the CSR is used, all other certificate fields are populated by the Directory.</p>
 <p>The client must manually renew the certificate before it expires.</p>
 <h3 id="verifying-a-client-certificate">Verifying a client certificate</h3>
 <p>A server must verify that</p>
 <ul>
 <li>a client certificate has been presented and it has not expired</li>
-<li>the client certificate is issued with a certificate chain leading to the Client Root CA certificate</li>
+<li>the client certificate is issued with a certificate chain leading to the Client CA root certificate</li>
 <li>the client certificate has not been revoked</li>
 <li>the Roles extension contains the required role to access the API.</li>
 </ul>
@@ -529,41 +505,16 @@
 </ul>
 <p>See below for the X.509 extensions that are required for the certificates.</p>
 <h3 id="obtaining-a-signing-certificate">Obtaining a signing certificate</h3>
-<p>A Member logs into the Directory, or uses an API, provides a CSR, and requests a signing certificate. The Directory generates a certificate which encodes the Application, Member identity and Roles, ignoring everything other than the public key in the CSR.</p>
+<p>A Member logs into the Directory, or uses an API, provides a CSR, and requests a signing certificate. The Directory generates a certificate which encodes the Application, Member identity and Roles. Only the public key from the CSR is used, all other certificate fields are populated by the Directory.</p>
 <p>The client must manually renew the certificate before it expires.</p>
 <h3 id="verifying-a-signing-certificate">Verifying a signing certificate</h3>
 <p>A Member verifying signed data must verify that</p>
 <ul>
-<li>the signing certificate is issued with a certificate chain leading to the client root certificate</li>
+<li>the signing certificate is issued with a certificate chain leading to the Signing CA root certificate</li>
 <li>the signing certificate has not been revoked</li>
 <li>the signing certificate was valid at the time of signature</li>
 <li>if applicable, the Roles extension contains the required role to generate the metadata.</li>
 </ul>
-<h2 id="server-certificates">Server certificates</h2>
-<p>Presentation of a server certificate with a CN that matches the hostname of the server provides assurance that the server operator is a Member of the Trust Framework.</p>
-<p>This assertion relies on only issuing certificates to servers which are registered explicitly (Member record) or implicitly (data catalog entries) in the Directory.</p>
-<p>Server certificates are short-lived, with a maximum validity of 24 hours.</p>
-<ul>
-<li>CN=[Trust Framework] Server CA<ul>
-<li>CN=[Trust Framework] Server Issuer<ul>
-<li>CN=[DNS name of server], subjectAlternativeName=DNS:[DNS name of server]</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>See below for the X.509 extensions that are required for the certificates.</p>
-<h3 id="obtaining-a-server-certificate">Obtaining a server certificate</h3>
-<ul>
-<li>Ensure the Directory contains a record which refers to this server.</li>
-<li>Use ACME to obtain and automatically renew a short-lived certificate. The ACME server:<ul>
-<li>Uses HTTP challenge to verify the DNS name</li>
-<li>Is configured to only issue certificates to hostnames within the domains of the publishers configured in the Directory.</li>
-</ul>
-</li>
-</ul>
-<h3 id="verifying-a-server-certificate">Verifying a server certificate</h3>
-<p>A client must configure their TLS client to only trust connections to servers with certificates issued with a certificate chain leading to the root Server certificate.</p>
 <h2 id="ib1-x509-extensions">IB1 X.509 extensions</h2>
 <p>Trust Framework certificates use X.509 extensions defined under IB1's ASN.1 OID prefix, <code>1.3.6.1.4.1.62329</code>, to provide additional identity information.</p>
 <dl>
@@ -589,73 +540,16 @@
 <li>ib1Roles</li>
 <li>ib1Member</li>
 </ul>
-<h3 id="summary-of-required-extensions-for-member-certificates">Summary of required extensions for Member certificates</h3>
-<table>
-<thead>
-<tr>
-<th>Extension</th>
-<th>Client</th>
-<th>Signing</th>
-<th>Server</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Subject Alternative Name (DNS name)</td>
-<td></td>
-<td></td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>Subject Alternative Name (Member URL as URI)</td>
-<td>Yes</td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td>ib1Roles</td>
-<td>Yes</td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td>ib1Member</td>
-<td>Yes</td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td>Subject Key Identifier</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>Authority Key Identifier</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>Basic Constraints</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>Key Usage</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>Extended Key Usage</td>
-<td></td>
-<td></td>
-<td>Yes</td>
-</tr>
-</tbody>
-</table>
+<h3 id="summary-of-required-extensions-for-client-and-signing-certificates">Summary of required extensions for Client and Signing certificates</h3>
+<ul>
+<li>Subject Alternative Name (Member URL as URI)</li>
+<li>ib1Roles</li>
+<li>ib1Member</li>
+<li>Subject Key Identifier</li>
+<li>Authority Key Identifier</li>
+<li>Basic Constraints</li>
+<li>Key Usage</li>
+</ul>
 
 
 
