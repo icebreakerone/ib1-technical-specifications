@@ -11,6 +11,7 @@ _Note: These documents use US English. To align with W3C and other prevalent sta
  * [Role-based Access Control](role-based-access-control/1.0.md) (1.0)
  * [Member Identity Digital Certificates](member-identity-digital-certificates/1.0.md) (1.0)
  * [Directory Issued Server TLS Certificates](directory-issued-server-tls-certificates/1.0.md) (1.0)
+ * [Public CA Issued Server TLS Certificates with Directory Allowlist](public-ca-issued-server-tls-certificates-with-directory-allowlist/1.0.md) (1.0)
  * [Baseline TLS Configuration](baseline-tls-configuration/1.0.md) (1.0)
  * [OAuth with Member Identity Certificates](oauth-with-member-identity-certificates/1.0.md) (1.0)
  * [Message Delivery to Applications](message-delivery-to-applications/1.0.md) (1.0)
