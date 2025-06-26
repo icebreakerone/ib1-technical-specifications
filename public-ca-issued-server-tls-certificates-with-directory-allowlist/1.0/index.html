@@ -349,9 +349,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#client-validation" class="md-nav__link">
+  <a href="#validation-by-clients" class="md-nav__link">
     <span class="md-ellipsis">
-      Client Validation
+      Validation by clients
     </span>
   </a>
   
@@ -436,7 +436,7 @@
 <li>The client must retry fetching the resource periodically, with a reasonable retry schedule, until a valid, fresh copy is obtained.</li>
 <li>If no valid version of the resource has ever been fetched (e.g., first-time fetch fails), the client must reject connections to servers.</li>
 </ul>
-<h2 id="client-validation">Client Validation</h2>
+<h2 id="validation-by-clients">Validation by clients</h2>
 <p>Clients must:</p>
 <ul>
 <li>Attempt to fetch the allowlist for each transaction (in most cases, this fetch will be served from a locally cached copy in accordance with HTTP caching rules without connecting to the Directory.)</li>
@@ -445,7 +445,7 @@
 </ul>
 </li>
 <li>Reject wildcard certificates.</li>
-<li>Perform Certificate Revocation List (CRL) checking for all certificates in the chain. Online Certificate Status Protocol (OCSP) may be used in addition to CRL checking, but CRL checking is mandatory.</li>
+<li>Support both Certificate Revocation List (CRL) and Online Certificate Status Protocol (OCSP) checking. For each certificate in the chain, the client must perform revocation checking using one of the methods indicated in the certificate's extensions. Revocation checking is mandatory for all certificates in the chain.</li>
 <li>Only allow HTTP redirects to the same hostname and URL scheme.</li>
 <li>Log an event whenever a server's hostname is not present in the allowlist and the connection is rejected as a result.</li>
 </ul>
