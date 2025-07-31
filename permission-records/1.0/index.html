@@ -363,15 +363,16 @@
 <h1 id="permission-records">Permission Records</h1>
 <p>OAuth Issuers must provide an additional endpoint to fetch information about the underlying Permission granted by the end user. Permission Records and the <a href="#evidence-urls">Evidence URL</a> within it contain:</p>
 <ul>
-<li>Who provided the permission - e.g. a logged-in user</li>
-<li>On whose behalf the permission is provided - e.g. the SME</li>
-<li>When was the permission provided</li>
-<li>How the permission was provided - e.g., the app version on such-and-such a device</li>
-<li>Which data processor has the permission</li>
-<li>For what purpose the specific permission record applies to</li>
+<li>Who provided the Permission - e.g. a logged-in user</li>
+<li>On whose behalf the Permission is provided - e.g. the SME</li>
+<li>When was the Permission provided</li>
+<li>How the Permission was provided - e.g., the app version on such-and-such a device</li>
+<li>Which data processor has the Permission</li>
+<li>For what purpose the specific Permission Record applies to</li>
 <li>How the purpose was described to the user</li>
-<li>How long the permission is valid for</li>
+<li>How long the Permission is valid for</li>
 </ul>
+<p>This document uses general terminology rather than GDPR-specific language. <a href="https://docs.trust.ib1.org/latest/glossary/#term-Permission">Permission</a> (rather than <a href="https://docs.trust.ib1.org/latest/glossary/#term-Consent">consent</a>) is used for clarity and consistency across both personal and non-personal data contexts. While not formally aligned with GDPR, the concepts are compatible with its principles where applicable.</p>
 <p><em>Note: This document uses US English. To align with W3C and other prevalent standards, IB1 uses US English in its technical specifications and technical documentation.</em></p>
 <h2 id="permission-record-properties">Permission Record properties</h2>
 <p>All specified fields except <code>revoked</code> MUST be included.</p>
@@ -382,9 +383,9 @@
 <li><code>license</code> - the URL of the License under which data is accessed (the OAuth scope)</li>
 <li><code>account</code> - an opaque identifier for the end user or account holder. The value is NOT required to be the same in every Permission Record relating to an end user.</li>
 <li><code>lastGranted</code> - when permission was last granted by the end user.</li>
-<li><code>expires</code> - when the permission expires, and will need to be explicitly renewed by the end user.</li>
+<li><code>expires</code> - when the Permission expires, and will need to be explicitly renewed by the end user.</li>
 <li><code>evidence</code> - the <a href="#evidence-urls">Evidence URL</a> which may be used by the user to see details of how permission was granted.</li>
-<li><code>revoked</code> - when permission was revoked by the end user. This field must not be present if the permission has not been revoked. To avoid issues with variations in server time between systems, the presence of a timestamp for this field should be taken to mean that permission has been revoked</li>
+<li><code>revoked</code> - when the Permission was revoked by the end user. This field must not be present if the Permission has not been revoked. To avoid issues with variations in server time between systems, the presence of a timestamp for this field should be taken to mean that permission has been revoked</li>
 <li><code>dataAvailableFrom</code> - the earliest date for which historical data will be available through the API. The client must not infer additional information from this date, such as the age of the end user's account or whether data exists for that period. This is provider and data source dependent, and could be:<ul>
 <li>The date when permission was first provided.</li>
 <li>The date the end user's account was opened at the provider.</li>

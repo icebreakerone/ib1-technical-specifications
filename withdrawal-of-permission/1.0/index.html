@@ -369,7 +369,7 @@
         <li class="md-nav__item">
   <a href="#linked-permissions" class="md-nav__link">
     <span class="md-ellipsis">
-      Linked permissions
+      Linked Permissions
     </span>
   </a>
   
@@ -404,20 +404,21 @@
 
 <h1 id="withdrawal-of-permission">Withdrawal of Permission</h1>
 <p>An end user may withdraw permission for their data to be processed at any time. This document specifies how an Application must respond, and how withdrawal is communicated between members.</p>
+<p>This document uses general terminology rather than GDPR-specific language. Terms like <a href="https://docs.trust.ib1.org/latest/glossary/#term-Permission">Permission</a> (rather than <a href="https://docs.trust.ib1.org/latest/glossary/#term-Consent">consent</a>) and <a href="https://docs.trust.ib1.org/latest/glossary/#term-Data-Provider">Data Provider</a> and <a href="https://docs.trust.ib1.org/latest/glossary/#term-Data-Consumer">Data Consumer</a> (rather than controller, processor, or recipient) are used for clarity and consistency across both personal and non-personal data contexts. While not formally aligned with GDPR, the concepts are compatible with its principles where applicable.</p>
 <p><em>Note: This document uses US English. To align with W3C and other prevalent standards, IB1 uses US English in its technical specifications and technical documentation.</em></p>
 <h2 id="data-processing-requirements">Data processing requirements</h2>
-<p>Permission is granted for a data transfer between two members, a "sending" member and a "receiving" member. In some cases, permissions depend on other permissions, where the user grants permission that relies on a previously granted permission for data transfer or use. The permissions which depend on a given permission are <strong>linked permissions</strong>.</p>
-<p>When permission is withdrawn, any linked permissions that depend on the withdrawn permission must also be revoked. This cascading withdrawal ensures that no permission remains active that relies on a permission the user has chosen to withdraw.</p>
-<p>Permission may be withdrawn by the user at either of the two members. Linked permissions may be implicitly withdrawn when one of the permissions that it relies on is withdrawn.</p>
-<p>When permission is withdrawn at either member:</p>
+<p>Permission is granted for a data transfer between two members, a <a href="https://docs.trust.ib1.org/latest/glossary/#term-Data-Provider">Data Provider</a> and <a href="https://docs.trust.ib1.org/latest/glossary/#term-Data-Consumer">Data Consumer</a>. In some cases, Permissions depend on other Permissions, where the user grants permission that relies on a previously granted Permission for data transfer or use. The Permissions which depend on a given Permission are <strong>Linked Permissions</strong>, whose dependencies are governed by data licences and scheme rules.</p>
+<p>When a Permission is withdrawn, any Linked Permissions that depend on the withdrawn Permission must also be revoked. This cascading withdrawal ensures that no Permission remains active that relies on a Permission the user has chosen to withdraw.</p>
+<p>Permission may be withdrawn by the user at either of the two members. Linked Permissions may be implicitly withdrawn when one of the Permissions that it relies on is withdrawn.</p>
+<p>When Permission is withdrawn at either member:</p>
 <ul>
-<li>The member where permission is withdrawn must notify the other member, with a reasonable number of retries if an error occurs in that notification.</li>
-<li>The member which knows about linked permissions to the withdrawn permission must follow this withdrawal process, as if those linked permissions were explicitly withdrawn.</li>
-<li>The sending member<ul>
+<li>The member where a Permission is withdrawn must notify the other member, with a reasonable number of retries if an error occurs in that notification.</li>
+<li>The member which knows about Linked Permissions to the withdrawn Permission must follow this withdrawal process, as if those Linked Permissions were explicitly withdrawn.</li>
+<li>The Data Provider:<ul>
 <li>must return a "not authorized" error response to any further use of the API.</li>
 </ul>
 </li>
-<li>The receiving member<ul>
+<li>The Data Consumer:<ul>
 <li>must stop processing immediately,</li>
 <li>must delete any stored unprocessed data,</li>
 <li>must delete any derived data where it has a one to one correspondence to the user,</li>
@@ -425,7 +426,7 @@
 <li>may cycle data normally out of backups, as permitted by the license.</li>
 </ul>
 </li>
-<li>Unless permissions are linked, neither member needs to notify other members before or after them in the processing chain.</li>
+<li>Unless Permissions are linked, neither member needs to notify other members before or after them in the processing chain.</li>
 </ul>
 <h2 id="message-delivery">Message delivery</h2>
 <p>The Scheme must use a method of delivery of messages to Applications.</p>
@@ -444,19 +445,19 @@
 </span></code></pre></div>
 <h2 id="api-server">API server</h2>
 <p>The API server must return an error when an invalid or revoked token is used.</p>
-<p>It must start returning errors no later than 60 minutes after a user or Data Consumer withdraws permission.</p>
+<p>It must start returning errors no later than 60 minutes after a user or Data Consumer withdraws a Permission.</p>
 <h2 id="data-consumer">Data Consumer</h2>
-<p>The Data Consumer must provide a user interface for the end user to withdraw permission. When the user withdraws permission, the Data Consumer must send an RFC7009 revocation request to the endpoint declared in the OAuth Issuer Metadata.</p>
+<p>The Data Consumer must provide a user interface for the end user to withdraw a Permission. When the user withdraws a Permission, the Data Consumer must send an RFC7009 revocation request to the endpoint declared in the OAuth Issuer Metadata.</p>
 <p>If an error is returned, the Data Consumer must retry with exponential back-off.</p>
 <h2 id="data-provider">Data Provider</h2>
-<p>The Data Provider must provide a user interface for the end user to withdraw permission. When the user withdraws permission, the Data Provider must:</p>
+<p>The Data Provider must provide a user interface for the end user to withdraw a Permission. When the user withdraws a Permission, the Data Provider must:</p>
 <ul>
 <li>Invalidate the OAuth refresh token immediately, so no new access tokens can be issued.</li>
 <li>If access tokens have a validity of longer than 60 minutes, invalidate the access tokens.</li>
 <li>When the refresh token has been invalidated, send a message to the Application. The Application's Directory URL is the <code>client_id</code>.</li>
 </ul>
 <h3 id="message-format">Message format</h3>
-<p>The withdrawal of permission message has a <code>subject</code> of <code>https://registry.trust.ib1.org/message/withdrawal-of-permission/2025-03-16</code>, and within the body, the <code>token</code> is the newly revoked refresh token.</p>
+<p>The Withdrawal of Permission message has a <code>subject</code> of <code>https://registry.trust.ib1.org/message/withdrawal-of-permission/2025-03-16</code>, and within the body, the <code>token</code> is the newly revoked refresh token.</p>
 <p>The message must not be sent until after the refresh token has been invalidated.</p>
 <div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;ib1:message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://registry.core.trust.ib1.org/trust-framework&quot;</span><span class="p">,</span>
@@ -466,17 +467,17 @@
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="p">}</span>
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">}</span>
 </span></code></pre></div>
-<h2 id="linked-permissions">Linked permissions</h2>
-<p>When a permission is withdrawn, all linked permissions that rely on it must also be withdrawn to comply with legal, regulatory, and data licensing requirements.</p>
-<p>When a Data Consumer or Data Provider receives a permission grant from an end user that depends on another permission — creating a linked permission — the link must be recorded. This ensures that if the original permission is withdrawn, the linked permissions can also be withdrawn.</p>
-<p>Withdrawal of linked permissions must occur under any of the following circumstances:</p>
+<h2 id="linked-permissions">Linked Permissions</h2>
+<p>When a Permission is withdrawn, all Linked Permissions that rely on it must also be withdrawn to comply with legal, regulatory, and data licensing requirements.</p>
+<p>When a Data Consumer or Data Provider receives a permission grant from an end user that depends on another permission — creating a Linked Permission — the link must be recorded. This ensures that if the original Permission is withdrawn, the Linked Permissions can also be withdrawn.</p>
+<p>Withdrawal of Linked Permissions must occur under any of the following circumstances:</p>
 <ul>
-<li>the user withdraws permission,</li>
+<li>the user withdraws a Permission,</li>
 <li>an RFC7009 revocation request is received, or</li>
 <li>a withdrawal message is received.</li>
 </ul>
-<p>In these cases, the member must make additional RFC7009 revocation requests or send further withdrawal messages to revoke the linked permissions.</p>
-<p>This process ensures that withdrawal is cascaded recursively. However, the member is not required to take any other steps beyond sending the necessary revocation requests or withdrawal messages to enforce recursive withdrawal.</p>
+<p>In these cases, the member must make additional RFC7009 revocation requests or send further withdrawal messages to revoke the Linked Permissions.</p>
+<p>This process ensures that withdrawal is cascaded recursively across all known Linked Permissions. However, the member is not required to take any other steps beyond sending the necessary revocation requests or withdrawal messages to enforce recursive withdrawal.</p>
 <h2 id="advice-for-implementation">Advice for implementation</h2>
 <p>Access tokens should have a validity of 60 minutes or less, so that it is not necessary to invalidate access tokens.</p>
 
