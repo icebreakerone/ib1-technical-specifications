@@ -9,6 +9,7 @@ _Note: These documents use US English. To align with W3C and other prevalent sta
  * [Registry Process Resources](registry-process-resources/1.0.md) (1.0)
  * [Machine-Readable Data Licenses](machine-readable-data-licenses/1.0.md) (1.0)
  * [Role-based Access Control](role-based-access-control/1.0.md) (1.0)
+ * [Directory](directory/1.0.md) (1.0)
  * [Member Identity Digital Certificates](member-identity-digital-certificates/1.0.md) (1.0)
  * [Directory Issued Server TLS Certificates](directory-issued-server-tls-certificates/1.0.md) (1.0)
  * [Public CA Issued Server TLS Certificates with Directory Allowlist](public-ca-issued-server-tls-certificates-with-directory-allowlist/1.0.md) (1.0)
