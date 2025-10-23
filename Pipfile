@@ -42,7 +42,7 @@ verspec = "==0.1.0"
 watchdog = "==3.0.0"
 webencodings = "==0.5.1"
 zipp = "==3.15.0"
-mike = {git = "git+https://github.com/jimporter/mike"}
+mike = {ref = "master", git = "git+https://github.com/jimporter/mike"}
 
 [dev-packages]
 
