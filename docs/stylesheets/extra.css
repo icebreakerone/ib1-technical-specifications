@@ -84,3 +84,37 @@ body[data-md-color-scheme="ib1-dark"] code.md-code__content {
   filter: invert(100%);
   background-color: #fff;
 }
+
+/* Search dropdown styling fixes */
+[data-md-color-scheme="ib1-light"] .md-search-result__meta {
+  color: #5A7084 !important;
+}
+
+[data-md-color-scheme="ib1-light"] .md-search-result__title {
+  color: #0D1C22 !important;
+}
+
+[data-md-color-scheme="ib1-light"] .md-search-result__teaser {
+  color: #1A3844 !important;
+}
+
+[data-md-color-scheme="ib1-dark"] .md-search-result__meta {
+  color: #91A9BD !important;
+}
+
+[data-md-color-scheme="ib1-dark"] .md-search-result__title {
+  color: #ffffff !important;
+}
+
+[data-md-color-scheme="ib1-dark"] .md-search-result__teaser {
+  color: #ECF0F1 !important;
+}
+
+/* Search input placeholder text */
+[data-md-color-scheme="ib1-light"] .md-search__input::placeholder {
+  color: #91A9BD !important;
+}
+
+[data-md-color-scheme="ib1-dark"] .md-search__input::placeholder {
+  color: #91A9BD !important;
+}
