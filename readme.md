@@ -27,3 +27,8 @@ pipenv install
 pipenv shell
 ```
 
+### Preview changes locally
+
+```bash
+mkdocs serve
+```
