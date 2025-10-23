@@ -32,3 +32,9 @@ pipenv shell
 ```bash
 mkdocs serve
 ```
+
+### Publish changes to github pages
+
+```bash
+mkdocs gh-deploy
+```
