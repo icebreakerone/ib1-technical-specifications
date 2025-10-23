@@ -1,6 +1,7 @@
 site_name: Icebreaker One Specifications
 site_url: https://specification.docs.ib1.org
 repo_url: https://github.com/icebreakerone/ib1-technical-specifications
+
 nav:
   - "Specifications": "index.md"
   - "Changelog": "changelog.md"
@@ -15,7 +16,6 @@ theme:
     - navigation.top
     - navigation.tracking
     - toc.follow
-    - toc.integrate
   logo: assets/logo.png
   favicon: assets/logo.png
   font:

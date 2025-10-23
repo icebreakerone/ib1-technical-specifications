@@ -118,3 +118,33 @@ body[data-md-color-scheme="ib1-dark"] code.md-code__content {
 [data-md-color-scheme="ib1-dark"] .md-search__input::placeholder {
   color: #91A9BD !important;
 }
+
+/* Table of Contents - Current section highlighting */
+[data-md-color-scheme="ib1-light"] .md-nav__link--active {
+  color: #0A5A80 !important;
+  font-weight: bold !important;
+}
+
+[data-md-color-scheme="ib1-light"] .md-nav__link--active:hover {
+  color: #0A5A80 !important;
+}
+
+[data-md-color-scheme="ib1-dark"] .md-nav__link--active {
+  color: #C8D4DE !important;
+  font-weight: bold !important;
+}
+
+[data-md-color-scheme="ib1-dark"] .md-nav__link--active:hover {
+  color: #C8D4DE !important;
+}
+
+/* Table of Contents - Current page highlighting */
+[data-md-color-scheme="ib1-light"] .md-nav__item--active > .md-nav__link {
+  color: #0A5A80 !important;
+  font-weight: bold !important;
+}
+
+[data-md-color-scheme="ib1-dark"] .md-nav__item--active > .md-nav__link {
+  color: #C8D4DE !important;
+  font-weight: bold !important;
+}
