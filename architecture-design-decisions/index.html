@@ -8,24 +8,24 @@
       
       
       
-        <link rel="canonical" href="https://specification.docs.ib1.org/open-data/1.0/">
+        <link rel="canonical" href="https://specification.docs.ib1.org/architecture-design-decisions/">
       
       
       
       
-      <link rel="icon" href="../../assets/logo.png">
+      <link rel="icon" href="../assets/logo.png">
       <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
     
     
       
-        <title>Open Data Publication - Icebreaker One Specifications</title>
+        <title>Design Decisions Behind the IB1 Specifications - Icebreaker One Specifications</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.3cba04c6.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.3cba04c6.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -44,9 +44,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -55,11 +55,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Open Data Publication - Icebreaker One Specifications" >
+        <meta  property="og:title"  content="Design Decisions Behind the IB1 Specifications - Icebreaker One Specifications" >
       
         <meta  property="og:description"  content="None" >
       
-        <meta  property="og:image"  content="https://specification.docs.ib1.org/assets/images/social/open-data/1.0.png" >
+        <meta  property="og:image"  content="https://specification.docs.ib1.org/assets/images/social/architecture-design-decisions.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -67,15 +67,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://specification.docs.ib1.org/open-data/1.0/" >
+        <meta  property="og:url"  content="https://specification.docs.ib1.org/architecture-design-decisions/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Open Data Publication - Icebreaker One Specifications" >
+        <meta  name="twitter:title"  content="Design Decisions Behind the IB1 Specifications - Icebreaker One Specifications" >
       
         <meta  name="twitter:description"  content="None" >
       
-        <meta  name="twitter:image"  content="https://specification.docs.ib1.org/assets/images/social/open-data/1.0.png" >
+        <meta  name="twitter:image"  content="https://specification.docs.ib1.org/assets/images/social/architecture-design-decisions.png" >
       
     
     
@@ -98,7 +98,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#open-data-publication" class="md-skip">
+        <a href="#design-decisions-behind-the-ib1-specifications" class="md-skip">
           Skip to content
         </a>
       
@@ -114,9 +114,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Icebreaker One Specifications" class="md-header__button md-logo" aria-label="Icebreaker One Specifications" data-md-component="logo">
+    <a href=".." title="Icebreaker One Specifications" class="md-header__button md-logo" aria-label="Icebreaker One Specifications" data-md-component="logo">
       
-  <img src="../../assets/logo.png" alt="logo">
+  <img src="../assets/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -133,7 +133,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Open Data Publication
+              Design Decisions Behind the IB1 Specifications
             
           </span>
         </div>
@@ -253,9 +253,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Icebreaker One Specifications" class="md-nav__button md-logo" aria-label="Icebreaker One Specifications" data-md-component="logo">
+    <a href=".." title="Icebreaker One Specifications" class="md-nav__button md-logo" aria-label="Icebreaker One Specifications" data-md-component="logo">
       
-  <img src="../../assets/logo.png" alt="logo">
+  <img src="../assets/logo.png" alt="logo">
 
     </a>
     Icebreaker One Specifications
@@ -282,7 +282,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -302,7 +302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../changelog/" class="md-nav__link">
+      <a href="../changelog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -342,54 +342,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#rdf-prefixes" class="md-nav__link">
+  <a href="#unifying-principles" class="md-nav__link">
     <span class="md-ellipsis">
-      RDF Prefixes
+      Unifying principles
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#dependencies" class="md-nav__link">
+  <a href="#identity-security-and-transport-choices" class="md-nav__link">
     <span class="md-ellipsis">
-      Dependencies
+      Identity, security, and transport choices
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#licensing" class="md-nav__link">
+  <a href="#authorization-and-consent-decisions" class="md-nav__link">
     <span class="md-ellipsis">
-      Licensing
+      Authorization and consent decisions
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mandatory-metadata-fields" class="md-nav__link">
+  <a href="#data-discovery-and-publication" class="md-nav__link">
     <span class="md-ellipsis">
-      Mandatory Metadata Fields
+      Data discovery and publication
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#enforcement-policy" class="md-nav__link">
+  <a href="#messaging-notifications-and-audit" class="md-nav__link">
     <span class="md-ellipsis">
-      Enforcement Policy
+      Messaging, notifications, and audit
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#evolution-and-change-control" class="md-nav__link">
     <span class="md-ellipsis">
-      Example
+      Evolution and change control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-include-or-skip-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to include or skip components
     </span>
   </a>
   
@@ -413,79 +422,51 @@
   
 
 
-<h1 id="open-data-publication">Open Data Publication</h1>
-<p>This specification defines how Data Providers publish Open Data within a Scheme using the standard metadata format described in the <a href="../../data-catalog-records/1.0/">Data Catalog Records</a> specification, and the requirement for an Scheme level enforcement policy. It ensures that published datasets are openly licensed, publicly accessible, and described with sufficient metadata for inclusion and discovery within the catalog.</p>
-<p><em>Note: This document uses US English. To align with W3C and other prevalent standards, IB1 uses US English in its technical specifications and technical documentation.</em></p>
-<h2 id="rdf-prefixes">RDF Prefixes</h2>
-<p>This specification uses the following prefixes:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>  dcat:    http://www.w3.org/ns/dcat#
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  dcterms: http://purl.org/dc/terms/
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  ib1:     https://registry.trust.ib1.org/ns/1.0#
-</span></code></pre></div>
-<h2 id="dependencies">Dependencies</h2>
-<p>A Scheme using this specification must also adopt the following specifications:</p>
+<h1 id="design-decisions-behind-the-ib1-specifications">Design Decisions Behind the IB1 Specifications</h1>
+<p>This note captures the architectural choices and reasoning that shaped the IB1 specifications: the problems we needed to solve, the risks we wanted to avoid, and why particular options won. Schemes remain free to pick only what they need; dependencies are explicit.</p>
+<h2 id="unifying-principles">Unifying principles</h2>
 <ul>
-<li><a href="../../data-catalog-records/1.0/">Data Catalog Records</a> (1.0 or later)</li>
-<li><a href="../../generic-sensitivity-classes/1.0/">Generic Sensitivity Classes</a> (1.0 or later)</li>
+<li><strong>Stable URIs as anchors</strong>: We needed identifiers that survive version bumps, signatures, and cross-organisation use. Registry URIs keep agreements explicit, allow caching, and avoid per-implementation enums. We rejected opaque, issuer-local IDs because they break validation across parties and make signed artifacts fragile when identifiers change.</li>
+<li><strong>Directory as the single discovery hub</strong>: Fragmented onboarding and bilateral spreadsheets do not scale. Centralising “who/where/what role/what assurance” in the Directory reduces integration friction and keeps assurance decisions consistent. Per-provider portals were rejected because they multiply integration cost and make role/assurance checks incomparable.</li>
+<li><strong>Certificates carry identity and role</strong>: By embedding the Application URL and roles in the certificate, every mTLS session already contains who the caller is and under which roles, eliminating a second client registry and easing rotation (rotate cert, identity unchanged). Shared secrets and static client IDs were rejected for weaker security, key sprawl, and poor non-repudiation.</li>
+<li><strong>Transport-agnostic semantics</strong>: We wanted one set of meanings for licenses, permission facts, provenance, and messages, regardless of whether the channel is REST, push, or file. Protocol-specific schemas were rejected because they diverge quickly, force duplicate audit logic, and complicate assurance reviews.</li>
+<li><strong>Modular, minimal dependencies</strong>: Schemes vary in market/regulatory needs. Breaking capabilities into small specs with explicit dependencies lets each Scheme pick the smallest sufficient set without rebuilding the trust spine. A monolithic profile was rejected to keep adoption tractable and avoid over-prescription where markets differ.</li>
 </ul>
-<h2 id="licensing">Licensing</h2>
-<p>All datasets published under this specification must be licensed using an open license which meets the <a href="https://opendefinition.org/od/2.1/en/">Open Definition 2.1</a>.</p>
-<p>The license must be declared in the <code>dcterms:license</code> field, using the standard, widely recognized URL associated with that license.</p>
-<h2 id="mandatory-metadata-fields">Mandatory Metadata Fields</h2>
-<p>The following fields must be included in each DCAT resource representing a dataset:</p>
-<dl>
-<dt><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#license">dcterms:license</a></dt>
-<dd>A URL pointing to a license that meets the Open Definition 2.1.</dd>
-<dt><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#publisher">dcterms:publisher</a></dt>
-<dd>A URL of the Data Provider’s Member record in the Directory. This may be included in addition to any other publishers.</dd>
-<dt><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#conformsTo">dcterms:conformsTo</a></dt>
-<dd>If the dataset conforms to a Scheme standard, the URL of the Scheme Catalog Requirements Document. Inclusion of this field may impose additional metadata requirements.</dd>
-<dt><a href="https://registry.trust.ib1.org/ns/1.0#dataSchema">ib1:dataSchema</a></dt>
-<dd>A URL pointing to a schema that describes the structure of the dataset (e.g., JSON Schema, XSD, or CSVW), unless it is commercially impractical to provide a schema. If the entry has a <code>dcterms:confirmsTo</code> value and this refers to a Scheme Catalog Requirements Document which specifies a schema, the value of this term must match the schema required by the Scheme standard.</dd>
-<dt><a href="https://registry.trust.ib1.org/ns/1.0#sensitivityClass">ib1:sensitivityClass</a></dt>
-<dd>Must be set to exactly <code>https://registry.trust.ib1.org/sensitivity-class/IB1-O</code>, indicating Open Data according to the <a href="../../generic-sensitivity-classes/1.0/">Generic Sensitivity Classes</a> specification.</dd>
-<dt><a href="https://registry.trust.ib1.org/ns/1.0#trustFramework">ib1:trustFramework</a></dt>
-<dd>The URL of the Trust Framework under which this data is published.</dd>
-<dt><a href="https://registry.trust.ib1.org/ns/1.0#scheme">ib1:scheme</a></dt>
-<dd>The URL of the Scheme governing the publication and use of this dataset.</dd>
-</dl>
-<p>Any other metadata fields defined as mandatory in the <a href="../../data-catalog-records/1.0/">Data Catalog Records</a> specification must also be included.</p>
-<h2 id="enforcement-policy">Enforcement Policy</h2>
-<p>A Scheme which permits Open Data publication must define an enforcement policy for its rules, including:</p>
+<h2 id="identity-security-and-transport-choices">Identity, security, and transport choices</h2>
 <ul>
-<li>How violations (e.g., incorrect licensing, misleading metadata) are reported and handled.</li>
-<li>The process for removing non-compliant data from the catalog.</li>
-<li>Criteria for auditing data quality and adherence to the Scheme Catalog Requirements.</li>
-<li>A method to handle disputes or clarifications about licensing or conformance.</li>
+<li><strong>TLS 1.3 baseline</strong> (<code>baseline-tls-configuration</code>): Picked for forward secrecy, simpler cipher suite surface, and consistent posture across participants. Older versions were excluded to avoid downgrade risk and configuration variance that complicates audits.</li>
+<li><strong>Two server-certificate options</strong> (<code>directory-issued-server-tls-certificates</code> vs <code>public-ca-issued-server-tls-certificates-with-directory-allowlist</code>): Some deployments can install a private root and want strong Directory-bound issuance; others need public CA trust chains. Offering both preserves interoperability while keeping the same discovery/identity semantics. A single option was rejected to avoid blocking participants with differing infra constraints.</li>
+<li><strong>Member certificates for clients and signing</strong> (<code>member-identity-digital-certificates</code>): Chosen to give a durable, role-bearing identity that works for both online calls and offline signatures. JWT client assertions were deferred because certs already solve key distribution for mTLS and signing with one mechanism, reducing complexity for operators.</li>
 </ul>
-<p>This Policy must be published in the Registry, with a <code>ib1:policyPurpose</code> of <code>https://registry.trust.ib1.org/open-data/policy-purpose/OpenDataEnforcement</code></p>
-<h2 id="example">Example</h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>@prefix ib1: &lt;https://registry.trust.ib1.org/ns/1.0#&gt; .
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>&lt;https://data.example.org/emissions-report/2024-01&gt;
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    a dcat:Dataset ;
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    dcterms:title &quot;Monthly Emissions Report January 2024&quot; ;
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    dcterms:description &quot;CO2 emissions data for January 2024 reported by local authorities.&quot; ;
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    dcterms:publisher &lt;https://directory.core.trust.ib1.org/member/456789&gt; ;
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    dcterms:license &lt;https://creativecommons.org/licenses/by/4.0/&gt; ;
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    dcterms:conformsTo &lt;https://registry.core.trust.ib1.org/scheme/open-data/standard/emissions-report&gt; ;
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    ib1:dataSchema &lt;https://registry.core.trust.ib1.org/scheme/open-data/format/generic-emissions/1.0&gt; ;
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    ib1:sensitivityClass &lt;https://registry.trust.ib1.org/sensitivity-class/IB1-O&gt; ;
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    ib1:trustFramework &lt;https://registry.core.trust.ib1.org/trust-framework&gt; ;
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    ib1:scheme &lt;https://registry.core.trust.ib1.org/scheme/open-data&gt; ;
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    dcat:distribution &lt;https://data.example.org/emissions-report/2024-01/csv&gt; ;
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>.
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>&lt;https://data.example.org/emissions-report/2024-01/csv&gt;
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    a dcat:Distribution ;
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    dcterms:description &quot;CSV download of the monthly emissions report&quot; ;
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    dcat:downloadURL &lt;https://data.example.org/emissions-report/2024-01.csv&gt; ;
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>    dcat:mediaType &quot;text/csv&quot; ;
-</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>    ib1:dataSchema &lt;https://registry.core.trust.ib1.org/scheme/open-data/format/emissions/1.0&gt; ;
-</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>.
-</span></code></pre></div>
+<h2 id="authorization-and-consent-decisions">Authorization and consent decisions</h2>
+<ul>
+<li><strong>OAuth profile bound to Directory URLs</strong> (<code>oauth-with-member-identity-certificates</code>): We needed mainstream interoperability (hence FAPI 2) but with strong binding to the Directory identity. <code>tls_client_auth</code> plus PKCE reduces credential theft risk; using license URIs as scopes ties consent text to a stable legal reference. Dynamic client registration and secrets were dropped because the certificate already proves client identity; mandatory JWT tokens were dropped to avoid unnecessary coupling to token format.</li>
+<li><strong>Permission Records</strong> (<code>permission-records</code>): Tokens alone do not tell you the full permission fact pattern or evidence. A separate endpoint lets relying parties fetch authoritative, up-to-date details and keep tokens small. Packing it into JWTs was rejected due to size, stale data risk, and awkward evidence URL handling.</li>
+<li><strong>Withdrawal of Permission</strong>: Chosen to give an active revocation path without forcing tight token lifetimes. Short-lived tokens alone were rejected because many data exchanges need long-lived refresh tokens but still require explicit revocation signals.</li>
+</ul>
+<h2 id="data-discovery-and-publication">Data discovery and publication</h2>
+<ul>
+<li><strong>DCAT-based Catalog</strong> (<code>data-catalog-records</code>, <code>data-catalog-publishing</code>): We wanted existing tooling, clear linkage to licenses/schemas, and multi-format RDF support. DCAT provided all three. Publishing through the Directory keeps provenance and auditing simple. A bespoke JSON format was rejected to avoid fragmenting the ecosystem and to leverage DCAT validators and SPARQL.</li>
+<li><strong>Open and assured profiles</strong> (<code>open-data</code>, <code>assured-open-data</code>): Added to let Schemes surface open datasets and signal assurance without changing core semantics. This balances openness with trust signaling; omitting profiles was rejected because markets differ on openness requirements.</li>
+<li><strong>Assurance/sensitivity vocabularies</strong> (<code>generic-organizational-assurance-levels</code>, <code>generic-dataset-assurance-levels</code>, <code>generic-sensitivity-classes</code>): Optional, because some markets demand graded handling rules. Not baking them into the core keeps Schemes lean if they do not need tiers.</li>
+</ul>
+<h2 id="messaging-notifications-and-audit">Messaging, notifications, and audit</h2>
+<ul>
+<li><strong>Message Delivery</strong> (<code>message-delivery-to-applications</code>): We needed lightweight, low-friction signals (availability, revocation, workflow events) without inventing new APIs per pair. Best-effort and idempotence keep implementations simple; retries cover transient failure, and Schemes can set SLA expectations if needed. Reliable queues were avoided to keep cost/complexity low for Schemes that only need hints.</li>
+<li><strong>Provenance Records</strong> (<code>provenance-records</code>): Chosen to give verifiable, append-only lineage across organisations without a central store. By reusing cert identity and Registry URIs, signatures remain meaningful over time. A central audit log was rejected to avoid single points of failure, privacy concerns, and cross-border data residency issues.</li>
+</ul>
+<h2 id="evolution-and-change-control">Evolution and change control</h2>
+<ul>
+<li><strong>Registry versioning</strong> (<code>registry-versioning</code>, <code>registry-process-resources</code>): We needed to evolve roles, licenses, and schemas without breaking older references or signed artifacts. Issuing new URIs rather than mutating old ones keeps history intact and lets integrations upgrade at their pace.</li>
+<li><strong>Cache-friendly discovery</strong>: Encouraging caching for Directory/Registry responses and stable delivery URLs during cache lifetimes reduces load and flakiness. Forcing clients to re-fetch on every call was rejected to avoid latency, fragility, and avoidable outages during transient Registry/Directory issues.</li>
+</ul>
+<h2 id="when-to-include-or-skip-components">When to include or skip components</h2>
+<ul>
+<li><strong>Message Delivery</strong>: Include if you need near-real-time cross-participant signals without tight coupling to provider APIs. Skip if you already have reliable eventing and do not need framework-level messaging.</li>
+<li><strong>Permission Records / Withdrawal of Permission</strong>: Include for end-user mediated data or explicit revocation needs. Skip if flows are purely B2B under fixed contracts with no per-user consent or revocation semantics.</li>
+<li><strong>Provenance Records</strong>: Include when verifiable lineage and signed hand-offs matter (compliance, multi-hop processing). Skip if data never leaves one operator or audit demands are low.</li>
+<li><strong>Assurance/sensitivity vocabularies</strong>: Include if the market benefits from standardized handling tiers; skip to keep minimal surface if roles/licenses are sufficient.</li>
+</ul>
 
 
 
@@ -541,10 +522,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.expand", "search.suggest", "search.highlight", "search.share", "navigation.sections", "navigation.top", "navigation.tracking", "toc.follow"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.expand", "search.suggest", "search.highlight", "search.share", "navigation.sections", "navigation.top", "navigation.tracking", "toc.follow"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
     
   </body>
