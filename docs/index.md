@@ -26,3 +26,4 @@ _Note: These documents use US English. To align with W3C and other prevalent sta
  * [Generic Sensitivity Classes](generic-sensitivity-classes/1.0.md) (1.0)
  * [Open Data Publication](open-data/1.0.md) (1.0)
  * [Assured Open Data Publication](assured-open-data/1.0.md) (1.0)
+ * [Trust Framework Roles](trust-framework-roles/1.0.md) (1.0)
