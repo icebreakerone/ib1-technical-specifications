@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a1f8db46c0c70c8023ef0c47800419edf1b086a05237c1158ce1357ec5a1a62b"
+            "sha256": "35a3e830169c11c90f91e64f2fe72570709920e2e64411bcea39c75510e6e5e8"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -34,12 +34,11 @@
         },
         "cairosvg": {
             "hashes": [
-                "sha256:17cb96423a896258848322a95c80160e714a58f1af3dd73b8e1750994519b9f9",
-                "sha256:ac4dc7c1d38b3a15717db2633a3a383012e0be664c727c911637e6af6a49293c"
+                "sha256:1debb00cd2da11350d8b6f5ceb739f1b539196d71d5cf5eb7363dbd1bfbc8dc5"
             ],
             "index": "pypi",
-            "markers": "python_version >= '3.5'",
-            "version": "==2.7.0"
+            "markers": "python_version >= '3.10'",
+            "version": "==2.9.0"
         },
         "certifi": {
             "hashes": [
