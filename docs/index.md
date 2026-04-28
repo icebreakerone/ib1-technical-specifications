@@ -22,7 +22,7 @@ _Note: These documents use US English. To align with W3C and other prevalent sta
  * [Data Catalog Records](data-catalog-records/1.0.md) (1.0)
  * [Data Catalog Publishing](data-catalog-publishing/1.0.md) (1.0)
  * [Generic Dataset Assurance Levels](generic-dataset-assurance-levels/1.0.md) (1.0)
- * [Generic Organizational Assurance Levels](generic-organizational-assurance-levels/1.0.md) (1.0)
+ * [Generic Organization Assurance Levels](generic-organization-assurance-levels/1.0.md) (1.0)
  * [Generic Sensitivity Classes](generic-sensitivity-classes/1.0.md) (1.0)
  * [Open Data Publication](open-data/1.0.md) (1.0)
  * [Assured Open Data Publication](assured-open-data/1.0.md) (1.0)
