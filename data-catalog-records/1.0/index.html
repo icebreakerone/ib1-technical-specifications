@@ -546,17 +546,15 @@
 
 
 <h1 id="data-catalog-records">Data Catalog Records</h1>
-<p>Each Data Provider maintains a set of one or more metadata files, each of which can describe one or more 
+<p>Each Data Provider maintains a set of one or more metadata files, each of which can describe one or more
 distinct sources of data. These descriptions serve several purposes:</p>
 <ol>
 <li>They enable discovery by Data Consumers when indexed for search.</li>
-<li>They inform consumption of that data, providing information on:<ol>
+<li>They inform consumption of that data, providing information on:</li>
 <li>The API required to access the data source</li>
 <li>Any access constraints which may need to be satisfied</li>
 <li>Licenses for any accessed data</li>
 <li>Representation and internal semantics of expressions of the data</li>
-</ol>
-</li>
 </ol>
 <p><em>Note: This document uses US English. To align with W3C and other prevalent standards, IB1 uses US English in its technical specifications and technical documentation.</em></p>
 <h2 id="rdf-prefixes">RDF Prefixes</h2>
@@ -588,7 +586,7 @@ distinct sources of data. These descriptions serve several purposes:</p>
 <li>use the Catalog to include Open Data in a public index.</li>
 </ul>
 <h2 id="metadata-file-structure">Metadata File Structure</h2>
-<p>The metadata is a standard <a href="https://www.w3.org/TR/vocab-dcat-3/">DCAT</a> RDF file representing one or more sources of data. </p>
+<p>The metadata is a standard <a href="https://www.w3.org/TR/vocab-dcat-3/">DCAT</a> RDF file representing one or more sources of data.</p>
 <p><strong>NOTE</strong>: The examples below use the <a href="https://www.w3.org/TR/turtle/">Turtle</a> format for compactness and increased readability. Data providers may present this information in Turtle, RDF/XML, JSON-LD or N3 formats.</p>
 <p>Datasets are represented as <code>dcat:Dataset</code> objects with one or more <code>dcat:Distribution</code> entries. If the data measures the same thing over periods of time, then these must be linked together with a Data Series object. The format of the data is described by JSON Schema, XSD 1.1 or CSVW schemas.</p>
 <p>Data Services are represented as Data Service DCAT objects, with <a href="https://swagger.io/specification/">OpenAPI</a> specifications of the API and the format of the data in the responses.</p>
@@ -601,7 +599,10 @@ distinct sources of data. These descriptions serve several purposes:</p>
 <dt><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/terms/publisher/">dcterms:publisher</a></dt>
 <dd>The URL of the Data Provider's record in the Scheme Directory.</dd>
 <dt><a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#license">dcterms:license</a></dt>
-<dd>The URL of an <code>ib1:License</code>. All use of this data source is subject to this License. Where a data source is Scheme-conforming, the URL will be registered in the Registry.</dd>
+<dd>
+<p>The URL of an <code>ib1:License</code>. All use of this data source is subject to this License. Where a data source is Scheme-conforming, the URL will be registered in the Registry.</p>
+<p>More than one License may be given, where a data source is offered under any one of several Licenses. Each access is subject to the single License under which it was granted.</p>
+</dd>
 <dt><code>ib1:trustFramework</code></dt>
 <dd>The URL of the Trust Framework the dataset is published within.</dd>
 <dt><code>ib1:scheme</code></dt>
@@ -652,7 +653,7 @@ If the sensitivity class requires end-user permission (consent), the <code>ib1:o
 <p>The following fields are optional:</p>
 <dl>
 <dt><a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_version">dcat:version</a></dt>
-<dd>Version number of the dataset, this should preferably follow <a href="https://semver.org/">semantic versioning</a>. Versioning of the dataset should be used to indicate changes in delivery mechanism, or in representation, rather than to reflect changes in the underlying dataset content. For example, this should not be used to differentiate between datasets from different years, rather it should be used to indicate whether a potential data consumer might need to alter how it processes any returned data. </dd>
+<dd>Version number of the dataset, this should preferably follow <a href="https://semver.org/">semantic versioning</a>. Versioning of the dataset should be used to indicate changes in delivery mechanism, or in representation, rather than to reflect changes in the underlying dataset content. For example, this should not be used to differentiate between datasets from different years, rather it should be used to indicate whether a potential data consumer might need to alter how it processes any returned data.</dd>
 <dt><a href="https://www.w3.org/TR/vocab-dcat-3/#Property:resource_version_notes">dcat:versionNotes</a></dt>
 <dd>Notes used to explain any changes to this version.</dd>
 </dl>
@@ -678,10 +679,10 @@ If the sensitivity class requires end-user permission (consent), the <code>ib1:o
 <p>Of particular note, and something we would like to ultimately expose in the Open Net Zero search interface, is information about the geospatial and temporal ranges of entries within a dataset. This is a complex subject, but one that has already been handled by DCAT. If you need to express this kind of information, please do so according to the standards laid out <a href="https://www.w3.org/TR/vocab-dcat-2/#time-and-space">here</a>.</p>
 <p>We encourage use of the <code>dcat:keyword</code> list for datasets. These translate to “tags” in Open Net Zero's web interface and are useful to group datasets around specific topics.</p>
 <h2 id="scheme-catalog-requirements">Scheme Catalog Requirements</h2>
-<p>A Scheme-conforming data source meets a common standard across a Scheme. These standards are followed by the Data Providers so that the same kind of data is published across the Scheme using the same APIs, formats and meaning of data. A Scheme Catalog Requirements Document specifies the metadata that a DCAT Catalog entry must contain for it to be Scheme-conforming, and specifies which roles may publish a conforming data source. </p>
+<p>A Scheme-conforming data source meets a common standard across a Scheme. These standards are followed by the Data Providers so that the same kind of data is published across the Scheme using the same APIs, formats and meaning of data. A Scheme Catalog Requirements Document specifies the metadata that a DCAT Catalog entry must contain for it to be Scheme-conforming, and specifies which roles may publish a conforming data source.</p>
 <p>It is an RDF document published in the Registry, and the metadata links to machine-readable License, API and format specifications which are also published in the Registry.</p>
 <h3 id="example">Example</h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; . 
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>@prefix ib1: &lt;https://registry.core.trust.ib1.org/ns/1.0#&gt; .
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
@@ -723,6 +724,8 @@ If the sensitivity class requires end-user permission (consent), the <code>ib1:o
 <dd>All the values in the requirements must be included for this term, but additional values are allowed.</dd>
 <dt><code>ib1:requireAnyOneOf &lt;term&gt;</code></dt>
 <dd>Exactly one of the values in the requirements must be included for this term. No other values are allowed.</dd>
+<dt><code>ib1:requireOneOrMoreOf &lt;term&gt;</code></dt>
+<dd>One or more of the values in the requirements must be included for this term. No other values are allowed.</dd>
 <dt><code>ib1:requireAnyValue &lt;term&gt;</code></dt>
 <dd>The term must be present, with any valid value.</dd>
 <dt><code>ib1:requireAbsenceOf &lt;term&gt;</code></dt>
@@ -730,7 +733,7 @@ If the sensitivity class requires end-user permission (consent), the <code>ib1:o
 </dl>
 <h2 id="full-example">Full Example</h2>
 <h3 id="data-service">Data Service</h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; . 
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>@prefix ib1: &lt;https://registry.core.trust.ib1.org/ns/1.0#&gt; .
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
@@ -739,7 +742,7 @@ If the sensitivity class requires end-user permission (consent), the <code>ib1:o
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    dcterms:title &quot;Electricity Generation Voltage&quot;@en ;
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    dcterms:description &quot;API to query generation supply voltage&quot;@en ;
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    dcterms:publisher &lt;https://directory.core.trust.ib1.org/member/827252&gt; ;
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    dcterms:conformsTo &lt;https://registry.core.trust.ib1.org/scheme/electricity/standard/supply-voltage&gt; ; 
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    dcterms:conformsTo &lt;https://registry.core.trust.ib1.org/scheme/electricity/standard/supply-voltage&gt; ;
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    dcat:endpointDescription &lt;https://registry.core.trust.ib1.org/scheme/electricity/api/voltage&gt; ;
 </span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    ib1:heartbeatDescription &lt;https://registry.core.trust.ib1.org/api/heartbeat-simple/1.0&gt; ;
 </span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    dcat:endpointURL &lt;https://grid03.api.example.com/generation-voltage/v0&gt; ;
@@ -753,7 +756,7 @@ If the sensitivity class requires end-user permission (consent), the <code>ib1:o
 </span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>.
 </span></code></pre></div>
 <h3 id="dataset-with-distributions-and-data-series">Dataset with Distributions and Data Series</h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; . 
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>@prefix dcat: &lt;http://www.w3.org/ns/dcat#&gt; .
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>@prefix dcterms: &lt;http://purl.org/dc/terms/&gt; .
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>@prefix ib1: &lt;https://registry.core.trust.ib1.org/ns/1.0#&gt; .
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
@@ -762,7 +765,7 @@ If the sensitivity class requires end-user permission (consent), the <code>ib1:o
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    dcterms:title &quot;Generation Report Oct 2024&quot;@en ;
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    dcterms:description &quot;Data report on generation&quot;@en ;
 </span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    dcterms:publisher &lt;https://directory.core.trust.ib1.org/member/827252&gt; ;
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    dcterms:conformsTo &lt;https://registry.core.trust.ib1.org/scheme/electricity/standard/generation-report&gt; ; 
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    dcterms:conformsTo &lt;https://registry.core.trust.ib1.org/scheme/electricity/standard/generation-report&gt; ;
 </span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    dcat:version &quot;0.1.2&quot; ;
 </span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    dcat:inSeries &lt;https://data.example.com/generation-report&gt;;
 </span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    dcat:distribution &lt;https://data.example.com/generation-report/oct2024/csv&gt; ;
